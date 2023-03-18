@@ -1,0 +1,61 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/NeueMontreal/NeueMontreal-Bold.otf",
+      "sha1": "8a9ff2b61316994234dae5eaaaa2b99de1b29205"
+    },
+    {
+      "path": "src/assets/fonts/NeueMontreal/NeueMontreal-Light.otf",
+      "sha1": "5177d0022e6ebb29eeb5afa31a81e10916f42c82"
+    },
+    {
+      "path": "src/assets/fonts/NeueMontreal/NeueMontreal-Medium.otf",
+      "sha1": "a1fde8e729ce0e78511dc692c8390836db6b8d92"
+    },
+    {
+      "path": "src/assets/fonts/NeueMontreal/NeueMontreal-Regular.otf",
+      "sha1": "864b3c35552d8c45b0a4467d8262a111f103f015"
+    },
+    {
+      "path": "src/assets/fonts/SpaceMono-Regular.ttf",
+      "sha1": "fae3a5a43b50e0408fd61e14383d94a023d332b0"
+    },
+    {
+      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Bold.otf",
+      "sha1": "65e6dcfb5a846cb3ebc50fe1cbcac86c973db38a"
+    },
+    {
+      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Heavy.otf",
+      "sha1": "d21032e8a7ee9e62c94c640dd133fd7622d37c2e"
+    },
+    {
+      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Medium.otf",
+      "sha1": "e7290f8dea30ca4199e102197ad21c627fe7f33b"
+    },
+    {
+      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Regular.otf",
+      "sha1": "ad6bc97382d1b91c708441dd24c885743c191dea"
+    },
+    {
+      "path": "src/assets/images/adaptive-icon.png",
+      "sha1": "8fc13d889ebb62ba9c59ee69dbc9a34f2cda9ec3"
+    },
+    {
+      "path": "src/assets/images/favicon.png",
+      "sha1": "cb25ca74ddc488c91522b0ae68fc846fac7f4174"
+    },
+    {
+      "path": "src/assets/images/icon.png",
+      "sha1": "8fc13d889ebb62ba9c59ee69dbc9a34f2cda9ec3"
+    },
+    {
+      "path": "src/assets/images/onboarding/1.jpg",
+      "sha1": "2cd324b1cb8e77cb5daead090166527b887781a0"
+    },
+    {
+      "path": "src/assets/images/splash.png",
+      "sha1": "39b034380a7a9d2c00e000bc21b6be5b00a46b11"
+    }
+  ]
+}
