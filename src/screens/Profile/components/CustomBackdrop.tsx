@@ -1,24 +1,26 @@
-import {useMemo, useState} from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {BottomSheetBackdropProps, useBottomSheet} from '@gorhom/bottom-sheet';
 import Animated, {
+  runOnJS,
   Extrapolate,
   interpolate,
-  runOnJS,
-  useAnimatedReaction,
   useAnimatedStyle,
+  useAnimatedReaction,
 } from 'react-native-reanimated';
-import {Text} from '../../../components/Themed';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useMemo, useState} from 'react';
+import RNShare, {ShareOptions} from 'react-native-share';
 import {FloppyDisk, Share, X} from 'phosphor-react-native';
-
-import RNShare from 'react-native-share';
-import {useAppSelector} from '../../../hooks/storeHooks';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {setErrorMsg} from '../../../store/profile/profileSlice';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import {useAppDispatch, useAppSelector} from '../../../hooks/storeHooks';
+import {BottomSheetBackdropProps, useBottomSheet} from '@gorhom/bottom-sheet';
 
 const CustomBackdrop = ({animatedIndex, style}: BottomSheetBackdropProps) => {
+  const dispatch = useAppDispatch();
   const {close} = useBottomSheet();
   const insets = useSafeAreaInsets();
   const [isVisible, setIsVisible] = useState(false);
+  const {collection} = useAppSelector(state => state.profile);
 
   // animated variables
   const containerAnimatedStyle = useAnimatedStyle(() => ({
@@ -59,19 +61,42 @@ const CustomBackdrop = ({animatedIndex, style}: BottomSheetBackdropProps) => {
   const {imgUri} = useAppSelector(state => state.profile);
 
   const sharePalette = async () => {
-    if (!imgUri) return;
+    if (!collection || Object.keys({...collection})?.length <= 0) {
+      dispatch(setErrorMsg('You have no colors in your collection!'));
+      return;
+    }
+    if (!imgUri) {
+      dispatch(setErrorMsg('Something went wrong!'));
+      return;
+    }
 
     try {
-      await RNShare.open({
-        title: 'Paletti Collection',
-        // url: 'https://williamsatakere.com',
-        url: 'file:/' + imgUri,
-        message: 'My Paletti Color Collection ✨ - Check it out!',
-      });
-      // console.log('here');
+      const shareOptions: ShareOptions = {
+        url: imgUri,
+        type: 'image/png',
+        title: 'My Paletti Color Collection ✨ - Check it out!',
+        filename: 'Paletti Collection',
+        subject: 'My Paletti Color Collection ✨ - Check it out!',
+        // message: 'My Paletti Color Collection ✨ - Check it out!',
+      };
+
+      await RNShare.open(shareOptions);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
+  };
+
+  const savePalette = async () => {
+    if (!collection || Object.keys({...collection})?.length <= 0) {
+      dispatch(setErrorMsg('You have no colors in your collection!'));
+      return;
+    }
+    if (!imgUri) {
+      dispatch(setErrorMsg('Something went wrong!'));
+      return;
+    }
+
+    CameraRoll.save(imgUri, {type: 'photo', album: 'Paletti'});
   };
 
   return isVisible ? (
@@ -101,7 +126,7 @@ const CustomBackdrop = ({animatedIndex, style}: BottomSheetBackdropProps) => {
           <Share size={26} color={'#fff'} weight="bold" />
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.actionBtn]} onPress={sharePalette}>
+        <TouchableOpacity style={[styles.actionBtn]} onPress={savePalette}>
           <FloppyDisk size={26} color={'#fff'} weight="bold" />
         </TouchableOpacity>
       </View>

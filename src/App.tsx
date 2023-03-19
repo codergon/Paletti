@@ -17,6 +17,8 @@ import {onAuthStateChanged, User} from 'firebase/auth';
 import useColorScheme from './hooks/useColorScheme';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {AppStorage} from './store/mmkv';
+import {setCollection} from './store/profile/profileSlice';
 
 dayjs.extend(duration);
 ntc.init();
@@ -29,6 +31,15 @@ const Compo = () => {
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
+    const SetCollection = async () => {
+      const collectionStr = AppStorage.getString('collection');
+      if (collectionStr) {
+        const collection = JSON.parse(collectionStr);
+        dispatch(setCollection(collection));
+      }
+    };
+    SetCollection();
+
     LogBox.ignoreAllLogs();
     const subscriber = onAuthStateChanged(auth, async userData => {
       const storedUser = await getAllAsync([

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     flexDirection: 'row',
-    ...padding(36, 14, 16, 6),
+    ...padding(36, 30, 8, 22),
     justifyContent: 'space-between',
   },
   label: {

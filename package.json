@@ -12,6 +12,7 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^4",
     "@react-native-async-storage/async-storage": "^1.17.11",
+    "@react-native-camera-roll/camera-roll": "^5.3.1",
     "@react-native-community/blur": "^4.3.0",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
@@ -43,7 +44,8 @@
     "react-native-uuid": "^2.0.1",
     "react-native-view-shot": "^3.5.0",
     "react-native-vision-camera": "^2.15.4",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

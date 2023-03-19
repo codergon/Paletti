@@ -18,14 +18,15 @@ import {hapticFeedback} from '../../utils/hapticFeedback';
 import chroma from 'chroma-js';
 import ntc from '../../lib/ntc';
 import {nanoid} from 'nanoid';
-import {useMMKVObject} from 'react-native-mmkv';
-import {Collection} from '../../types/profile';
+import {useAppDispatch, useAppSelector} from '../../hooks/storeHooks';
+import {setCollection} from '../../store/profile/profileSlice';
 
 type BottomBarprops = {
   openProfile: () => void;
 };
 
 const BottomBar = ({openProfile}: BottomBarprops) => {
+  const dispatch = useAppDispatch();
   const colorScheme = useColorScheme();
   const isDark = colorScheme === 'dark';
   const invCol = isDark ? '#ffffff' : '#000000';
@@ -35,10 +36,10 @@ const BottomBar = ({openProfile}: BottomBarprops) => {
   const isSaving = useSharedValue(false);
   const [saving, setSaving] = useState(false);
 
-  const [collection, setCollection] = useMMKVObject<Collection>('collection');
+  const {collection} = useAppSelector(state => state.profile);
 
   const saveColor = () => {
-    const color = '#2b0fff';
+    const color = '#af9e5f';
 
     if (
       (collection && collection[color]) ||
@@ -62,7 +63,7 @@ const BottomBar = ({openProfile}: BottomBarprops) => {
       [color]: hue,
     };
 
-    setCollection(newCollection);
+    dispatch(setCollection(newCollection));
   };
 
   useEffect(() => {

@@ -22,6 +22,8 @@ export default {
 
 export const mainColor = '#2B59C3';
 
+export const MODAL_BACKGROUND = '#f5f5f5';
+
 // export const PRIMARY_COLOR = '#3f4942';
 export const PRIMARY_COLOR = '#000' || '#5611f7';
 

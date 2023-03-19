@@ -1,9 +1,7 @@
-import chroma from 'chroma-js';
-import {useEffect} from 'react';
+import {Hue} from '../../../types/profile';
 import {StyleSheet, View} from 'react-native';
 import Animated from 'react-native-reanimated';
 import {MdText} from '../../../components/StyledText';
-import {Hue} from '../../../types/profile';
 
 const ColorShade = ({color, shades, name}: Hue) => {
   return (

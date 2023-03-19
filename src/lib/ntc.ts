@@ -23,8 +23,7 @@ const ntc = {
 
   name: function (color: string) {
     color = color.toUpperCase();
-    if (color.length < 3 || color.length > 7)
-      return ['#000000', 'Invalid Color: ' + color, false];
+    if (color.length < 3 || color.length > 7) return 'Unknown';
     if (color.length % 3 == 0) color = '#' + color;
     if (color.length == 4)
       color =
@@ -51,8 +50,7 @@ const ntc = {
       df = -1;
 
     for (var i = 0; i < ntc.names.length; i++) {
-      if (color == '#' + ntc.names[i][0])
-        return ['#' + ntc.names[i][0], ntc.names[i][1], true];
+      if (color == '#' + ntc.names[i][0]) return ntc.names[i][1];
 
       ndf1 =
         Math.pow(r - Number(ntc.names[i][2]), 2) +

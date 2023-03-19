@@ -1,5 +1,6 @@
-import {StatusBar, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {edges, padding} from '../../helpers/styles';
+import {MODAL_BACKGROUND} from '../../constants/Colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,19 +9,25 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'transparent',
   },
-
   content: {
     flex: 1,
-    ...padding(0, 30),
+    ...padding(0, 14),
     flexDirection: 'column',
   },
-  colorShades: {
-    // flex: 1,
+  viewShot: {
+    ...edges(40),
     width: '100%',
-    ...padding(10, 0),
+    ...padding(8, 16, 10),
+    flexDirection: 'column',
+    backgroundColor: MODAL_BACKGROUND,
+  },
+  colorShades: {
+    flex: 1,
+    width: '100%',
+    ...padding(10, 0, 16),
   },
   scrollview: {
-    paddingBottom: 30,
+    minHeight: '100%',
   },
 });
 
