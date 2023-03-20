@@ -1,47 +1,34 @@
-import Vectors from '../Vectors';
 import {MdText} from '../StyledText';
-import {StyleSheet} from 'react-native';
-import {View, ViewProps} from '../Themed';
-import {padding} from '../../utils';
+import {StyleSheet, View} from 'react-native';
+import {ViewProps} from '../Themed';
+import {padding} from '../../helpers/styles';
 
 interface EmptyStateProps extends ViewProps {
-  message?: string;
+  text?: string;
   isDark?: boolean;
   nextline?: string;
-  vectorSize?: number;
-  illustration?: keyof typeof Vectors;
   justifyContent?: 'center' | 'flex-start' | 'flex-end';
 }
 
 export default function EmptyState({
-  isDark,
-  message,
+  text,
   children,
   nextline,
-  vectorSize,
-  illustration,
   justifyContent,
 }: EmptyStateProps) {
   return (
     <View
       style={{
         ...styles.container,
-        ...padding(justifyContent ? 0 : '20%', 0, justifyContent ? '10%' : 0),
+        ...padding(justifyContent ? 0 : '20%', 0, justifyContent ? '22%' : 0),
         justifyContent: justifyContent || 'flex-start',
       }}>
       <View style={styles.content}>
-        <View style={styles.vector}>
-          {illustration &&
-            Vectors[illustration]({size: vectorSize || 150, isDark})}
-        </View>
+        {children}
 
-        <MdText style={styles.message}>{message}</MdText>
-        {nextline && (
-          <MdText style={{...styles.message, marginTop: 2}}>{nextline}</MdText>
-        )}
+        <MdText style={styles.text}>{text}</MdText>
+        {nextline && <MdText style={[styles.text__sub]}>{nextline}</MdText>}
       </View>
-
-      {children}
     </View>
   );
 }
@@ -61,8 +48,18 @@ const styles = StyleSheet.create({
   vector: {
     marginBottom: 16,
   },
-  message: {
-    fontSize: 15,
-    color: '#8E8E93',
+  text: {
+    width: '100%',
+    fontSize: 22,
+    color: '#000',
+    marginTop: 10,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  text__sub: {
+    marginTop: 8,
+    fontSize: 16,
+    color: '#a3a3a3',
+    textAlign: 'center',
   },
 });

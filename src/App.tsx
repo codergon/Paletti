@@ -1,24 +1,27 @@
-import ntc from './lib/ntc';
-import 'react-native-get-random-values';
-
 import dayjs from 'dayjs';
-import {auth} from './fb';
+import ntc from './lib/ntc';
 import {store} from './store';
-import {LogBox} from 'react-native';
 import {Provider} from 'react-redux';
 import Navigation from './navigation';
+import 'react-native-get-random-values';
+import {AppStorage} from './store/mmkv';
 import {useEffect, useState} from 'react';
 import duration from 'dayjs/plugin/duration';
-import {getAllAsync} from './helpers/common';
+import auth from '@react-native-firebase/auth';
 import Loader from './components/common/Loader';
 import {useAppDispatch} from './hooks/storeHooks';
 import {setUserData} from './store/user/userSlice';
-import {onAuthStateChanged, User} from 'firebase/auth';
 import useColorScheme from './hooks/useColorScheme';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {AppStorage} from './store/mmkv';
 import {setCollection} from './store/profile/profileSlice';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+  webClientId:
+    '293064589552-tsm8u0kl1gmghh16h43agdjo3vcu0k6o.apps.googleusercontent.com',
+});
 
 dayjs.extend(duration);
 ntc.init();
@@ -26,9 +29,14 @@ ntc.init();
 const Compo = () => {
   const dispatch = useAppDispatch();
   const colorScheme = useColorScheme();
-  const [user, setUser] = useState<User | null>(null);
-  const isLoadingComplete = true;
   const [initializing, setInitializing] = useState(true);
+
+  const onAuthStateChanged = (user: any | null | undefined) => {
+    const storedUser = AppStorage.getString('user');
+    const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+    if (user) dispatch(setUserData(parsedUser));
+    if (initializing) setInitializing(false);
+  };
 
   useEffect(() => {
     const SetCollection = async () => {
@@ -40,29 +48,16 @@ const Compo = () => {
     };
     SetCollection();
 
-    LogBox.ignoreAllLogs();
-    const subscriber = onAuthStateChanged(auth, async userData => {
-      const storedUser = await getAllAsync([
-        'uid',
-        'email',
-        'userName',
-        'photoURL',
-        'displayName',
-      ]);
-
-      setUser(userData);
-      if (userData) dispatch(setUserData(storedUser));
-      if (initializing) setInitializing(false);
-    });
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   }, []);
 
-  if (!isLoadingComplete || initializing) {
+  if (initializing) {
     return <Loader />;
   } else {
     return (
       <SafeAreaProvider>
-        {!user && false ? <></> : <Navigation colorScheme={colorScheme} />}
+        <Navigation colorScheme={colorScheme} />
       </SafeAreaProvider>
     );
   }

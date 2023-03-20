@@ -14,6 +14,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 import {useAppDispatch, useAppSelector} from '../../../hooks/storeHooks';
 import {BottomSheetBackdropProps, useBottomSheet} from '@gorhom/bottom-sheet';
+import {hapticFeedback} from '../../../utils/hapticFeedback';
 
 const CustomBackdrop = ({animatedIndex, style}: BottomSheetBackdropProps) => {
   const dispatch = useAppDispatch();
@@ -81,6 +82,8 @@ const CustomBackdrop = ({animatedIndex, style}: BottomSheetBackdropProps) => {
       };
 
       await RNShare.open(shareOptions);
+
+      hapticFeedback('rigid');
     } catch (err) {
       // console.log(err);
     }
@@ -96,7 +99,8 @@ const CustomBackdrop = ({animatedIndex, style}: BottomSheetBackdropProps) => {
       return;
     }
 
-    CameraRoll.save(imgUri, {type: 'photo', album: 'Paletti'});
+    await CameraRoll.save(imgUri, {type: 'photo', album: 'Paletti'});
+    hapticFeedback('notificationSuccess');
   };
 
   return isVisible ? (
@@ -123,11 +127,19 @@ const CustomBackdrop = ({animatedIndex, style}: BottomSheetBackdropProps) => {
             },
           ]}
           onPress={sharePalette}>
-          <Share size={26} color={'#fff'} weight="bold" />
+          <Share
+            size={26}
+            weight="bold"
+            color={!!collection ? '#fff' : '#888'}
+          />
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.actionBtn]} onPress={savePalette}>
-          <FloppyDisk size={26} color={'#fff'} weight="bold" />
+          <FloppyDisk
+            size={26}
+            weight="bold"
+            color={!!collection ? '#fff' : '#888'}
+          />
         </TouchableOpacity>
       </View>
     </Animated.View>

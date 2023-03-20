@@ -1,6 +1,6 @@
+import {AppStorage} from '../mmkv';
 import {createSlice} from '@reduxjs/toolkit';
 import {Collection} from '../../types/profile';
-import {AppStorage} from '../mmkv';
 
 interface UserState {
   imgUri: string;

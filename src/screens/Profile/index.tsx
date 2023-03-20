@@ -1,17 +1,21 @@
-import {useCallback, useEffect, useRef} from 'react';
-import User from './components/User';
 import styles from './profile.styles';
 import RangeBar from './components/RangeBar';
 import ViewShot from 'react-native-view-shot';
 import {ScrollView, View} from 'react-native';
 import ColorShade from './components/ColorShade';
+import UserDetails from './components/UserDetails';
+import {useCallback, useEffect, useRef} from 'react';
 import {setImgUri} from '../../store/profile/profileSlice';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useAppDispatch, useAppSelector} from '../../hooks/storeHooks';
+import Img from '../../components/common/Img';
+import EmptyState from '../../components/common/EmptyState';
 
-type ProfileProps = {};
+type ProfileProps = {
+  openSignInModal: () => void;
+};
 
-const Profile = ({}: ProfileProps) => {
+const Profile = ({openSignInModal}: ProfileProps) => {
   const dispatch = useAppDispatch();
   const insets = useSafeAreaInsets();
   const viewShotRef = useRef<ViewShot>(null);
@@ -27,7 +31,7 @@ const Profile = ({}: ProfileProps) => {
 
   return (
     <View style={[styles.container]}>
-      <User />
+      <UserDetails openSignInModal={openSignInModal} />
 
       <View
         style={[
@@ -36,7 +40,7 @@ const Profile = ({}: ProfileProps) => {
             paddingBottom: insets.bottom + 6,
           },
         ]}>
-        {!!collection && (
+        {!!collection ? (
           <>
             <RangeBar />
 
@@ -45,7 +49,6 @@ const Profile = ({}: ProfileProps) => {
               <ScrollView contentContainerStyle={[styles.scrollview]}>
                 <ViewShot
                   ref={viewShotRef}
-                  // captureMode="mount"
                   onCapture={onCapture}
                   style={styles.viewShot}
                   options={{
@@ -65,6 +68,19 @@ const Profile = ({}: ProfileProps) => {
                 </ViewShot>
               </ScrollView>
             </View>
+          </>
+        ) : (
+          <>
+            <EmptyState
+              justifyContent="center"
+              text="Your collection is empty"
+              nextline="Add colors to your collection and view them here">
+              <Img
+                size={144}
+                background="#f1f1f1"
+                source={require(`../../assets/images/emptystate/Search.png`)}
+              />
+            </EmptyState>
           </>
         )}
       </View>

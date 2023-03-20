@@ -2,6 +2,7 @@ import {View} from '../Themed';
 import {Image, ImageSourcePropType} from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
 import {ViewProps} from 'react-native-svg/lib/typescript/fabric/utils';
+import FastImage from 'react-native-fast-image';
 
 type Props = {
   uri?: string;
@@ -51,11 +52,24 @@ const Img = (props: Props & ViewProps) => {
       ]}
       {...otherprops}>
       {(uri || source) && (
-        <Image
-          resizeMode="cover"
-          source={source || {uri}}
-          style={[{resizeMode: 'cover', width: '100%', height: '100%'}]}
-        />
+        <>
+          {uri ? (
+            <FastImage
+              source={{
+                uri,
+                cache: FastImage.cacheControl.immutable,
+              }}
+              resizeMode={FastImage.resizeMode.cover}
+              style={[{width: '100%', height: '100%'}]}
+            />
+          ) : (
+            <Image
+              resizeMode="cover"
+              source={source || {uri}}
+              style={[{resizeMode: 'cover', width: '100%', height: '100%'}]}
+            />
+          )}
+        </>
       )}
     </View>
   );

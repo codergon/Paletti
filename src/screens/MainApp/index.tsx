@@ -9,33 +9,43 @@ import {RootStackScreenProps} from '../../types/types';
 import {MODAL_BACKGROUND} from '../../constants/Colors';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import CustomBackdrop from '../Profile/components/CustomBackdrop';
+import SignInModal from '../../components/layouts/SignInModal';
+import CustomSignInBackdrop from '../Profile/components/CustomSignInBackdrop';
 
 const MainAppEntry = ({navigation}: RootStackScreenProps<'MainApp'>) => {
   const insets = useSafeAreaInsets();
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const signInBottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(
     () => [Layout.window.height - insets.top - 120],
     [],
   );
   const openModal = () => bottomSheetRef?.current?.expand();
-
-  const handleSheetChanges = useCallback((index: number) => {
-    // console.log('handleSheetChanges', index);
-  }, []);
+  const openSignInModal = () => signInBottomSheetRef?.current?.expand();
 
   return (
     <>
       <MainApp navigation={navigation} openProfile={openModal} />
       <BottomSheet
-        index={0}
+        index={-1}
         ref={bottomSheetRef}
         snapPoints={snapPoints}
         enablePanDownToClose={true}
         handleComponent={() => null}
-        // onChange={handleSheetChanges}
         backdropComponent={CustomBackdrop}
         backgroundStyle={[styles.bottomSheet]}>
-        <Profile />
+        <Profile openSignInModal={openSignInModal} />
+      </BottomSheet>
+
+      <BottomSheet
+        index={-1}
+        snapPoints={[200]}
+        ref={signInBottomSheetRef}
+        enablePanDownToClose={true}
+        handleComponent={() => null}
+        backdropComponent={CustomSignInBackdrop}
+        backgroundStyle={[styles.signInBottomSheet]}>
+        <SignInModal />
       </BottomSheet>
     </>
   );
@@ -47,5 +57,9 @@ const styles = StyleSheet.create({
   bottomSheet: {
     ...edges(40, 0),
     backgroundColor: MODAL_BACKGROUND,
+  },
+  signInBottomSheet: {
+    ...edges(40, 0),
+    backgroundColor: 'transparent',
   },
 });

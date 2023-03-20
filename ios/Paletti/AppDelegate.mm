@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import <Firebase.h>
 
 #import <React/RCTBundleURLProvider.h>
 
@@ -8,6 +9,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [FIRApp configure];
+  
   [NewRelic startWithApplicationToken:@"AA55cb7c3007d87bff82de7ecc3db4e6a079e41706-NRMA"];
   
   self.moduleName = @"Paletti";
