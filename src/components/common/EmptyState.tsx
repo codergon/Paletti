@@ -16,6 +16,8 @@ export default function EmptyState({
   nextline,
   justifyContent,
 }: EmptyStateProps) {
+  console.log(text);
+
   return (
     <View
       style={{
@@ -44,9 +46,6 @@ const styles = StyleSheet.create({
   content: {
     marginBottom: 20,
     alignItems: 'center',
-  },
-  vector: {
-    marginBottom: 16,
   },
   text: {
     width: '100%',

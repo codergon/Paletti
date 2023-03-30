@@ -1,5 +1,6 @@
 import {StyleSheet, View} from 'react-native';
 import {MdText} from '../../../components/StyledText';
+import {MODAL_BACKGROUND} from '../../../constants/Colors';
 import {padding} from '../../../helpers/styles';
 
 const RangeBar = () => {
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     ...padding(36, 30, 8, 22),
+    backgroundColor: MODAL_BACKGROUND,
     justifyContent: 'space-between',
   },
   label: {

@@ -1,9 +1,9 @@
-import {SafeAreaViewProps} from 'react-native-safe-area-context';
 import {
-  SafeAreaView as DefaultSafeArea,
   ScrollView,
   ThemeProps,
+  SafeAreaView as DefaultSafeArea,
 } from './Themed';
+import {SafeAreaViewProps} from 'react-native-safe-area-context';
 
 export function SafeAreaView(props: SafeAreaViewProps & ThemeProps) {
   const {style, lightColor, darkColor, ...otherProps} = props;

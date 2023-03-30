@@ -3,36 +3,19 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {useEffect, useState} from 'react';
-import {ColorSchemeName} from 'react-native';
-import {Camera} from 'react-native-vision-camera';
-import Loader from '../components/common/Loader';
-import MainApp from '../screens/MainApp';
+import Home from '../screens/Home';
 import Splash from '../screens/Splash';
-import {RootStackParamList} from '../types/types';
+import {RootStackParamList} from '../types';
+import {ColorSchemeName} from 'react-native';
+import {useStores} from '../store/RootStore';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ImagePalette from '../screens/ImagePalette';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-
 type Props = {colorScheme: ColorSchemeName};
 
 export default function Navigation({colorScheme}: Props) {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const result = await Camera.getCameraPermissionStatus();
-        setHasPermission(result === 'authorized');
-      } catch (e) {
-        setHasPermission(false);
-      }
-    })();
-  }, []);
-
-  if (hasPermission === null) {
-    return <Loader />;
-  }
+  const rootStore = useStores();
 
   return (
     <NavigationContainer
@@ -41,13 +24,11 @@ export default function Navigation({colorScheme}: Props) {
         screenOptions={{
           headerShown: false,
           animation: 'fade_from_bottom',
-          // gestureEnabled: false,
         }}
-        initialRouteName={hasPermission ? 'MainApp' : 'Splash'}
-        //
-      >
-        <Stack.Screen name="Splash" component={Splash} />
-        <Stack.Screen name="MainApp" component={MainApp} />
+        initialRouteName={rootStore.appStore.initialRouteName}>
+        <Stack.Screen name="splash" component={Splash} />
+        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="imagePalette" component={ImagePalette} />
       </Stack.Navigator>
     </NavigationContainer>
   );

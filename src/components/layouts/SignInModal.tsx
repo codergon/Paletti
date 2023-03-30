@@ -1,53 +1,38 @@
 import Icons from '../Icons';
 import Img from '../common/Img';
-import {AppStorage} from '../../store/mmkv';
+import {useState} from 'react';
 import {MdText, RgText} from '../StyledText';
-import auth from '@react-native-firebase/auth';
+import {SignOut} from 'phosphor-react-native';
+import {useStores} from '../../store/RootStore';
 import {edges, padding} from '../../helpers/styles';
 import {useBottomSheet} from '@gorhom/bottom-sheet';
-import {setUserData} from '../../store/user/userSlice';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useAppDispatch, useAppSelector} from '../../hooks/storeHooks';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {observer} from 'mobx-react-lite';
 
-const SignInModal = () => {
+const SignInModal = observer(() => {
+  const store = useStores();
   const {close} = useBottomSheet();
-  const dispatch = useAppDispatch();
   const insets = useSafeAreaInsets();
-  const {currentUser} = useAppSelector(state => state.user);
+  const [error, setError] = useState('');
 
   const signIn = async () => {
-    try {
-      await GoogleSignin.hasPlayServices({
-        showPlayServicesUpdateDialog: true,
-      });
-      const {idToken} = await GoogleSignin.signIn();
-      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    setError('');
+    const isLoggedIn = await store.userStore.login();
 
-      const res = await auth().signInWithCredential(googleCredential);
-      const user = {
-        id: res.user.uid,
-        email: res.user.email,
-        photo: res.user.photoURL,
-        name: res.user.displayName,
-      };
-      dispatch(setUserData(user));
-      AppStorage.set('user', JSON.stringify(user || ''));
+    if (isLoggedIn) {
       close();
-    } catch (error) {
-      console.log(error);
+      return;
     }
+    setError('An error occurred trying to sign in');
   };
 
   const signOut = async () => {
-    try {
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
-      dispatch(setUserData(null));
-      AppStorage.set('user', '');
-    } catch (error) {
-      console.error(error);
+    setError('');
+    const isLoggedOut = await store.userStore.signOut();
+    if (isLoggedOut) {
+      close();
+      return;
     }
   };
 
@@ -60,21 +45,21 @@ const SignInModal = () => {
         },
       ]}>
       <View style={styles.content}>
-        {currentUser ? (
+        {store?.userStore.userId ? (
           <View style={styles.userBlock}>
             <Img
               size={50}
               background="#f1f1f1"
-              uri={currentUser?.photo}
+              uri={store?.userStore?.photo}
               source={require(`../../assets/images/avatar.png`)}
             />
 
             <View style={[styles.textContainer]}>
               <MdText style={[styles.text]} numberOfLines={1}>
-                {currentUser?.name
-                  ? currentUser.name?.length < 16
-                    ? currentUser.name
-                    : currentUser.name
+                {store?.userStore?.name
+                  ? store?.userStore.name?.length < 16
+                    ? store?.userStore.name
+                    : store?.userStore.name
                         .split(' ')
                         .map((name: string, index) =>
                           index > 1 ? '' : index === 1 ? name[0] + '.' : name,
@@ -83,12 +68,12 @@ const SignInModal = () => {
                   : 'User'}{' '}
               </MdText>
               <RgText style={[styles.text__sub]}>
-                {currentUser?.email || 'Generated colors'}
+                {store?.userStore?.email || 'Generated colors'}
               </RgText>
             </View>
 
             <TouchableOpacity onPress={signOut} style={[styles.signOut]}>
-              <Icons.SignOut size={28} />
+              <SignOut size={26} />
             </TouchableOpacity>
           </View>
         ) : (
@@ -100,10 +85,21 @@ const SignInModal = () => {
             <MdText style={[styles.signIn__text]}>Sign in with Google</MdText>
           </TouchableOpacity>
         )}
+
+        {!store?.userStore.userId && (
+          <MdText style={[styles.description]}>
+            Connect account to sync collection on all devices
+          </MdText>
+        )}
+        {error && !store?.userStore.userId && (
+          <MdText style={[styles.errorMsg]}>
+            {error || 'An error occurred trying to sign in'}
+          </MdText>
+        )}
       </View>
     </View>
   );
-};
+});
 
 export default SignInModal;
 
@@ -118,12 +114,10 @@ const styles = StyleSheet.create({
   content: {
     ...edges(30),
     ...padding(20, 16),
-    borderBottomWidth: 1,
-    flexDirection: 'row',
     alignItems: 'center',
     marginHorizontal: 20,
     backgroundColor: '#fff',
-    borderBottomColor: '#e4e4e4',
+    flexDirection: 'column',
   },
   userBlock: {
     width: '100%',
@@ -166,12 +160,31 @@ const styles = StyleSheet.create({
     borderColor: '#aaa',
     alignItems: 'center',
     position: 'relative',
-    backgroundColor: '#f1f1f1',
     justifyContent: 'center',
+    backgroundColor: '#f1f1f1',
   },
-  googleIcon: {position: 'absolute', left: 20, width: 18, height: 19},
+  googleIcon: {
+    left: 20,
+    width: 18,
+    height: 19,
+    position: 'absolute',
+  },
   signIn__text: {
     fontSize: 18,
     color: '#000',
+  },
+
+  description: {
+    fontSize: 13,
+    marginTop: 12,
+    color: '#000',
+    textAlign: 'center',
+  },
+
+  errorMsg: {
+    fontSize: 13,
+    marginTop: 7,
+    color: '#e83a27',
+    textAlign: 'center',
   },
 });

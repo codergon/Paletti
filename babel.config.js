@@ -7,5 +7,12 @@ module.exports = {
         globals: ['__getColor'],
       },
     ],
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        path: '.env',
+      },
+    ],
   ],
 };

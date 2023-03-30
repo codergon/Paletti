@@ -1,35 +1,53 @@
 import {Hue} from '../../../types/profile';
-import {StyleSheet, View} from 'react-native';
 import Animated from 'react-native-reanimated';
 import {MdText} from '../../../components/StyledText';
+import {useStores} from '../../../store/RootStore';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {BottomSheetView} from '@gorhom/bottom-sheet';
 
-const ColorShade = ({color, shades, name}: Hue) => {
+type ColorShadeProps = {
+  item: Hue;
+  openColorModal: () => void;
+};
+const ColorShade = ({item, openColorModal}: ColorShadeProps) => {
+  const store = useStores();
+  const openColor = () => {
+    store.collectionStore.setActiveId(item.id);
+    openColorModal();
+  };
   return (
-    <View style={[styles.container]}>
-      <MdText style={[styles.text]}>{name}</MdText>
+    <>
+      <BottomSheetView style={[styles.cover]}>
+        <TouchableOpacity onPress={openColor} style={[styles.container]}>
+          <MdText style={[styles.text]}>{item?.display_name}</MdText>
 
-      <View style={[styles.shades]}>
-        {shades?.map((item, index) => {
-          return (
-            <Animated.View
-              key={index}
-              style={[
-                styles.shade,
-                {
-                  backgroundColor: item,
-                },
-              ]}
-            />
-          );
-        })}
-      </View>
-    </View>
+          <BottomSheetView style={[styles.shades]}>
+            {item?.shades?.map((item, index) => {
+              return (
+                <Animated.View
+                  key={index}
+                  style={[
+                    styles.shade,
+                    {
+                      backgroundColor: item,
+                    },
+                  ]}
+                />
+              );
+            })}
+          </BottomSheetView>
+        </TouchableOpacity>
+      </BottomSheetView>
+    </>
   );
 };
 
 export default ColorShade;
 
 const styles = StyleSheet.create({
+  cover: {
+    width: '100%',
+  },
   container: {
     padding: 14,
     width: '100%',

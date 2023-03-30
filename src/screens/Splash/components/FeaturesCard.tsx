@@ -3,7 +3,11 @@ import styles from '../splash.styles';
 import {View, ViewProps} from '../../../components/Themed';
 
 interface FeaturesCardProps extends ViewProps {
-  feature: any;
+  feature: {
+    image: any;
+    key: string;
+    text: string;
+  };
   scale?: Animated.AnimatedInterpolation<number> | number;
 }
 
@@ -12,7 +16,7 @@ const FeaturesCard = ({feature, children, scale = 1}: FeaturesCardProps) => {
     <View style={styles.featuresCard}>
       <View style={styles.featuresCard__Image}>
         <Animated.Image
-          source={{uri: feature?.image}}
+          source={feature.image}
           style={[
             {
               width: '100%',

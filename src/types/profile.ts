@@ -1,10 +1,18 @@
 export type Hue = {
-  color?: string;
-  shades?: string[];
-  id?: string;
-  name?: string | (string | boolean)[];
+  id: string;
+  color: string;
+  user_id: string;
+  shades: string[];
+  date_created: number;
+  name: string | (string | boolean)[];
+  display_name: string | (string | boolean)[];
 };
 
-export type Collection = {
-  [key: string]: Hue;
-};
+export type StatusMsg =
+  | {
+      message: string;
+      type: 'success' | 'error';
+    }
+  | undefined;
+
+export type Collection = Hue[];

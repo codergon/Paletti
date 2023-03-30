@@ -1,11 +1,6 @@
 import type {Frame} from 'react-native-vision-camera';
 
 export interface RGBA {
-  // r: number;
-  // g: number;
-  // b: number;
-  // a: number;
-
   hexString: string;
 }
 

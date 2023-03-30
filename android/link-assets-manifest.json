@@ -18,28 +18,16 @@
       "sha1": "864b3c35552d8c45b0a4467d8262a111f103f015"
     },
     {
-      "path": "src/assets/fonts/SpaceMono-Regular.ttf",
-      "sha1": "fae3a5a43b50e0408fd61e14383d94a023d332b0"
-    },
-    {
-      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Bold.otf",
-      "sha1": "65e6dcfb5a846cb3ebc50fe1cbcac86c973db38a"
-    },
-    {
-      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Heavy.otf",
-      "sha1": "d21032e8a7ee9e62c94c640dd133fd7622d37c2e"
-    },
-    {
-      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Medium.otf",
-      "sha1": "e7290f8dea30ca4199e102197ad21c627fe7f33b"
-    },
-    {
-      "path": "src/assets/fonts/WhyteInktrap/WhyteInktrap-Regular.otf",
-      "sha1": "ad6bc97382d1b91c708441dd24c885743c191dea"
-    },
-    {
       "path": "src/assets/images/adaptive-icon.png",
       "sha1": "8fc13d889ebb62ba9c59ee69dbc9a34f2cda9ec3"
+    },
+    {
+      "path": "src/assets/images/avatar.png",
+      "sha1": "67e10296e4420525305d57e975c9a15f3ca4382e"
+    },
+    {
+      "path": "src/assets/images/emptystate/Search.png",
+      "sha1": "e8ab29d8f1293453c21a52987cf607ab606e1be0"
     },
     {
       "path": "src/assets/images/favicon.png",
@@ -50,8 +38,20 @@
       "sha1": "8fc13d889ebb62ba9c59ee69dbc9a34f2cda9ec3"
     },
     {
-      "path": "src/assets/images/onboarding/1.jpg",
-      "sha1": "2cd324b1cb8e77cb5daead090166527b887781a0"
+      "path": "src/assets/images/onboarding/1.jpeg",
+      "sha1": "b1a272d6eda7e4511e3ece0b0351f80100dc3c47"
+    },
+    {
+      "path": "src/assets/images/onboarding/2.png",
+      "sha1": "6e3a473669182bf7ccc03a2969fed2d5cca7a319"
+    },
+    {
+      "path": "src/assets/images/onboarding/3.jpeg",
+      "sha1": "0bdee09f2a023f2fcc1099629d4a0c0909dd05b3"
+    },
+    {
+      "path": "src/assets/images/onboarding/4.jpg",
+      "sha1": "8f6c8b6835a22c2cc606744dcc434ca5c4a7384a"
     },
     {
       "path": "src/assets/images/splash.png",

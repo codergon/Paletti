@@ -37,8 +37,14 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string>icon</string>
+			<key>CFBundleURLName</key>
+			<string>orgs.reactjs.native.example.Paletti</string>
 			<key>CFBundleURLSchemes</key>
-			<array/>
+			<array>
+				<string>paletti</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -70,11 +76,6 @@
 		<string>NeueMontreal-Light.otf</string>
 		<string>NeueMontreal-Medium.otf</string>
 		<string>NeueMontreal-Regular.otf</string>
-		<string>WhyteInktrap-Bold.otf</string>
-		<string>WhyteInktrap-Heavy.otf</string>
-		<string>WhyteInktrap-Medium.otf</string>
-		<string>WhyteInktrap-Regular.otf</string>
-		<string>SpaceMono-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -82,11 +83,17 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string></string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

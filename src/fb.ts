@@ -1,4 +1,3 @@
-import {getStorage} from 'firebase/storage';
 import {getFirestore} from 'firebase/firestore';
 import {getAuth, setPersistence} from 'firebase/auth';
 import {initializeApp, getApps, getApp} from 'firebase/app';
@@ -8,14 +7,24 @@ import {
   getReactNativePersistence,
 } from 'firebase/auth/react-native';
 
+import {
+  FIREBASE_STORAGEBUCKET,
+  FIREBASE_AUTHDOMAIN,
+  FIREBASE_APIKEY,
+  FIREBASE_APPID,
+  FIREBASE_PROJECTID,
+  FIREBASE_MEASUREMENTID,
+  FIREBASE_MESSAGINGSENDERID,
+} from '@env';
+
 const firebaseConfig = {
-  projectId: 'collens-808ad',
-  measurementId: 'G-BG71VM2R4B',
-  messagingSenderId: '166534297832',
-  storageBucket: 'collens-808ad.appspot.com',
-  authDomain: 'collens-808ad.firebaseapp.com',
-  apiKey: 'AIzaSyCr3C4VlV-my8wk-0RKeQzlwiRo4RbyhAs',
-  appId: '1:166534297832:web:d655572bc8ed71c483315d',
+  projectId: FIREBASE_PROJECTID,
+  measurementId: FIREBASE_MEASUREMENTID,
+  messagingSenderId: FIREBASE_MESSAGINGSENDERID,
+  storageBucket: FIREBASE_STORAGEBUCKET,
+  authDomain: FIREBASE_AUTHDOMAIN,
+  apiKey: FIREBASE_APIKEY,
+  appId: FIREBASE_APPID,
 };
 
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();

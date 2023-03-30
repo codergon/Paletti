@@ -1,3 +1,14 @@
+const validateColor = (color: string) => {
+  if (
+    color[0] !== '#' ||
+    typeof color !== 'string' ||
+    (color.length !== 4 && color.length !== 7)
+  ) {
+    return false;
+  }
+  return true;
+};
+
 const HexToRgb = (hex: string, alpha?: number) => {
   var c: any;
   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
@@ -88,4 +99,4 @@ function LightenDarkenColor(col: string, amt: number) {
   return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-export {HexToRgb, rgbaToHex, LightenDarkenColor};
+export {HexToRgb, rgbaToHex, validateColor, LightenDarkenColor};

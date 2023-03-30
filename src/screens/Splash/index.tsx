@@ -1,22 +1,20 @@
-import {ArrowRight} from 'phosphor-react-native';
-import {useCallback, useEffect, useRef, useState} from 'react';
 import {
-  Alert,
   Animated,
-  Linking,
+  TouchableOpacity,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  TouchableOpacity,
 } from 'react-native';
-import {Camera} from 'react-native-vision-camera';
-import AppStatusBar from '../../components/common/AppStatusBar';
-import Br from '../../components/common/Br';
-import {MdText, RgText} from '../../components/StyledText';
-import {View} from '../../components/Themed';
-import data, {carouselSpec} from '../../constants/data/onboarding';
-import {RootStackScreenProps} from '../../types/types';
-import FeaturesCard from './components/FeaturesCard';
 import styles from './splash.styles';
+import {useRef, useState} from 'react';
+import Br from '../../components/common/Br';
+import {View} from '../../components/Themed';
+import {ArrowRight} from 'phosphor-react-native';
+import {RootStackScreenProps} from '../../types';
+import {useStores} from '../../store/RootStore';
+import FeaturesCard from './components/FeaturesCard';
+import {MdText, RgText} from '../../components/StyledText';
+import AppStatusBar from '../../components/common/AppStatusBar';
+import data, {carouselSpec} from '../../constants/data/onboarding';
 
 const {FULL_SIZE} = carouselSpec;
 
@@ -25,34 +23,17 @@ type CarouselProps = {
   index: number;
 };
 
-const Splash = ({navigation}: RootStackScreenProps<'Splash'>) => {
-  const [isLast, setIsLast] = useState(false);
+const Splash = ({navigation}: RootStackScreenProps<'splash'>) => {
+  const store = useStores();
+  const [isLastItem, setIsLastItem] = useState(false);
   const scrollX = useRef(new Animated.Value(0)).current;
 
-  const [hasPermission, setHasPermission] = useState(false);
-
-  const requestPermission = useCallback(async () => {
-    try {
-      const result = await Camera.requestCameraPermission();
-      if (result === 'authorized') {
-        setHasPermission(true);
-      } else {
-        await Linking.openSettings();
-      }
-    } catch (e) {
-      Alert.alert(
-        'Failed to request permission!',
-        'Failed to request Camera permission. Please verify that you have granted Camera Permission in your Settings app.',
-      );
-      await Linking.openSettings();
+  const requestPermission = async () => {
+    const isAuthorized = await store.appStore.requestCameraAccess();
+    if (isAuthorized) {
+      navigation.navigate('home');
     }
-  }, []);
-
-  useEffect(() => {
-    if (hasPermission) {
-      navigation.navigate('MainApp');
-    }
-  }, [hasPermission, navigation]);
+  };
 
   const carousel = ({item, index}: CarouselProps) => {
     const inputRange = [
@@ -82,7 +63,7 @@ const Splash = ({navigation}: RootStackScreenProps<'Splash'>) => {
           style={[
             styles.featuresCard__Text,
             {
-              opacity: index < data.length - 1 || !isLast ? opacity : 1,
+              opacity: index < data.length - 1 || !isLastItem ? opacity : 1,
               transform: [
                 {
                   translateX: index < data.length - 1 ? translateX : 0,
@@ -127,9 +108,9 @@ const Splash = ({navigation}: RootStackScreenProps<'Splash'>) => {
                     e.nativeEvent.contentOffset.x >
                     (data?.length - 2) * FULL_SIZE
                   ) {
-                    setIsLast(true);
+                    setIsLastItem(true);
                   } else {
-                    setIsLast(false);
+                    setIsLastItem(false);
                   }
                 },
               },
@@ -144,7 +125,6 @@ const Splash = ({navigation}: RootStackScreenProps<'Splash'>) => {
       </View>
 
       <View style={[styles.footer]}>
-        {/* <MdText style={[styles.footer__Title]}>Welcome back 🫶</MdText> */}
         <View style={[styles.footer__Button__Container]}>
           <View style={[styles.footer__Button__Outline]} />
 

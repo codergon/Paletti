@@ -7,10 +7,10 @@ import {
   Text as DefaultText,
   View as DefaultView,
   TextInput as DefaultInput,
+  KeyboardAvoidingViewProps,
   Pressable as DefaultPressable,
   ScrollView as DefaultScrollView,
   KeyboardAvoidingView as DefaultKeyboardAvoidingView,
-  KeyboardAvoidingViewProps,
 } from 'react-native';
 import {
   SafeAreaViewProps,

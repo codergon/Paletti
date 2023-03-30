@@ -12,25 +12,25 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		185965FAEEF34A5C9B08A774 /* WhyteInktrap-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5AECA7F702FF437183A4A51B /* WhyteInktrap-Medium.otf */; };
-		1A4C60DA20864A3690161783 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41FA16D3BDCB41BD8F945233 /* 1.jpg */; };
-		25C4ED3E8B06478F89EA30FB /* WhyteInktrap-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E142E68B80DF457AB3A41522 /* WhyteInktrap-Bold.otf */; };
+		149BCC01C5E64A13AAE4B0A3 /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = 68AAE40EA684403D9EA78610 /* Search.png */; };
 		37509CFC7E91425C8647FBDC /* NeueMontreal-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB6413179B450E9FFCD1AD /* NeueMontreal-Light.otf */; };
 		39C5CA4842F6431B943FB169 /* NeueMontreal-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8245CCCC880B4529A24DF054 /* NeueMontreal-Regular.otf */; };
+		47D0EE178FA1457BAA35993D /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DB956BD3654511BA9B0C76 /* avatar.png */; };
 		4A30F73081C649FCA78D5BEA /* NeueMontreal-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2AFD6C86B8046AB8E7E909F /* NeueMontreal-Bold.otf */; };
 		5AF37263EFA740D386459433 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F386EAD83F34C859CE7A6ED /* splash.png */; };
 		651643AF918E4D68BA16EE2E /* NeueMontreal-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AFA32E0880D449088A2BA8A8 /* NeueMontreal-Medium.otf */; };
 		6EE2B16C3DD14DD9BF639949 /* adaptive-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 56B0313CE2814D38B899844A /* adaptive-icon.png */; };
+		7655ECE60AB64CDAAEF131E0 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD4599359CE64B428F4BB86F /* 2.png */; };
 		7699B88040F8A987B510C191 /* libPods-Paletti-PalettiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Paletti-PalettiTests.a */; };
+		7928D1F543494AB7A731C02D /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 66959082D065435894988D8D /* 1.jpeg */; };
+		8030822155B144A0803E7EE6 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75FE9DC50A924D55B287FBA5 /* 4.jpg */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		81D0E84E8E0E4D3ABF096806 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3938115B03BD404EB8E0F258 /* icon.png */; };
 		82E89B1C0BBE43F39C293BE9 /* favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C24A5095C1042BDB64532C3 /* favicon.png */; };
 		AD09F16A29BFF23C009921F0 /* PaletteFrameProcessorPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD09F16929BFF23C009921F0 /* PaletteFrameProcessorPlugin.swift */; };
 		AD09F16C29BFF2D0009921F0 /* PaletteFrameProcessorPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AD09F16B29BFF2D0009921F0 /* PaletteFrameProcessorPlugin.m */; };
 		AD96D3BE29C7615F00CCE791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD96D3BD29C7615F00CCE791 /* GoogleService-Info.plist */; };
-		BA6E7CAE221E4549815F580D /* WhyteInktrap-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1CBDB649224442EBA419681C /* WhyteInktrap-Heavy.otf */; };
-		C8E379E5BB0143E180AC5FF4 /* SpaceMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07B3FB38634A465C8D7680E4 /* SpaceMono-Regular.ttf */; };
-		C8ECA78DCA074A43A87DD664 /* WhyteInktrap-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5166486023C046A3A2A51006 /* WhyteInktrap-Regular.otf */; };
+		CF8BF49071DF4B40A4E02E1E /* 3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE867A2582994FF996AC825D /* 3.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,6 @@
 		00E356EE1AD99517003FC87E /* PalettiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalettiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PalettiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PalettiTests.m; sourceTree = "<group>"; };
-		07B3FB38634A465C8D7680E4 /* SpaceMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceMono-Regular.ttf"; path = "../src/assets/fonts/SpaceMono-Regular.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Paletti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paletti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Paletti/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Paletti/AppDelegate.mm; sourceTree = "<group>"; };
@@ -55,19 +54,19 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Paletti/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Paletti/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Paletti-PalettiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Paletti-PalettiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CBDB649224442EBA419681C /* WhyteInktrap-Heavy.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WhyteInktrap-Heavy.otf"; path = "../src/assets/fonts/WhyteInktrap/WhyteInktrap-Heavy.otf"; sourceTree = "<group>"; };
 		1F386EAD83F34C859CE7A6ED /* splash.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = splash.png; path = ../src/assets/images/splash.png; sourceTree = "<group>"; };
+		25DB956BD3654511BA9B0C76 /* avatar.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = avatar.png; path = ../src/assets/images/avatar.png; sourceTree = "<group>"; };
 		2C24A5095C1042BDB64532C3 /* favicon.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = favicon.png; path = ../src/assets/images/favicon.png; sourceTree = "<group>"; };
 		3938115B03BD404EB8E0F258 /* icon.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icon.png; path = ../src/assets/images/icon.png; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Paletti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti.debug.xcconfig"; path = "Target Support Files/Pods-Paletti/Pods-Paletti.debug.xcconfig"; sourceTree = "<group>"; };
-		41FA16D3BDCB41BD8F945233 /* 1.jpg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 1.jpg; path = ../src/assets/images/onboarding/1.jpg; sourceTree = "<group>"; };
 		4FDB6413179B450E9FFCD1AD /* NeueMontreal-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NeueMontreal-Light.otf"; path = "../src/assets/fonts/NeueMontreal/NeueMontreal-Light.otf"; sourceTree = "<group>"; };
-		5166486023C046A3A2A51006 /* WhyteInktrap-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WhyteInktrap-Regular.otf"; path = "../src/assets/fonts/WhyteInktrap/WhyteInktrap-Regular.otf"; sourceTree = "<group>"; };
 		56B0313CE2814D38B899844A /* adaptive-icon.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "adaptive-icon.png"; path = "../src/assets/images/adaptive-icon.png"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Paletti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti.release.xcconfig"; path = "Target Support Files/Pods-Paletti/Pods-Paletti.release.xcconfig"; sourceTree = "<group>"; };
-		5AECA7F702FF437183A4A51B /* WhyteInktrap-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WhyteInktrap-Medium.otf"; path = "../src/assets/fonts/WhyteInktrap/WhyteInktrap-Medium.otf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Paletti-PalettiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti-PalettiTests.debug.xcconfig"; path = "Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Paletti.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Paletti.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66959082D065435894988D8D /* 1.jpeg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 1.jpeg; path = ../src/assets/images/onboarding/1.jpeg; sourceTree = "<group>"; };
+		68AAE40EA684403D9EA78610 /* Search.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Search.png; path = ../src/assets/images/emptystate/Search.png; sourceTree = "<group>"; };
+		75FE9DC50A924D55B287FBA5 /* 4.jpg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 4.jpg; path = ../src/assets/images/onboarding/4.jpg; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Paletti/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8245CCCC880B4529A24DF054 /* NeueMontreal-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NeueMontreal-Regular.otf"; path = "../src/assets/fonts/NeueMontreal/NeueMontreal-Regular.otf"; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Paletti-PalettiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti-PalettiTests.release.xcconfig"; path = "Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,8 +75,9 @@
 		AD09F16B29BFF2D0009921F0 /* PaletteFrameProcessorPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaletteFrameProcessorPlugin.m; sourceTree = "<group>"; };
 		AD96D3BD29C7615F00CCE791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFA32E0880D449088A2BA8A8 /* NeueMontreal-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NeueMontreal-Medium.otf"; path = "../src/assets/fonts/NeueMontreal/NeueMontreal-Medium.otf"; sourceTree = "<group>"; };
+		BD4599359CE64B428F4BB86F /* 2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 2.png; path = ../src/assets/images/onboarding/2.png; sourceTree = "<group>"; };
+		CE867A2582994FF996AC825D /* 3.jpeg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 3.jpeg; path = ../src/assets/images/onboarding/3.jpeg; sourceTree = "<group>"; };
 		D2AFD6C86B8046AB8E7E909F /* NeueMontreal-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NeueMontreal-Bold.otf"; path = "../src/assets/fonts/NeueMontreal/NeueMontreal-Bold.otf"; sourceTree = "<group>"; };
-		E142E68B80DF457AB3A41522 /* WhyteInktrap-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "WhyteInktrap-Bold.otf"; path = "../src/assets/fonts/WhyteInktrap/WhyteInktrap-Bold.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -195,16 +195,16 @@
 				4FDB6413179B450E9FFCD1AD /* NeueMontreal-Light.otf */,
 				AFA32E0880D449088A2BA8A8 /* NeueMontreal-Medium.otf */,
 				8245CCCC880B4529A24DF054 /* NeueMontreal-Regular.otf */,
-				E142E68B80DF457AB3A41522 /* WhyteInktrap-Bold.otf */,
-				1CBDB649224442EBA419681C /* WhyteInktrap-Heavy.otf */,
-				5AECA7F702FF437183A4A51B /* WhyteInktrap-Medium.otf */,
-				5166486023C046A3A2A51006 /* WhyteInktrap-Regular.otf */,
-				07B3FB38634A465C8D7680E4 /* SpaceMono-Regular.ttf */,
 				56B0313CE2814D38B899844A /* adaptive-icon.png */,
 				2C24A5095C1042BDB64532C3 /* favicon.png */,
 				3938115B03BD404EB8E0F258 /* icon.png */,
-				41FA16D3BDCB41BD8F945233 /* 1.jpg */,
 				1F386EAD83F34C859CE7A6ED /* splash.png */,
+				25DB956BD3654511BA9B0C76 /* avatar.png */,
+				68AAE40EA684403D9EA78610 /* Search.png */,
+				66959082D065435894988D8D /* 1.jpeg */,
+				BD4599359CE64B428F4BB86F /* 2.png */,
+				CE867A2582994FF996AC825D /* 3.jpeg */,
+				75FE9DC50A924D55B287FBA5 /* 4.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -311,17 +311,17 @@
 				37509CFC7E91425C8647FBDC /* NeueMontreal-Light.otf in Resources */,
 				651643AF918E4D68BA16EE2E /* NeueMontreal-Medium.otf in Resources */,
 				39C5CA4842F6431B943FB169 /* NeueMontreal-Regular.otf in Resources */,
-				25C4ED3E8B06478F89EA30FB /* WhyteInktrap-Bold.otf in Resources */,
-				BA6E7CAE221E4549815F580D /* WhyteInktrap-Heavy.otf in Resources */,
-				185965FAEEF34A5C9B08A774 /* WhyteInktrap-Medium.otf in Resources */,
-				C8ECA78DCA074A43A87DD664 /* WhyteInktrap-Regular.otf in Resources */,
-				C8E379E5BB0143E180AC5FF4 /* SpaceMono-Regular.ttf in Resources */,
 				6EE2B16C3DD14DD9BF639949 /* adaptive-icon.png in Resources */,
 				AD96D3BE29C7615F00CCE791 /* GoogleService-Info.plist in Resources */,
 				82E89B1C0BBE43F39C293BE9 /* favicon.png in Resources */,
 				81D0E84E8E0E4D3ABF096806 /* icon.png in Resources */,
-				1A4C60DA20864A3690161783 /* 1.jpg in Resources */,
 				5AF37263EFA740D386459433 /* splash.png in Resources */,
+				47D0EE178FA1457BAA35993D /* avatar.png in Resources */,
+				149BCC01C5E64A13AAE4B0A3 /* Search.png in Resources */,
+				7928D1F543494AB7A731C02D /* 1.jpeg in Resources */,
+				7655ECE60AB64CDAAEF131E0 /* 2.png in Resources */,
+				CF8BF49071DF4B40A4E02E1E /* 3.jpeg in Resources */,
+				8030822155B144A0803E7EE6 /* 4.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +603,89 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89F9H4X24M;
 				ENABLE_BITCODE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AppAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstallations\"",
+					"\"${PODS_ROOT}/Headers/Public/GTMAppAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/GTMSessionFetcher\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSignIn\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/MMKV\"",
+					"\"${PODS_ROOT}/Headers/Public/MMKVCore\"",
+					"\"${PODS_ROOT}/Headers/Public/PromisesObjC\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/RNCAsyncStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFBApp\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFBAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFastImage\"",
+					"\"${PODS_ROOT}/Headers/Public/RNGestureHandler\"",
+					"\"${PODS_ROOT}/Headers/Public/RNGoogleSignin\"",
+					"\"${PODS_ROOT}/Headers/Public/RNInAppBrowser\"",
+					"\"${PODS_ROOT}/Headers/Public/RNReactNativeHapticFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/RNReanimated\"",
+					"\"${PODS_ROOT}/Headers/Public/RNSVG\"",
+					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
+					"\"${PODS_ROOT}/Headers/Public/RNShare\"",
+					"\"${PODS_ROOT}/Headers/Public/RNStaticSafeAreaInsets\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAppDelegate\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImageWebPCoder\"",
+					"\"${PODS_ROOT}/Headers/Public/VisionCamera\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"${PODS_ROOT}/Headers/Public/libwebp\"",
+					"\"${PODS_ROOT}/Headers/Public/nanopb\"",
+					"\"${PODS_ROOT}/Headers/Public/newrelic-react-native-agent\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-animateable-text\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-blur\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-cameraroll\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-get-random-values\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-mmkv\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-netinfo\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-view-shot\"",
+					"\"${PODS_ROOT}/Headers/Public/rn-fetch-blob\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/boost-for-react-native\"",
+					"\"$(PODS_ROOT)/glog\"",
+					"\"$(PODS_ROOT)/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+				);
 				INFOPLIST_FILE = Paletti/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,6 +715,89 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89F9H4X24M;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AppAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstallations\"",
+					"\"${PODS_ROOT}/Headers/Public/GTMAppAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/GTMSessionFetcher\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleSignIn\"",
+					"\"${PODS_ROOT}/Headers/Public/GoogleUtilities\"",
+					"\"${PODS_ROOT}/Headers/Public/MMKV\"",
+					"\"${PODS_ROOT}/Headers/Public/MMKVCore\"",
+					"\"${PODS_ROOT}/Headers/Public/PromisesObjC\"",
+					"\"${PODS_ROOT}/Headers/Public/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/RNCAsyncStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFBApp\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFBAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFastImage\"",
+					"\"${PODS_ROOT}/Headers/Public/RNGestureHandler\"",
+					"\"${PODS_ROOT}/Headers/Public/RNGoogleSignin\"",
+					"\"${PODS_ROOT}/Headers/Public/RNInAppBrowser\"",
+					"\"${PODS_ROOT}/Headers/Public/RNReactNativeHapticFeedback\"",
+					"\"${PODS_ROOT}/Headers/Public/RNReanimated\"",
+					"\"${PODS_ROOT}/Headers/Public/RNSVG\"",
+					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
+					"\"${PODS_ROOT}/Headers/Public/RNShare\"",
+					"\"${PODS_ROOT}/Headers/Public/RNStaticSafeAreaInsets\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Codegen\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAnimation\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTAppDelegate\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTBlob\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-callinvoker\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/React-logger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-perflogger\"",
+					"\"${PODS_ROOT}/Headers/Public/React-runtimeexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImageWebPCoder\"",
+					"\"${PODS_ROOT}/Headers/Public/VisionCamera\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/fmt\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"${PODS_ROOT}/Headers/Public/libevent\"",
+					"\"${PODS_ROOT}/Headers/Public/libwebp\"",
+					"\"${PODS_ROOT}/Headers/Public/nanopb\"",
+					"\"${PODS_ROOT}/Headers/Public/newrelic-react-native-agent\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-animateable-text\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-blur\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-cameraroll\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-get-random-values\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-mmkv\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-netinfo\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-view-shot\"",
+					"\"${PODS_ROOT}/Headers/Public/rn-fetch-blob\"",
+					"\"$(PODS_ROOT)/DoubleConversion\"",
+					"$(inherited)",
+					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/boost\"",
+					"\"$(PODS_ROOT)/boost-for-react-native\"",
+					"\"$(PODS_ROOT)/glog\"",
+					"\"$(PODS_ROOT)/RCT-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/React-hermes\"",
+					"\"${PODS_ROOT}/Headers/Public/hermes-engine\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS",
+					"\"$(PODS_TARGET_SRCROOT)/include/\"",
+				);
 				INFOPLIST_FILE = Paletti/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				LD_RUNPATH_SEARCH_PATHS = (

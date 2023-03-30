@@ -1,6 +1,5 @@
 import {ViewProps} from './Themed';
-import Svg, {Path, Circle, G, Rect} from 'react-native-svg';
-import {useAppSelector} from '../hooks/storeHooks';
+import Svg, {Path, Rect} from 'react-native-svg';
 
 interface TabIconProps {
   focused: boolean;
@@ -36,6 +35,21 @@ const Icons = {
       </Svg>
     );
   },
+
+  Delete: ({size = 16}) => (
+    <Svg
+      fill="none"
+      viewBox="0 0 16 17"
+      style={{
+        width: size,
+        height: size * (17 / 16),
+      }}>
+      <Path
+        d="M7 2.75a.5.5 0 0 0-.5.5v.25h-3a.5.5 0 0 0 0 1h.25V12c0 .827.673 1.5 1.5 1.5h5.5c.827 0 1.5-.673 1.5-1.5V4.5h.25a.5.5 0 0 0 0-1h-3v-.25a.5.5 0 0 0-.5-.5H7ZM4.75 4.5h6.5V12a.5.5 0 0 1-.5.5h-5.5a.5.5 0 0 1-.5-.5V4.5Zm1.125 1a.375.375 0 0 0-.375.375v5.25a.375.375 0 0 0 .75 0v-5.25a.375.375 0 0 0-.375-.375ZM8 5.5c-.276 0-.375.224-.375.5v5c0 .276.099.5.375.5s.375-.224.375-.5V6c0-.276-.099-.5-.375-.5Zm2.125 0a.375.375 0 0 0-.375.375v5.25a.375.375 0 0 0 .75 0v-5.25a.375.375 0 0 0-.375-.375Z"
+        fill="#000"
+      />
+    </Svg>
+  ),
 
   Close: ({size, fill}: IconProps) => (
     <Svg

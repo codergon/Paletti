@@ -1,15 +1,16 @@
+import {observer} from 'mobx-react-lite';
 import {StyleSheet, View} from 'react-native';
 import Img from '../../../components/common/Img';
+import {useStores} from '../../../store/RootStore';
 import {MdText, RgText} from '../../../components/StyledText';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useAppDispatch, useAppSelector} from '../../../hooks/storeHooks';
 
 type UserProps = {
   openSignInModal: () => void;
 };
 
-const UserDetails = ({openSignInModal}: UserProps) => {
-  const {currentUser} = useAppSelector(state => state.user);
+const UserDetails = observer(({openSignInModal}: UserProps) => {
+  const store = useStores();
 
   return (
     <View style={styles.userBlock}>
@@ -17,30 +18,30 @@ const UserDetails = ({openSignInModal}: UserProps) => {
         <Img
           size={64}
           background="#f1f1f1"
-          // uri={currentUser?.photo}
+          // uri={store.userStore?.photo}
           source={require(`../../../assets/images/avatar.png`)}
         />
       </TouchableOpacity>
       <View style={[styles.textContainer]}>
         <MdText style={[styles.text]} numberOfLines={1}>
-          {currentUser?.name
-            ? currentUser.name?.length < 16
-              ? currentUser.name
-              : currentUser.name
+          {store.userStore?.name
+            ? store.userStore.name?.length < 16
+              ? store.userStore.name
+              : store.userStore.name
                   .split(' ')
                   .map((name: string, index) =>
                     index > 1 ? '' : index === 1 ? name[0] + '.' : name,
                   )
                   .join(' ')
-            : 'Guest User'}{' '}
+            : 'Hey there,'}
         </MdText>
         <RgText style={[styles.text__sub]}>
-          {currentUser?.email || 'Your saved colors'}
+          {store.userStore?.email || 'Explore your saved colors'}
         </RgText>
       </View>
     </View>
   );
-};
+});
 
 export default UserDetails;
 
@@ -62,10 +63,11 @@ const styles = StyleSheet.create({
     fontSize: 29,
     color: '#000',
     fontWeight: '600',
-    textTransform: 'capitalize',
+    // textTransform: 'capitalize',
   },
   text__sub: {
-    fontSize: 19,
+    marginTop: 1,
     color: '#aaa',
+    fontSize: 18.5,
   },
 });
