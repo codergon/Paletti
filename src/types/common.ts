@@ -32,6 +32,12 @@ export type AppMenuType = (
   props: ViewProps & {
     font?: number;
     full?: boolean;
+    offset?: {
+      top?: number;
+      left?: number;
+      right?: number;
+      bottom?: number;
+    };
     multiline?: boolean;
     capitals?: boolean;
     itemHeight?: number;
@@ -42,8 +48,8 @@ export type AppMenuType = (
 ) => React.ReactElement;
 
 export type useMenuType = (
-  defaultOption: any,
-  items: any[],
+  defaultOption?: any,
+  items?: any[],
   filter?: boolean,
   useFirst?: boolean,
   itemKey?: string,

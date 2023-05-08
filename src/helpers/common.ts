@@ -10,6 +10,10 @@ const getAllAsync = async (storage_Keys: string[]) => {
   return dataObj;
 };
 
+const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 //
 const doubleDigit = (val: string | number) =>
   Number(val) >= 10 ? Number(val) : '0' + Number(val);
@@ -21,4 +25,4 @@ const roundMinutes = (hrs = 2) => {
   return date;
 };
 
-export {getAllAsync, doubleDigit, roundMinutes};
+export {getAllAsync, capitalize, doubleDigit, roundMinutes};

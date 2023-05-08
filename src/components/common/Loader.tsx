@@ -6,10 +6,10 @@ import {
   Image,
   StatusBar,
   StyleSheet,
-  useColorScheme,
 } from 'react-native';
 import {useRef} from 'react';
 import {MdText} from '../StyledText';
+import useColorScheme from '../../hooks/useColorScheme';
 
 const Loader = ({
   pb = 0,

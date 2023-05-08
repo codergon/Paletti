@@ -1,10 +1,9 @@
-import {StatusBar, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import Layout from '../../constants/Layout';
 import {edges, padding} from '../../helpers/styles';
 import {PRIMARY_COLOR} from '../../constants/Colors';
 import {carouselSpec} from '../../constants/data/onboarding';
-import Layout from '../../constants/Layout';
 
-const statusBarHeight = StatusBar.currentHeight || 0;
 const {ITEM_WIDTH, ITEM_HEIGHT, RADIUS, SPACING} = carouselSpec;
 const HOR_PADDING = 20;
 
@@ -19,11 +18,10 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     zIndex: 2,
-    paddingBottom: 40,
+    paddingBottom: 42,
     flexDirection: 'column',
     backgroundColor: '#fff',
-    justifyContent: 'space-between',
-    paddingTop: 54,
+    justifyContent: 'flex-end',
   },
 
   overlayTopbar: {
@@ -37,6 +35,7 @@ const styles = StyleSheet.create({
 
   overlayHeading: {
     marginTop: 16,
+    marginBottom: 40,
     flexDirection: 'column',
     paddingHorizontal: HOR_PADDING,
     backgroundColor: 'transparent',
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
     color: PRIMARY_COLOR,
   },
   overlayHeading__Text__sub: {
-    fontSize: 20,
+    fontSize: 18,
     color: '#666',
     marginTop: 16,
   },
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingTop: 20,
     ...edges(0, 34),
-    paddingBottom: 90,
+    paddingBottom: 70,
     backgroundColor: '#fff',
     flexDirection: 'column',
     justifyContent: 'flex-end',

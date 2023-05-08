@@ -1,15 +1,13 @@
-import {SafeAreaView, StatusBar, View} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {StatusBar} from 'react-native';
+import useColorScheme from '../../hooks/useColorScheme';
 
 const AppStatusBar = ({backgroundColor = '#fff', ...props}) => {
-  const insets = useSafeAreaInsets();
-
+  const scheme = useColorScheme();
   return (
-    <View style={[{height: insets.top, backgroundColor}]}>
-      <SafeAreaView>
-        <StatusBar translucent backgroundColor={backgroundColor} {...props} />
-      </SafeAreaView>
-    </View>
+    <StatusBar
+      animated={true}
+      barStyle={scheme === 'dark' ? 'light-content' : 'dark-content'}
+    />
   );
 };
 

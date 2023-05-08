@@ -9,17 +9,16 @@
 
 </div>
 
-Paletti is an intuitive app designed to help you capture and save the colors around you. By simply scanning your surroundings, Paletti allows you to instantly view and save the colors you discover, along with their corresponding names, hex codes, and locations. Whether you're a designer or just love colors, Paletti is the perfect tool for exploring the world of color.
+Paletti is an intuitive app designed to help you capture and save the colors around you. By simply scanning your surroundings, Paletti allows you to instantly view and save the colors you discover, along with their corresponding names and hex codes. Whether you're a designer or just love colors, Paletti is the perfect tool for exploring the world of color.
 
 ### Features
 
-- Scan your surroundings to save colors around you.
-- View color names, hex codes, and locations of your saved items.
-- Get color palettes from your favorite images.
-- Customize color palettes with various shades and tones.
-- Share color palettes with others through your social media and messaging apps.
-- Sync your saved color data across devices by signing in.
-- Capture and save screenshots of your color collection.
+- Scan your surroundings to curate palettes from colors around you.
+- Generate palettes from your saved images.
+- Organize colors by creating multiple palettes
+- Sync your palette collection across all your devices using your iCloud account.
+- Capture and save screenshots of your palettes and palette collection.
+- Share color collection with others on various social media and messaging apps.
 - Access Paletti's features through a simple and intuitive interface.
 
 ## Try it!
@@ -34,25 +33,28 @@ yarn setup
 
 ## Project structure
 
-This is a bare React Native project, created with [create-react-native-app](https://github.com/expo/create-react-native-app).
+This is a bare React Native project, created with [`npx react-native init`](https://reactnative.dev/docs/environment-setup#creating-a-new-application).
 
 ---
 
 - 📁 `src`: Contains the actual TypeScript + React (-Native) front-end for the Paletti App.
-  - 📄 `src/getColorPalette.ts`: This exposes a JS function with TypeScript types that utilizes the native iOS frame processor plugin.
-  - 📄 `src/navigation/index.tsx`: This serves as the primary navigator, directing users to either the Splash Page (Permissions) or the Home Page (Main App), depending on their permission status.
+  - 📄 `src/utils/pixelColor.ts`: This is a JS wrapper for the native iOS `PixelColor` module.
+  - 📄 `src/utils/getColor.ts`: This exposes a JS function with TypeScript types that utilizes the native iOS frame processor plugin.
+  - 📄 `src/App.tsx`: This serves as the primary navigator, directing users to either the Splash Screen (Permissions) or the primary app screen, depending on their permission status.
   - 📁 `src/screens/Splash`: This directory contains the code for the Splash screen, which prompts the user for permission to use their camera.
-  - 📁 `src/screens/Home`: This is the primary app screen where users can use their device's camera to view colors in their surroundings and save them.
-  - 📁 `src/screens/Profile`: Contains the code for the Profile screen which enables users to view, edit, delete or add new colors to their saved colors list.
-  - 📁 `src/screens/ImagePalette`: This contains code to help users extract colors from images selected from the gallery
+  - 📁 `src/screens/Eyedropper`: This is the primary app screen where users can use their device's camera to view colors in their surroundings and save them.
+  - 📁 `src/screens/Palettes`: Contains the code for the Palettes screen where users can view their collection of saved palettes and perform actions on them such as renaming, deleting, and exporting.
+  - 📁 `src/screens/Settings`: Over here, users can customize their experience with their preferred settings such as theme, sound, and more.
 
 ---
 
 - 📁 `ios`: Contains the basic skeleton for a React Native iOS app, plus the native `getColor()` Frame Processor Plugin.
+  - 📄 `ios/PixelColor.m`: Contains the actual Swift code for the native iOS `PixelColor` module.
+  - 📄 `ios/PixelColor.swifts`: Exports the native methods of the `PixelColor` module to JavaScript.
   - 📄 `ios/PaletteFrameProcessorPlugin.m`: Declares the Swift frame processor plugin "`getColor()`".
   - 📄 `ios/PaletteFrameProcessorPlugin.swift`: Contains the actual Swift code for the native iOS frame processor plugin "`getColor()`".
   - 📄 `ios/Paletti-Bridging-Header.h`: A Bridging Header to import Objective-C headers into Swift.
-  - 📄 `ios/Podfile`: Adds libraries such as [`UIImageColors`](https://github.com/jathu/UIImageColors) and [`GoogleUtilities`](https://github.com/google/GoogleUtilities).
+  - 📄 `ios/Podfile`: Adds libraries such as [`UIImageColors`](https://github.com/jathu/UIImageColors)
 
 ---
 
@@ -60,9 +62,8 @@ This is a bare React Native project, created with [create-react-native-app](http
 
 ## Credits
 
-- [**Dimest**](https://dribbble.com/Dimest) for the inspiration
-- [**Colorwaver**](https://github.com/mrousavy/Colorwaver) mobile app for providing inspiration and guidance in building color-related functionality.
-- [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) for allowing JS code to be dispatched to another Runtime (Worklets)
-- [react-native-vision-camera](https://github.com/mrousavy/react-native-vision-camera) for allowing you to run JS code on a realtime feed of Camera Frames (Frame Processors)
-- [`UIImageColors`](https://github.com/jathu/UIImageColors) for getting the Color Palette on iOS
+- [**Dimest**](https://dribbble.com/Dimest) and [**ColorSlurp**](https://colorslurp.com) for design inspirations
+- [**react-native-reanimated**](https://github.com/software-mansion/react-native-reanimated) for allowing JS code to be dispatched to another Runtime (Worklets)
+- [**Colorwaver**](https://github.com/mrousavy/Colorwaver) mobile app for providing inspiration and guidance in building some of the color-related functionality.
+- [**react-native-vision-camera**](https://github.com/mrousavy/react-native-vision-camera) for allowing you to run JS code on a realtime feed of Camera Frames (Frame Processors)
 - **You guys** for the downloads, ratings and feedbacks.

@@ -3,30 +3,126 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
-import Home from '../screens/Home';
-import Splash from '../screens/Splash';
-import {RootStackParamList} from '../types';
+import {
+  RootTabParamList,
+  RootStackParamList,
+  RootTabScreenProps,
+} from '../types';
+import Colors from '../constants/Colors';
 import {ColorSchemeName} from 'react-native';
-import ImagePalette from '../screens/ImagePalette';
+import useColorScheme from '../hooks/useColorScheme';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
-type Props = {colorScheme: ColorSchemeName};
+import {Swatches, SlidersHorizontal} from 'phosphor-react-native';
 
-export default function Navigation({colorScheme}: Props) {
+import Icons from '../components/Icons';
+import Palettes from '../screens/Palettes';
+import Settings from '../screens/Settings';
+import Eyedropper from '../screens/Eyedropper';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import ModalScreen from '../screens/Modal/ModalScreen';
+import PaletteColors from '../screens/Palettes/PaletteColors';
+
+// NAVIGATION CONTAINER
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}) {
   return (
     <NavigationContainer
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-          animation: 'fade_from_bottom',
-        }}
-        initialRouteName="home">
-        <Stack.Screen name="home" component={Home} />
-        <Stack.Screen name="imagePalette" component={ImagePalette} />
-        <Stack.Screen name="splash" component={Splash} />
-      </Stack.Navigator>
+      <RootNavigator />
     </NavigationContainer>
+  );
+}
+
+//  ROOT NAVIGATOR
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+function RootNavigator() {
+  const theme = useColorScheme();
+  return (
+    <Stack.Navigator
+      initialRouteName="Root"
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Group>
+        <Stack.Screen name="Root" component={BottomTabNavigator} />
+        <Stack.Screen
+          name="paletteColors"
+          component={PaletteColors}
+          options={({route, navigation}) => ({
+            headerShown: !true,
+            gestureEnabled: true,
+          })}
+        />
+      </Stack.Group>
+
+      <Stack.Group
+        screenOptions={{
+          presentation: 'containedTransparentModal',
+          animation: 'fade',
+          animationDuration: 10,
+        }}>
+        <Stack.Screen name="Modal" component={ModalScreen} />
+      </Stack.Group>
+    </Stack.Navigator>
+  );
+}
+
+// BOTTOM TAB NAVIGATOR
+const BottomTab = createBottomTabNavigator<RootTabParamList>();
+
+function BottomTabNavigator() {
+  const insets = useSafeAreaInsets();
+  const colorScheme = useColorScheme();
+  return (
+    <BottomTab.Navigator
+      initialRouteName="eyedropper"
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          height: 100,
+          paddingTop: 15,
+          borderTopWidth: 1,
+          paddingBottom: insets.bottom + 8,
+          backgroundColor: Colors[colorScheme].tabBackground,
+        },
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+      }}>
+      <BottomTab.Screen
+        name="eyedropper"
+        component={Eyedropper}
+        options={({navigation}: RootTabScreenProps<'eyedropper'>) => ({
+          tabBarIcon: ({color, focused}) => (
+            <Icons.Camera size={28.5} color={color} strokeWidth={1.6} />
+          ),
+        })}
+      />
+
+      <BottomTab.Screen
+        name="palettes"
+        component={Palettes}
+        options={({navigation}: RootTabScreenProps<'palettes'>) => ({
+          tabBarIcon: ({color, focused}) => (
+            <Swatches size={27} weight="regular" color={color} />
+          ),
+        })}
+      />
+
+      <BottomTab.Screen
+        name="settings"
+        component={Settings}
+        options={({navigation}: RootTabScreenProps<'settings'>) => ({
+          tabBarIcon: ({color, focused}) => (
+            <SlidersHorizontal size={26} color={color} weight="fill" />
+          ),
+        })}
+      />
+    </BottomTab.Navigator>
   );
 }

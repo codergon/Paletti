@@ -4,29 +4,29 @@ import duration from 'dayjs/plugin/duration';
 
 import App from './App';
 import AppContextProvider from './context/AppContext';
+import ShareContext from './context/ShareContext';
+import {MenuProvider} from 'react-native-popup-menu';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import AuthContextProvider from './context/AuthContext';
-import SheetProvider from './context/SheetContext';
+import SettingsProvider from './context/SettingsContext';
+import LogicProvider from './context/LogicContext';
 
-GoogleSignin.configure({
-  webClientId:
-    '293064589552-tsm8u0kl1gmghh16h43agdjo3vcu0k6o.apps.googleusercontent.com',
-});
-
-dayjs.extend(duration);
 ntc.init();
+dayjs.extend(duration);
 
 export const AppProvider = () => {
   return (
-    <AuthContextProvider>
+    <SettingsProvider>
       <AppContextProvider>
-        <SheetProvider>
-          <SafeAreaProvider>
-            <App />
-          </SafeAreaProvider>
-        </SheetProvider>
+        <ShareContext>
+          <LogicProvider>
+            <SafeAreaProvider>
+              <MenuProvider>
+                <App />
+              </MenuProvider>
+            </SafeAreaProvider>
+          </LogicProvider>
+        </ShareContext>
       </AppContextProvider>
-    </AuthContextProvider>
+    </SettingsProvider>
   );
 };

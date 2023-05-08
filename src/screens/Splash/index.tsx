@@ -1,5 +1,6 @@
 import {
   Animated,
+  StatusBar,
   TouchableOpacity,
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -11,11 +12,11 @@ import {View} from '../../components/Themed';
 import {ArrowRight} from 'phosphor-react-native';
 import FeaturesCard from './components/FeaturesCard';
 import {MdText, RgText} from '../../components/StyledText';
-import AppStatusBar from '../../components/common/AppStatusBar';
 import data, {carouselSpec} from '../../constants/data/onboarding';
 
 import {useStore} from '../../context/AppContext';
 import {requestCameraAccess} from '../../context/utils';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const {FULL_SIZE} = carouselSpec;
 
@@ -25,6 +26,7 @@ type CarouselProps = {
 };
 
 const Splash = () => {
+  const insets = useSafeAreaInsets();
   const {setCameraAccess} = useStore();
   const [isLastItem, setIsLastItem] = useState(false);
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -80,8 +82,15 @@ const Splash = () => {
   };
 
   return (
-    <View lightColor="#111" style={[styles.container]}>
-      <AppStatusBar barStyle={'dark-content'} />
+    <View
+      lightColor="#f00"
+      style={[
+        styles.container,
+        {
+          paddingTop: insets.top,
+        },
+      ]}>
+      <StatusBar animated={true} barStyle={'light-content'} />
 
       <View style={[styles.overlay]}>
         <View style={[styles.overlayHeading]}>
@@ -123,7 +132,13 @@ const Splash = () => {
         </View>
       </View>
 
-      <View style={[styles.footer]}>
+      <View
+        style={[
+          styles.footer,
+          {
+            paddingBottom: insets.bottom + 70,
+          },
+        ]}>
         <View style={[styles.footer__Button__Container]}>
           <View style={[styles.footer__Button__Outline]} />
 

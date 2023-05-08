@@ -2,8 +2,13 @@ import {
   ScrollView,
   ThemeProps,
   SafeAreaView as DefaultSafeArea,
+  View,
+  ViewProps,
 } from './Themed';
-import {SafeAreaViewProps} from 'react-native-safe-area-context';
+import {
+  SafeAreaViewProps,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 export function SafeAreaView(props: SafeAreaViewProps & ThemeProps) {
   const {style, lightColor, darkColor, ...otherProps} = props;
@@ -24,5 +29,29 @@ export function SafeAreaView(props: SafeAreaViewProps & ThemeProps) {
         {props.children}
       </ScrollView>
     </DefaultSafeArea>
+  );
+}
+
+export function Container(
+  props: ViewProps & {
+    paddingTop?: number;
+  },
+) {
+  const insets = useSafeAreaInsets();
+  const {style, lightColor, darkColor, paddingTop, ...otherProps} = props;
+
+  return (
+    <View
+      {...otherProps}
+      darkColor={darkColor}
+      lightColor={lightColor}
+      style={[
+        style,
+        {
+          paddingTop: insets.top + (paddingTop ?? 30),
+        },
+      ]}>
+      {props.children}
+    </View>
   );
 }

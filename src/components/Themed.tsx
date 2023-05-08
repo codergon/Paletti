@@ -10,7 +10,9 @@ import {
   KeyboardAvoidingViewProps,
   Pressable as DefaultPressable,
   ScrollView as DefaultScrollView,
+  TouchableOpacity as DefaultTouchableOpacity,
   KeyboardAvoidingView as DefaultKeyboardAvoidingView,
+  TouchableOpacityProps,
 } from 'react-native';
 import {
   SafeAreaViewProps,
@@ -37,11 +39,16 @@ export function useThemeColor(
 export type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
+  primary?: boolean;
 };
 
 export type TextProps = ThemeProps & DefaultText['props'];
 export type CustomPressableProps = ThemeProps &
   PressableProps & {
+    activeOpacity?: number;
+  };
+export type CustomTouchableOpacityProps = ThemeProps &
+  TouchableOpacityProps & {
     activeOpacity?: number;
   };
 export type ViewProps = ThemeProps &
@@ -51,8 +58,11 @@ export type ViewProps = ThemeProps &
 export type InputProps = {color?: string} & DefaultInput['props'];
 
 export function Text(props: TextProps) {
-  const {style, lightColor, darkColor, ...otherProps} = props;
-  const color = useThemeColor({light: lightColor, dark: darkColor}, 'text');
+  const {style, lightColor, darkColor, primary, ...otherProps} = props;
+  const color = useThemeColor(
+    {light: lightColor, dark: darkColor},
+    primary ? 'primary' : 'text',
+  );
 
   return <DefaultText style={[{color}, style]} {...otherProps} />;
 }
@@ -70,6 +80,29 @@ export function View(props: ViewProps) {
   );
 
   return <DefaultView style={[{backgroundColor}, style]} {...otherProps} />;
+}
+
+export function TouchableOpacity(props: CustomTouchableOpacityProps) {
+  const {
+    style,
+    lightColor,
+    darkColor,
+    activeOpacity = 0.7,
+    ...otherProps
+  } = props;
+
+  const backgroundColor = useThemeColor(
+    {light: lightColor, dark: darkColor},
+    'background',
+  );
+
+  return (
+    <DefaultTouchableOpacity
+      activeOpacity={activeOpacity}
+      style={[{backgroundColor}, style]}
+      {...otherProps}
+    />
+  );
 }
 
 export function Pressable(props: CustomPressableProps) {

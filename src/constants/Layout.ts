@@ -11,3 +11,5 @@ export default {
   appWidth: width - 40,
   isSmallDevice: width < 375,
 };
+
+export const ELEM_HEIGHT = 50;

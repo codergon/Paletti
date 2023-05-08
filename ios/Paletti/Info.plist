@@ -28,18 +28,6 @@
 			<key>CFBundleURLIconFile</key>
 			<string>icon</string>
 			<key>CFBundleURLName</key>
-			<string/>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.293064589552-h1f1s1b19suegtur5d39k7njcjuptcon</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLIconFile</key>
-			<string>icon</string>
-			<key>CFBundleURLName</key>
 			<string>orgs.reactjs.native.example.Paletti</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
@@ -63,13 +51,13 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) needs access to your Camera.</string>
+	<string>$(PRODUCT_NAME) needs to access your Camera to detect colors in your surroundings.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>$(PRODUCT_NAME) needs access to your Camera Roll.</string>
+	<string>$(PRODUCT_NAME) needs to access your Photos to generate palettes from your images.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) needs access to your Camera Roll.</string>
+	<string>$(PRODUCT_NAME) needs to access your Photos to generate palettes from your images.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NeueMontreal-Bold.otf</string>
@@ -84,7 +72,7 @@
 		<string>armv7</string>
 	</array>
 	<key>UIStatusBarStyle</key>
-	<string/>
+	<string></string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -97,5 +85,14 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>whatsapp</string>
+		<string>twitter</string>
+		<string>snapchat</string>
+		<string>discord</string>
+		<string>telegram</string>
+		<string>tiktok</string>
+	</array>
 </dict>
 </plist>

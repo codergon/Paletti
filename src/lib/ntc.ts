@@ -22,6 +22,7 @@ const ntc = {
   },
 
   name: function (color: string) {
+    if (color.length === 9) color = color.substring(0, 7);
     color = color.toUpperCase();
     if (color.length < 3 || color.length > 7) return 'Unknown';
     if (color.length % 3 == 0) color = '#' + color;

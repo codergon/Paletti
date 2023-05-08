@@ -24,6 +24,15 @@ export function BdText(props: TextProps) {
   );
 }
 
+export function InputRg(props: InputProps) {
+  return (
+    <TextInput
+      {...props}
+      style={[props.style, {fontFamily: 'NeueMontreal-Regular'}]}
+    />
+  );
+}
+
 export function InputMd(props: InputProps) {
   return (
     <TextInput
