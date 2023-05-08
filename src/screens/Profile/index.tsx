@@ -1,16 +1,15 @@
 import styles from './profile.styles';
-import {observer} from 'mobx-react-lite';
 import RangeBar from './components/RangeBar';
 import ViewShot from 'react-native-view-shot';
 import ColorShade from './components/ColorShade';
+import {useStore} from '../../context/AppContext';
 import UserDetails from './components/UserDetails';
 import {MdText} from '../../components/StyledText';
-import {useStores} from '../../store/RootStore';
-import {Fragment, useCallback, useEffect, useRef, useState} from 'react';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Image, Linking, TouchableOpacity} from 'react-native';
 import NewColorButton from './components/NewColorButton';
-import {BottomSheetScrollView, BottomSheetView} from '@gorhom/bottom-sheet';
+import {Image, Linking, ScrollView, TouchableOpacity, View} from 'react-native';
+import {Fragment, useCallback, useEffect, useRef} from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useSheet} from '../../context/SheetContext';
 
 type ProfileProps = {
   openColorModal: () => void;
@@ -18,105 +17,96 @@ type ProfileProps = {
   openNewColorModal: () => void;
 };
 
-const Profile = observer<ProfileProps>(
-  ({openColorModal, openSignInModal, openNewColorModal}) => {
-    const store = useStores();
-    const insets = useSafeAreaInsets();
-    const viewShotRef = useRef<ViewShot>(null);
+const Profile = ({
+  openColorModal,
+  openSignInModal,
+  openNewColorModal,
+}: ProfileProps) => {
+  const {collection} = useStore();
+  const {setImgUri} = useSheet();
+  const insets = useSafeAreaInsets();
+  const viewShotRef = useRef<ViewShot>(null);
 
-    const onCapture = useCallback((uri: string) => {
-      store.collectionStore.setImgUri(uri);
-    }, []);
+  const onCapture = useCallback((uri: string) => {
+    setImgUri(uri);
+  }, []);
 
-    const [_, setRe] = useState({value: 10});
+  useEffect(() => {
+    const captureView = async () => {
+      if (viewShotRef?.current?.capture) {
+        await viewShotRef.current.capture();
+      }
+    };
+    captureView();
+  }, [collection]);
 
-    function forceUpdate() {
-      setRe(prev => {
-        return {...prev};
-      });
-    }
-    useEffect(() => {
-      forceUpdate();
+  return (
+    <View style={[styles.container]}>
+      <UserDetails openSignInModal={openSignInModal} />
 
-      const captureView = async () => {
-        if (viewShotRef?.current?.capture) {
-          await viewShotRef.current.capture();
-        }
-      };
-      captureView();
-    }, [store.collectionStore.collection]);
+      <View
+        style={[
+          styles.content,
+          {
+            paddingBottom: insets.bottom,
+          },
+        ]}>
+        {Boolean(collection?.length > 0) ? (
+          <Fragment>
+            <RangeBar />
+            <View style={[styles.colorShades]}>
+              <ScrollView
+                // bounces={!false}
+                contentContainerStyle={[styles.scrollview]}>
+                <ViewShot
+                  ref={viewShotRef}
+                  onCapture={onCapture}
+                  style={styles.viewShot}
+                  options={{
+                    quality: 0.9,
+                    format: 'png',
+                  }}>
+                  {collection?.map((item, index) => {
+                    return (
+                      <ColorShade
+                        item={item}
+                        key={item.id}
+                        openColorModal={openColorModal}
+                      />
+                    );
+                  })}
+                </ViewShot>
+              </ScrollView>
 
-    return (
-      <BottomSheetView style={[styles.container]}>
-        <UserDetails openSignInModal={openSignInModal} />
+              <TouchableOpacity
+                style={[styles.devDetails]}
+                onPress={() => Linking.openURL('https://williamsatakere.com')}>
+                <MdText style={[styles.devText]}>Built by </MdText>
+                <MdText style={[styles.developer]}>Kester A.</MdText>
+              </TouchableOpacity>
+            </View>
+          </Fragment>
+        ) : (
+          <View style={styles.emptyStateContainer}>
+            <View style={styles.emptyStateContent}>
+              <Image
+                resizeMode="cover"
+                style={styles.emptyStateImage}
+                source={require(`../../assets/images/emptystate/Search.png`)}
+              />
+              <MdText style={styles.emptyStateText}>
+                Your collection is empty
+              </MdText>
+              <MdText style={[styles.emptyStateText__sub]}>
+                Add colors to your collection and view them here
+              </MdText>
+            </View>
+          </View>
+        )}
+      </View>
 
-        <BottomSheetView
-          style={[
-            styles.content,
-            {
-              paddingBottom: insets.bottom,
-            },
-          ]}>
-          {store.collectionStore.collection.length > 0 ? (
-            <Fragment>
-              <RangeBar />
-              <BottomSheetView style={[styles.colorShades]}>
-                <BottomSheetScrollView
-                  bounces={!false}
-                  contentContainerStyle={[styles.scrollview]}>
-                  <ViewShot
-                    ref={viewShotRef}
-                    onCapture={onCapture}
-                    style={styles.viewShot}
-                    options={{
-                      quality: 0.9,
-                      format: 'png',
-                    }}>
-                    {store.collectionStore.collection.map((item, index) => {
-                      return (
-                        <ColorShade
-                          item={item}
-                          key={item.id}
-                          openColorModal={openColorModal}
-                        />
-                      );
-                    })}
-                  </ViewShot>
-                </BottomSheetScrollView>
-
-                <TouchableOpacity
-                  style={[styles.devDetails]}
-                  onPress={() =>
-                    Linking.openURL('https://williamsatakere.com')
-                  }>
-                  <MdText style={[styles.devText]}>Built by </MdText>
-                  <MdText style={[styles.developer]}>Kester A.</MdText>
-                </TouchableOpacity>
-              </BottomSheetView>
-            </Fragment>
-          ) : (
-            <BottomSheetView style={styles.emptyStateContainer}>
-              <BottomSheetView style={styles.emptyStateContent}>
-                <Image
-                  resizeMode="cover"
-                  style={styles.emptyStateImage}
-                  source={require(`../../assets/images/emptystate/Search.png`)}
-                />
-                <MdText style={styles.emptyStateText}>
-                  Your collection is empty
-                </MdText>
-                <MdText style={[styles.emptyStateText__sub]}>
-                  Add colors to your collection and view them here
-                </MdText>
-              </BottomSheetView>
-            </BottomSheetView>
-          )}
-        </BottomSheetView>
-
-        <NewColorButton openColorModal={openNewColorModal} />
-      </BottomSheetView>
-    );
-  },
-);
-
+      <NewColorButton openColorModal={openNewColorModal} />
+    </View>
+  );
+};
 export default Profile;

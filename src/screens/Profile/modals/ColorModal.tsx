@@ -1,20 +1,24 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Hue} from '../../../types/profile';
-import {observer} from 'mobx-react-lite';
-import {edges, padding} from '../../../helpers/styles';
-import {
-  BottomSheetTextInput,
-  BottomSheetView,
-  useBottomSheet,
-} from '@gorhom/bottom-sheet';
-import {useStores} from '../../../store/RootStore';
-import {InputMd, MdText} from '../../../components/StyledText';
-import {Keyboard, StyleSheet, TouchableOpacity, View} from 'react-native';
-import {X, XCircle, CheckCircle, PencilSimple} from 'phosphor-react-native';
 import Icons from '../../../components/Icons';
+import {useStore} from '../../../context/AppContext';
+import {MdText} from '../../../components/StyledText';
+import {edges, padding} from '../../../helpers/styles';
+import {useBottomSheet} from '@gorhom/bottom-sheet';
+import {XCircle, CheckCircle, PencilSimple} from 'phosphor-react-native';
+import {
+  View,
+  Keyboard,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import dayjs from 'dayjs';
 
-const ColorModal = observer(() => {
-  const store = useStores();
+const ColorModal = () => {
+  const {activeColor, deleteColor, setActiveColor, updateColorDisplayName} =
+    useStore();
+
   const {close} = useBottomSheet();
   const [error, setError] = useState('');
   const [display, setDisplay] = useState('');
@@ -23,22 +27,24 @@ const ColorModal = observer(() => {
   const closeModal = () => {
     Keyboard.dismiss();
     setDisplay('');
+    setError('');
     setEditing(false);
-    store.collectionStore.setActiveId('');
+    setActiveColor();
     close();
   };
 
-  const deleteColor = () => {
-    if (!colorItem) {
+  const deleteActiveColor = () => {
+    if (!activeColor) {
       closeModal();
     } else {
-      store.collectionStore.deleteColor(colorItem?.id);
+      deleteColor(activeColor?.id);
       closeModal();
     }
   };
 
   const updateDisplayName = () => {
-    if (!colorItem) return;
+    setError('');
+    if (!activeColor) return;
 
     // Check if display name is valid
     if (display?.length < 3 || !/[a-zA-Z]{3,}/.test(display)) {
@@ -46,69 +52,35 @@ const ColorModal = observer(() => {
       return;
     }
 
-    // Update display name in collection array
-    const newCollection = store?.collectionStore?.collection.map(
-      (item: Hue) => {
-        if (item?.id === colorItem?.id) {
-          return {
-            ...item,
-            display_name: display,
-          };
-        }
-        return item;
-      },
-    );
-
-    store.collectionStore.setCollection([...newCollection]);
+    updateColorDisplayName(activeColor.id, display);
     setDisplay('');
     setEditing(false);
   };
 
-  //
-  const [colorItem, setColorItem] = useState<Hue | undefined>(undefined);
-
-  const FetchColorItem = () => {
-    if (!store.collectionStore.activeId) return;
-
-    const activeColor = store.collectionStore.collection.find(
-      item => item.id === store.collectionStore.activeId,
-    );
-
-    if (activeColor) {
-      setColorItem(activeColor);
-    }
-  };
-
-  useEffect(() => {
-    FetchColorItem();
-  }, [store?.collectionStore.activeId]);
-
-  if (!colorItem) {
-    return (
-      <View>
-        <MdText>Loading</MdText>
-      </View>
-    );
+  if (!activeColor) {
+    return <View />;
   }
 
   return (
-    <BottomSheetView style={[styles.container]}>
-      <BottomSheetView style={[styles.modal]}>
-        <BottomSheetView style={[styles.title]}>
+    <View style={[styles.container]}>
+      <View style={[styles.modal]}>
+        <View style={[styles.title]}>
           <MdText style={[styles.titleText]}>
-            {colorItem?.display_name || colorItem?.name}
+            {activeColor?.display_name || activeColor?.name}
           </MdText>
 
-          <TouchableOpacity onPress={deleteColor} style={[styles.closeBtn]}>
+          <TouchableOpacity
+            onPress={deleteActiveColor}
+            style={[styles.closeBtn]}>
             <Icons.Delete size={25} />
           </TouchableOpacity>
-        </BottomSheetView>
+        </View>
 
-        <BottomSheetView style={[styles.colorDetails]}>
-          {Object.keys(colorItem).map((key: string) => {
+        <View style={[styles.colorDetails]}>
+          {Object.keys(activeColor).map((key: string) => {
             return (
               !['id', 'display_name', 'user_id'].includes(key) && (
-                <BottomSheetView key={key} style={[styles.itemRow]}>
+                <View key={key} style={[styles.itemRow]}>
                   <MdText style={[styles.listText]}>
                     {key === 'name'
                       ? 'Color name'
@@ -118,14 +90,25 @@ const ColorModal = observer(() => {
                   </MdText>
 
                   {key !== 'shades' ? (
-                    <MdText style={[styles.listText]}>
-                      {colorItem[key as keyof Hue]}
+                    <MdText
+                      style={[
+                        styles.listText,
+                        {
+                          textTransform:
+                            key === 'color' ? 'uppercase' : 'capitalize',
+                        },
+                      ]}>
+                      {key === 'date_created'
+                        ? dayjs(activeColor[key as keyof Hue] as number).format(
+                            'MMM DD, YYYY',
+                          )
+                        : activeColor[key as keyof Hue]}
                     </MdText>
                   ) : (
-                    <BottomSheetView style={[styles.shades]}>
-                      {colorItem.shades?.map((item, index) => {
+                    <View style={[styles.shades]}>
+                      {activeColor.shades?.map((item, index) => {
                         return (
-                          <BottomSheetView
+                          <View
                             key={index}
                             style={[
                               styles.shade,
@@ -134,17 +117,17 @@ const ColorModal = observer(() => {
                               },
                             ]}>
                             <></>
-                          </BottomSheetView>
+                          </View>
                         );
                       })}
-                    </BottomSheetView>
+                    </View>
                   )}
-                </BottomSheetView>
+                </View>
               )
             );
           })}
 
-          <BottomSheetView
+          <View
             style={[
               styles.itemRow,
               {
@@ -154,8 +137,8 @@ const ColorModal = observer(() => {
             <MdText style={[styles.listText]}>Display name</MdText>
 
             {editing ? (
-              <BottomSheetView style={[styles.editDisplay]}>
-                <BottomSheetTextInput
+              <View style={[styles.editDisplay]}>
+                <TextInput
                   maxLength={25}
                   value={display}
                   autoFocus={true}
@@ -184,19 +167,19 @@ const ColorModal = observer(() => {
                     <XCircle size={18} weight="bold" />
                   </TouchableOpacity>
                 )}
-              </BottomSheetView>
+              </View>
             ) : (
               <TouchableOpacity
                 onPressIn={() => setEditing(true)}
                 style={[styles.editDisplayBtn]}>
                 <MdText style={[styles.listText]}>
-                  {colorItem?.display_name || colorItem?.name}
+                  {activeColor?.display_name || activeColor?.name}
                 </MdText>
                 <PencilSimple size={14} weight="bold" style={{marginLeft: 4}} />
               </TouchableOpacity>
             )}
-          </BottomSheetView>
-        </BottomSheetView>
+          </View>
+        </View>
 
         {error && <MdText style={[styles.errorMsg]}>{error}</MdText>}
 
@@ -211,10 +194,10 @@ const ColorModal = observer(() => {
             Close
           </MdText>
         </TouchableOpacity>
-      </BottomSheetView>
-    </BottomSheetView>
+      </View>
+    </View>
   );
-});
+};
 
 export default ColorModal;
 

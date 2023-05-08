@@ -19,11 +19,19 @@
     },
     {
       "path": "src/assets/images/adaptive-icon.png",
-      "sha1": "8fc13d889ebb62ba9c59ee69dbc9a34f2cda9ec3"
+      "sha1": "17f7ee82744e922fa7d6062ec76514c8467e2643"
+    },
+    {
+      "path": "src/assets/images/apple_store.svg",
+      "sha1": "86f41d5e9f73ca0c9895cb6fafe95ddb1affcf92"
     },
     {
       "path": "src/assets/images/avatar.png",
       "sha1": "67e10296e4420525305d57e975c9a15f3ca4382e"
+    },
+    {
+      "path": "src/assets/images/emptystate/NewItem.png",
+      "sha1": "879d1ba819d325ffcded7b3308277fcd801d9f9d"
     },
     {
       "path": "src/assets/images/emptystate/Search.png",
@@ -35,7 +43,11 @@
     },
     {
       "path": "src/assets/images/icon.png",
-      "sha1": "8fc13d889ebb62ba9c59ee69dbc9a34f2cda9ec3"
+      "sha1": "17f7ee82744e922fa7d6062ec76514c8467e2643"
+    },
+    {
+      "path": "src/assets/images/icon_transparent.png",
+      "sha1": "62605aec2fa71e9b3b614784a80464470058db86"
     },
     {
       "path": "src/assets/images/onboarding/1.jpeg",
@@ -54,8 +66,12 @@
       "sha1": "8f6c8b6835a22c2cc606744dcc434ca5c4a7384a"
     },
     {
+      "path": "src/assets/images/screenshot.png",
+      "sha1": "d794fbd97d6c8976e5d1126e1ce65f6973dc143b"
+    },
+    {
       "path": "src/assets/images/splash.png",
-      "sha1": "39b034380a7a9d2c00e000bc21b6be5b00a46b11"
+      "sha1": "235b59dccdcecb5684fad0e4747548ef9d205308"
     }
   ]
 }

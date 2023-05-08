@@ -9,12 +9,13 @@ import {useRef, useState} from 'react';
 import Br from '../../components/common/Br';
 import {View} from '../../components/Themed';
 import {ArrowRight} from 'phosphor-react-native';
-import {RootStackScreenProps} from '../../types';
-import {useStores} from '../../store/RootStore';
 import FeaturesCard from './components/FeaturesCard';
 import {MdText, RgText} from '../../components/StyledText';
 import AppStatusBar from '../../components/common/AppStatusBar';
 import data, {carouselSpec} from '../../constants/data/onboarding';
+
+import {useStore} from '../../context/AppContext';
+import {requestCameraAccess} from '../../context/utils';
 
 const {FULL_SIZE} = carouselSpec;
 
@@ -23,16 +24,14 @@ type CarouselProps = {
   index: number;
 };
 
-const Splash = ({navigation}: RootStackScreenProps<'splash'>) => {
-  const store = useStores();
+const Splash = () => {
+  const {setCameraAccess} = useStore();
   const [isLastItem, setIsLastItem] = useState(false);
   const scrollX = useRef(new Animated.Value(0)).current;
 
   const requestPermission = async () => {
-    const isAuthorized = await store.appStore.requestCameraAccess();
-    if (isAuthorized) {
-      navigation.navigate('home');
-    }
+    const isAuthorized = await requestCameraAccess();
+    setCameraAccess(isAuthorized ? 'authorized' : 'declined');
   };
 
   const carousel = ({item, index}: CarouselProps) => {

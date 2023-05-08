@@ -3,12 +3,11 @@ import ntc from './lib/ntc';
 import duration from 'dayjs/plugin/duration';
 
 import App from './App';
-import {useEffect} from 'react';
-import {observer} from 'mobx-react-lite';
-import {MMKVStorage} from './store/utils/mmkv';
+import AppContextProvider from './context/AppContext';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {RootStore, RootStoreProvider} from './store/RootStore';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import AuthContextProvider from './context/AuthContext';
+import SheetProvider from './context/SheetContext';
 
 GoogleSignin.configure({
   webClientId:
@@ -18,20 +17,16 @@ GoogleSignin.configure({
 dayjs.extend(duration);
 ntc.init();
 
-const rootStore = new RootStore({
-  storage: MMKVStorage,
-});
-
-export const AppProvider = observer(() => {
-  useEffect(() => {
-    rootStore.initApp();
-  }, []);
-
+export const AppProvider = () => {
   return (
-    <RootStoreProvider value={rootStore}>
-      <SafeAreaProvider>
-        <App />
-      </SafeAreaProvider>
-    </RootStoreProvider>
+    <AuthContextProvider>
+      <AppContextProvider>
+        <SheetProvider>
+          <SafeAreaProvider>
+            <App />
+          </SafeAreaProvider>
+        </SheetProvider>
+      </AppContextProvider>
+    </AuthContextProvider>
   );
-});
+};

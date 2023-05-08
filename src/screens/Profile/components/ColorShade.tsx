@@ -1,27 +1,27 @@
 import {Hue} from '../../../types/profile';
 import Animated from 'react-native-reanimated';
+import {useStore} from '../../../context/AppContext';
 import {MdText} from '../../../components/StyledText';
-import {useStores} from '../../../store/RootStore';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {BottomSheetView} from '@gorhom/bottom-sheet';
 
 type ColorShadeProps = {
   item: Hue;
   openColorModal: () => void;
 };
 const ColorShade = ({item, openColorModal}: ColorShadeProps) => {
-  const store = useStores();
+  const {setActiveColor} = useStore();
   const openColor = () => {
-    store.collectionStore.setActiveId(item.id);
-    openColorModal();
+    const isValid = setActiveColor(item?.id);
+    if (isValid) openColorModal();
   };
+
   return (
     <>
-      <BottomSheetView style={[styles.cover]}>
+      <View style={[styles.cover]}>
         <TouchableOpacity onPress={openColor} style={[styles.container]}>
           <MdText style={[styles.text]}>{item?.display_name}</MdText>
 
-          <BottomSheetView style={[styles.shades]}>
+          <View style={[styles.shades]}>
             {item?.shades?.map((item, index) => {
               return (
                 <Animated.View
@@ -35,9 +35,9 @@ const ColorShade = ({item, openColorModal}: ColorShadeProps) => {
                 />
               );
             })}
-          </BottomSheetView>
+          </View>
         </TouchableOpacity>
-      </BottomSheetView>
+      </View>
     </>
   );
 };

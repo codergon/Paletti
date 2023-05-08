@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     ...padding(0, 0, '35%'),
   },
   emptyStateContent: {
-    marginBottom: 20,
+    marginBottom: '40%',
     alignItems: 'center',
   },
   emptyStateImage: {

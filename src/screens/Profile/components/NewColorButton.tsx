@@ -2,7 +2,6 @@ import React from 'react';
 import {Plus} from 'phosphor-react-native';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useStores} from '../../../store/RootStore';
 
 type NewColorButtonProps = {
   openColorModal: () => void;

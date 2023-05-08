@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import Layout from '../../constants/Layout';
 import {View} from '../../components/Themed';
 import {padding} from '../../helpers/styles';
-import {CaretLeft} from 'phosphor-react-native';
+import {CaretLeft, GooglePhotosLogo, ImageSquare} from 'phosphor-react-native';
 import {MdText} from '../../components/StyledText';
 import ImageColors from './components/ImageColors';
 import ColorPicker from 'react-native-image-colors';
@@ -44,14 +44,18 @@ const ImagePalette = () => {
 
   useEffect(() => {
     const getMostRecent = async () => {
-      const lastSaved = await CameraRoll.getPhotos({
-        first: 1,
-        assetType: 'Photos',
-      });
-      const imgUri = lastSaved.edges[0].node.image.uri;
-      Image.getSize(imgUri, (width, height) => {
-        setRecentImgUri(imgUri);
-      });
+      try {
+        const lastSaved = await CameraRoll.getPhotos({
+          first: 1,
+          assetType: 'Photos',
+        });
+        const imgUri = lastSaved.edges[0].node.image.uri;
+        Image.getSize(imgUri, (width, height) => {
+          setRecentImgUri(imgUri);
+        });
+      } catch (error: any) {
+        console.log(error?.message);
+      }
     };
 
     getMostRecent();
@@ -163,15 +167,18 @@ const ImagePalette = () => {
               style={[
                 styles.recentImagePreview,
                 {
+                  borderWidth: recentImgUri ? 1 : 0,
                   borderColor: isDark ? '#444' : '#eee',
-                  backgroundColor: borderColor,
+                  backgroundColor: recentImgUri ? borderColor : 'transparent',
                 },
               ]}>
-              {recentImgUri && (
+              {recentImgUri ? (
                 <Image
                   style={[styles.recentImage]}
                   source={{uri: recentImgUri}}
                 />
+              ) : (
+                <ImageSquare color={invertedColor} size={24} weight="regular" />
               )}
             </TouchableOpacity>
           )}

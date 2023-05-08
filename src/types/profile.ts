@@ -8,11 +8,9 @@ export type Hue = {
   display_name: string | (string | boolean)[];
 };
 
-export type StatusMsg =
-  | {
-      message: string;
-      type: 'success' | 'error';
-    }
-  | undefined;
+export type StatusMsg = {
+  message: string;
+  type: 'success' | 'error';
+} | null;
 
 export type Collection = Hue[];

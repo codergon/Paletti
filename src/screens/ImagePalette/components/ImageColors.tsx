@@ -1,52 +1,32 @@
 import ntc from '../../../lib/ntc';
-import {observer} from 'mobx-react-lite';
 import Layout from '../../../constants/Layout';
 import {padding} from '../../../helpers/styles';
 import {View} from '../../../components/Themed';
 import {CheckCircle} from 'phosphor-react-native';
-import {useStores} from '../../../store/RootStore';
+import {useStore} from '../../../context/AppContext';
 import {MdText} from '../../../components/StyledText';
+import {validateColor} from '../../../helpers/colors';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import useColorScheme from '../../../hooks/useColorScheme';
-import {validateColor} from '../../../helpers/colors';
 
 interface ImageColorsProps {
   colors?: string[];
 }
 
-const ImageColors = observer(({colors}: ImageColorsProps) => {
-  const store = useStores();
+const ImageColors = ({colors}: ImageColorsProps) => {
   const colorScheme = useColorScheme();
+  const {isColorInCollection, addNewColor} = useStore();
+
   const isDark = colorScheme === 'dark';
   const borderColor = isDark ? '#2d2d2d' : '#e4e4e4';
   const invertedColor = isDark ? '#ffffff' : '#000000';
 
-  const saveColor = async (color: string) => {
-    if (
-      color[0] !== '#' ||
-      typeof color !== 'string' ||
-      (color.length !== 4 && color.length !== 7)
-    ) {
-      return;
-    }
-
-    const colorExists = store.collectionStore?.collection?.find(col => {
-      if (col.color === color) {
-        return true;
-      }
-    });
-    if (colorExists) return;
-    store.collectionStore.addColor(color);
-  };
+  const saveColor = (color: string) => addNewColor(color);
 
   return (
     <View style={styles.colorsItems}>
       {colors?.slice(0, 4).map((item, index) => {
-        const colorExists = store.collectionStore?.collection?.find(col => {
-          if (col.color === (validateColor(item) ? item : '#000')) {
-            return true;
-          }
-        });
+        const colorExists = isColorInCollection(item);
 
         return (
           <View
@@ -108,7 +88,7 @@ const ImageColors = observer(({colors}: ImageColorsProps) => {
       })}
     </View>
   );
-});
+};
 
 export default ImageColors;
 

@@ -1,20 +1,21 @@
+import Splash from './screens/Splash';
 import Navigation from './navigation';
 import 'react-native-get-random-values';
+import {useStore} from './context/AppContext';
 import useColorScheme from './hooks/useColorScheme';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
-import {useStores} from './store/RootStore';
-import {LoadingStateSwitcher} from './components/common/LoadingStateSwitcher';
-
 export default function App() {
-  const rootStore = useStores();
+  const {cameraAccess} = useStore();
   const colorScheme = useColorScheme();
 
   return (
     <BottomSheetModalProvider>
-      <LoadingStateSwitcher loadingState={rootStore.appStore.loadingState}>
+      {cameraAccess === 'authorized' ? (
         <Navigation colorScheme={colorScheme} />
-      </LoadingStateSwitcher>
+      ) : (
+        <Splash />
+      )}
     </BottomSheetModalProvider>
   );
 }

@@ -1,84 +1,64 @@
-import {
-  useBottomSheet,
-  BottomSheetView,
-  BottomSheetTextInput,
-} from '@gorhom/bottom-sheet';
-import chroma from 'chroma-js';
-import {useEffect, useState} from 'react';
-import {observer} from 'mobx-react-lite';
+import {useState} from 'react';
 import {Hue} from '../../../types/profile';
 import {Plus} from 'phosphor-react-native';
-import {useStores} from '../../../store/RootStore';
+import {useStore} from '../../../context/AppContext';
 import {MdText} from '../../../components/StyledText';
 import {edges, padding} from '../../../helpers/styles';
-import {Keyboard, StyleSheet, TouchableOpacity} from 'react-native';
+import {useBottomSheet} from '@gorhom/bottom-sheet';
+import {
+  View,
+  Keyboard,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 
-const NewColorModal = observer(() => {
-  const store = useStores();
+const NewColorModal = () => {
   const {close} = useBottomSheet();
+  const {collection, newlyCreated, addNewColor, updateNewColor} = useStore();
+
   const [error, setError] = useState('');
   const [newColor, setNewColor] = useState('');
-  const [newlyCreated, setNewlyCreated] = useState<Hue | undefined>(undefined);
 
-  const addNewColor = async () => {
-    if (newColor.length !== 3 && newColor.length !== 6) {
-      setError('Hex code must contain at 3 or 6 letters');
-      return;
-    }
-    if (!chroma.valid('#' + newColor)) {
-      setError('Not a valid hex code');
-      return;
-    }
-
+  const addColor = async () => {
     setError('');
-    const createdColor = await store.collectionStore.addColor('#' + newColor);
-    setNewColor('');
-    if (createdColor !== undefined) {
-      setNewlyCreated(undefined);
-      setNewlyCreated({...createdColor});
+    const res = addNewColor('#' + newColor);
+
+    if (res === 'success') {
+      setError('');
+      setNewColor('');
+    } else {
+      setError(res);
     }
   };
 
   const closeModal = () => {
-    Keyboard.dismiss();
+    setNewColor('');
     setError('');
-    setNewlyCreated(undefined);
+    updateNewColor(null);
+    Keyboard.dismiss();
     close();
   };
 
-  // Force update
-  const [state, setState] = useState({value: 10});
-
-  function forceUpdate() {
-    setState(prev => {
-      return {...prev};
-    });
-  }
-  useEffect(() => {
-    forceUpdate();
-  }, [store?.collectionStore.collection]);
-
   return (
-    <BottomSheetView style={[styles.container]}>
-      <BottomSheetView style={[styles.modal]}>
+    <View style={[styles.container]}>
+      <View style={[styles.modal]}>
         <>
-          <BottomSheetView style={[styles.title]}>
-            {store.collectionStore.collection?.length > 0 && (
-              <MdText style={[styles.titleText]}>
-                {newlyCreated
-                  ? newlyCreated?.name + ' added'
-                  : 'Add a new color'}
-              </MdText>
-            )}
-          </BottomSheetView>
+          <View style={[styles.title]}>
+            <MdText style={[styles.titleText]}>
+              {newlyCreated?.name
+                ? newlyCreated?.name + ' added'
+                : 'Add a new color'}
+            </MdText>
+          </View>
 
           {!newlyCreated && (
-            <BottomSheetView style={[styles.colorDetails]}>
+            <View style={[styles.colorDetails]}>
               <>
-                <BottomSheetView style={[styles.addColorContainer]}>
-                  <BottomSheetView style={[styles.addColorBlock]}>
+                <View style={[styles.addColorContainer]}>
+                  <View style={[styles.addColorBlock]}>
                     <MdText style={[styles.addColorHash]}>#</MdText>
-                    <BottomSheetTextInput
+                    <TextInput
                       maxLength={6}
                       value={newColor}
                       autoFocus={!true}
@@ -89,26 +69,26 @@ const NewColorModal = observer(() => {
                       placeholder="Enter hex code eg #2b0FFF"
                       onChange={e => setNewColor(e.nativeEvent.text)}
                     />
-                  </BottomSheetView>
+                  </View>
 
                   <TouchableOpacity
-                    onPressIn={addNewColor}
+                    onPressIn={addColor}
                     style={styles.addColorBtn}>
                     <Plus size={16} color="#fff" weight="bold" />
                   </TouchableOpacity>
-                </BottomSheetView>
+                </View>
               </>
-            </BottomSheetView>
+            </View>
           )}
 
           {newlyCreated && (
-            <BottomSheetView style={[styles.colorDetails]}>
+            <View style={[styles.colorDetails]}>
               {Object.keys(newlyCreated).map((key: string) => {
                 return (
                   !['id', 'display_name', 'user_id', 'date_created'].includes(
                     key,
                   ) && (
-                    <BottomSheetView key={key} style={[styles.itemRow]}>
+                    <View key={key} style={[styles.itemRow]}>
                       <MdText style={[styles.listText]}>
                         {key === 'name'
                           ? 'Color name'
@@ -118,14 +98,21 @@ const NewColorModal = observer(() => {
                       </MdText>
 
                       {key !== 'shades' ? (
-                        <MdText style={[styles.listText]}>
+                        <MdText
+                          style={[
+                            styles.listText,
+                            {
+                              textTransform:
+                                key === 'color' ? 'uppercase' : 'capitalize',
+                            },
+                          ]}>
                           {newlyCreated[key as keyof Hue]}
                         </MdText>
                       ) : (
-                        <BottomSheetView style={[styles.shades]}>
+                        <View style={[styles.shades]}>
                           {newlyCreated?.shades?.map((item, index) => {
                             return (
-                              <BottomSheetView
+                              <View
                                 key={index}
                                 style={[
                                   styles.shade,
@@ -134,16 +121,16 @@ const NewColorModal = observer(() => {
                                   },
                                 ]}>
                                 <></>
-                              </BottomSheetView>
+                              </View>
                             );
                           })}
-                        </BottomSheetView>
+                        </View>
                       )}
-                    </BottomSheetView>
+                    </View>
                   )
                 );
               })}
-            </BottomSheetView>
+            </View>
           )}
 
           {error && <MdText style={[styles.errorMsg]}>{error}</MdText>}
@@ -160,10 +147,10 @@ const NewColorModal = observer(() => {
             </MdText>
           </TouchableOpacity>
         </>
-      </BottomSheetView>
-    </BottomSheetView>
+      </View>
+    </View>
   );
-});
+};
 
 export default NewColorModal;
 
@@ -252,7 +239,8 @@ const styles = StyleSheet.create({
   addColorBlock: {
     flex: 1,
     borderRadius: 8,
-    ...padding(10, 14),
+    paddingLeft: 14,
+    overflow: 'hidden',
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: '#f1f1f1',
@@ -275,8 +263,11 @@ const styles = StyleSheet.create({
   },
   addColorInput: {
     // width: 148,
+    flex: 1,
+    height: 40,
     color: '#000',
     fontSize: 15,
+    paddingRight: 14,
     textAlignVertical: 'center',
   },
 

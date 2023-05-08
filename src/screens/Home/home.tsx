@@ -10,26 +10,23 @@ import {
   Camera,
   CameraDevice,
   CameraProps,
-  CameraRuntimeError,
-  FrameProcessorPerformanceSuggestion,
   useCameraDevices,
   useFrameProcessor,
+  CameraRuntimeError,
+  FrameProcessorPerformanceSuggestion,
 } from 'react-native-vision-camera';
 import {getColor} from '../../utils/getColor';
 import {hapticFeedback} from '../../utils/hapticFeedback';
 
-import {AppState, StatusBar, View} from 'react-native';
 import styles from './home.styles';
-
-import {AppNavigationProp, RootStackScreenProps} from '../../types';
 import BottomBar from './BottomBar';
-
-import ActionBar from './ActionBar';
-import ColorIndicator from './components/ColorIndicator';
-import {AnimatedStatusBar} from '../../components/common/AnimatedStatusBar';
+import {AppState, View} from 'react-native';
+import {AppNavigationProp} from '../../types';
 import {ViewProps} from '../../components/Themed';
-import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import ColorIndicator from './components/ColorIndicator';
 import {TapGestureHandler} from 'react-native-gesture-handler';
+import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import {AnimatedStatusBar} from '../../components/common/AnimatedStatusBar';
 
 const ReanimatedCamera = Reanimated.createAnimatedComponent(Camera);
 Reanimated.addWhitelistedNativeProps({
@@ -52,7 +49,6 @@ const MainApp = ({
   // States and variables
   const isHolding = useSharedValue(false);
   const isPageActive = useSharedValue(true);
-  const [flashMode, setFlashMode] = useState<'on' | 'off'>('off');
   const [frameProcessorFps, setFrameProcessorFps] = useState(0.8);
   const devices = useCameraDevices('wide-angle-camera');
 
@@ -82,8 +78,6 @@ const MainApp = ({
         flash: 'auto',
       });
 
-      console.log(photo?.path);
-
       if (photo?.path) {
         await CameraRoll.save(photo.path, {
           type: 'photo',
@@ -93,9 +87,8 @@ const MainApp = ({
       }
 
       return false;
-    } catch (e) {
-      console.log(e);
-      return false;
+    } catch (e: any) {
+      return e?.message === 'Access to photo library was denied' ? null : false;
     }
   };
 

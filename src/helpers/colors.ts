@@ -1,8 +1,11 @@
+import chroma from 'chroma-js';
+
 const validateColor = (color: string) => {
   if (
     color[0] !== '#' ||
     typeof color !== 'string' ||
-    (color.length !== 4 && color.length !== 7)
+    (color.length !== 4 && color.length !== 7) ||
+    !chroma.valid(color)
   ) {
     return false;
   }

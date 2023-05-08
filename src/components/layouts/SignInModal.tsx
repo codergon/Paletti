@@ -3,24 +3,27 @@ import Img from '../common/Img';
 import {useState} from 'react';
 import {MdText, RgText} from '../StyledText';
 import {SignOut} from 'phosphor-react-native';
-import {useStores} from '../../store/RootStore';
+import {useAuth} from '../../context/AuthContext';
 import {edges, padding} from '../../helpers/styles';
 import {useBottomSheet} from '@gorhom/bottom-sheet';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {observer} from 'mobx-react-lite';
 
-const SignInModal = observer(() => {
-  const store = useStores();
+const SignInModal = () => {
+  const {user, login, signout} = useAuth();
+
   const {close} = useBottomSheet();
   const insets = useSafeAreaInsets();
   const [error, setError] = useState('');
 
   const signIn = async () => {
     setError('');
-    const isLoggedIn = await store.userStore.login();
+    const isLoggedIn = await login();
 
-    if (isLoggedIn) {
+    console.log(isLoggedIn);
+
+    if (isLoggedIn === 'success') {
+      setError('');
       close();
       return;
     }
@@ -29,11 +32,13 @@ const SignInModal = observer(() => {
 
   const signOut = async () => {
     setError('');
-    const isLoggedOut = await store.userStore.signOut();
-    if (isLoggedOut) {
+    const isLoggedOut = await signout();
+    if (isLoggedOut === 'success') {
+      setError('');
       close();
       return;
     }
+    setError('An error occurred trying to sign out');
   };
 
   return (
@@ -45,21 +50,21 @@ const SignInModal = observer(() => {
         },
       ]}>
       <View style={styles.content}>
-        {store?.userStore.userId ? (
+        {user?.id ? (
           <View style={styles.userBlock}>
             <Img
               size={50}
               background="#f1f1f1"
-              uri={store?.userStore?.photo}
+              uri={user?.photo}
               source={require(`../../assets/images/avatar.png`)}
             />
 
             <View style={[styles.textContainer]}>
               <MdText style={[styles.text]} numberOfLines={1}>
-                {store?.userStore?.name
-                  ? store?.userStore.name?.length < 16
-                    ? store?.userStore.name
-                    : store?.userStore.name
+                {user?.name
+                  ? user.name?.length < 16
+                    ? user.name
+                    : user.name
                         .split(' ')
                         .map((name: string, index) =>
                           index > 1 ? '' : index === 1 ? name[0] + '.' : name,
@@ -68,7 +73,7 @@ const SignInModal = observer(() => {
                   : 'User'}{' '}
               </MdText>
               <RgText style={[styles.text__sub]}>
-                {store?.userStore?.email || 'Generated colors'}
+                {user?.email || 'Generated colors'}
               </RgText>
             </View>
 
@@ -86,12 +91,12 @@ const SignInModal = observer(() => {
           </TouchableOpacity>
         )}
 
-        {!store?.userStore.userId && (
+        {!user?.id && (
           <MdText style={[styles.description]}>
             Connect account to sync collection on all devices
           </MdText>
         )}
-        {error && !store?.userStore.userId && (
+        {error && (
           <MdText style={[styles.errorMsg]}>
             {error || 'An error occurred trying to sign in'}
           </MdText>
@@ -99,7 +104,7 @@ const SignInModal = observer(() => {
       </View>
     </View>
   );
-});
+};
 
 export default SignInModal;
 

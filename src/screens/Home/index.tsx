@@ -1,6 +1,6 @@
 import MainApp from './home';
 import Profile from '../Profile';
-import {useMemo, useRef} from 'react';
+import {useCallback, useMemo, useRef, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {edges} from '../../helpers/styles';
 import Layout from '../../constants/Layout';
@@ -13,18 +13,14 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import CustomBackdrop from '../Profile/components/CustomBackdrop';
 import CustomOverlayBackdrop from '../Profile/components/CustomOverlayBackdrop';
 import NewColorModal from '../Profile/modals/NewColorModal';
-import {observer} from 'mobx-react-lite';
-import {useStores} from '../../store/RootStore';
-import ProfileEntry from '../Profile/ProfileEntry';
-import ImagePalette from '../ImagePalette';
+import {Hue} from '../../types/profile';
 
 type ModalsProps = {
   openModal?: (modal: string) => void;
   bottomRef: React.RefObject<BottomSheet>;
 };
 
-const Modals = observer(({bottomRef}: ModalsProps) => {
-  const store = useStores();
+const Modals = ({bottomRef}: ModalsProps) => {
   const insets = useSafeAreaInsets();
   const colorBottomSheetRef = useRef<BottomSheet>(null);
   const signInBottomSheetRef = useRef<BottomSheet>(null);
@@ -34,27 +30,30 @@ const Modals = observer(({bottomRef}: ModalsProps) => {
     [],
   );
 
-  const openColorModal = () => {
+  const openColorModal = useCallback(() => {
     colorBottomSheetRef?.current?.expand();
-  };
-  const openSignInModal = () => {
-    signInBottomSheetRef?.current?.expand();
-  };
-  const openNewColorModal = () => {
-    newColorBottomSheetRef?.current?.expand();
-  };
+  }, [colorBottomSheetRef?.current]);
 
-  return Array.isArray(store?.collectionStore.collection) ? (
+  const openSignInModal = useCallback(() => {
+    signInBottomSheetRef?.current?.expand();
+  }, [signInBottomSheetRef?.current]);
+
+  const openNewColorModal = useCallback(() => {
+    newColorBottomSheetRef?.current?.expand();
+  }, [newColorBottomSheetRef?.current]);
+
+  return (
     <>
       <BottomSheet
         index={-1}
         ref={bottomRef}
+        enableOverDrag={false}
         snapPoints={snapPoints}
         enablePanDownToClose={true}
         handleComponent={() => null}
         backdropComponent={CustomBackdrop}
         backgroundStyle={[styles.bottomSheet]}>
-        <ProfileEntry
+        <Profile
           openColorModal={openColorModal}
           openSignInModal={openSignInModal}
           openNewColorModal={openNewColorModal}
@@ -64,6 +63,7 @@ const Modals = observer(({bottomRef}: ModalsProps) => {
       <BottomSheet
         index={-1}
         snapPoints={[200]}
+        enableOverDrag={false}
         ref={signInBottomSheetRef}
         enablePanDownToClose={true}
         handleComponent={() => null}
@@ -75,6 +75,7 @@ const Modals = observer(({bottomRef}: ModalsProps) => {
       <BottomSheet
         index={-1}
         snapPoints={['90%']}
+        enableOverDrag={false}
         ref={colorBottomSheetRef}
         enablePanDownToClose={true}
         handleComponent={() => null}
@@ -86,6 +87,7 @@ const Modals = observer(({bottomRef}: ModalsProps) => {
       <BottomSheet
         index={-1}
         snapPoints={['90%']}
+        enableOverDrag={false}
         ref={newColorBottomSheetRef}
         enablePanDownToClose={true}
         handleComponent={() => null}
@@ -94,10 +96,8 @@ const Modals = observer(({bottomRef}: ModalsProps) => {
         <NewColorModal />
       </BottomSheet>
     </>
-  ) : (
-    <></>
   );
-});
+};
 
 const Home = ({navigation}: RootStackScreenProps<'home'>) => {
   const bottomSheetRef = useRef<BottomSheet>(null);

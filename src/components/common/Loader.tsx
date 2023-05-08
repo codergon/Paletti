@@ -3,16 +3,17 @@ import {
   ActivityIndicator,
   Animated,
   Easing,
+  Image,
+  StatusBar,
   StyleSheet,
   useColorScheme,
 } from 'react-native';
-import Icons from '../Icons';
 import {useRef} from 'react';
 import {MdText} from '../StyledText';
 
 const Loader = ({
   pb = 0,
-  size = 70,
+  size = 120,
   message = '',
   nextline = '',
   spinner = false,
@@ -48,11 +49,14 @@ const Loader = ({
 
   return (
     <View style={{...styles.container, paddingBottom: pb}}>
+      <StatusBar barStyle="light-content" />
+
       <Animated.View style={animated ? [animatedStyle] : []}>
         {spinner ? (
           <ActivityIndicator size="large" color={altColor} />
         ) : (
-          <Icons.Logo
+          <Image
+            source={require('../../assets/images/icon_transparent.png')}
             style={{
               width: size,
               height: size,
@@ -78,6 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#111',
   },
   message: {
     fontSize: 15,
