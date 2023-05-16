@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PalettiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PalettiTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-Paletti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Paletti.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -24,8 +23,8 @@
 		6D4D98049D814B8BB78E44AE /* adaptive-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E94F635B442483A9628C62A /* adaptive-icon.png */; };
 		6E6C160740104B37BA656484 /* icon_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 36A8803DBC664C7A839BEBD7 /* icon_transparent.png */; };
 		7655ECE60AB64CDAAEF131E0 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD4599359CE64B428F4BB86F /* 2.png */; };
-		7699B88040F8A987B510C191 /* libPods-Paletti-PalettiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Paletti-PalettiTests.a */; };
 		7928D1F543494AB7A731C02D /* 1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 66959082D065435894988D8D /* 1.jpeg */; };
+		7A59FD513DF2B31D2828B361 /* libPods-Paletti.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF472A7B25834A1CBDF885 /* libPods-Paletti.a */; };
 		8030822155B144A0803E7EE6 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 75FE9DC50A924D55B287FBA5 /* 4.jpg */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		82E89B1C0BBE43F39C293BE9 /* favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C24A5095C1042BDB64532C3 /* favicon.png */; };
@@ -37,6 +36,7 @@
 		AD7539432A04B9CD004A52D3 /* PixelColor.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7539422A04B9CD004A52D3 /* PixelColor.m */; };
 		ADC5EBAF2A0712DE0086AC22 /* Pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ADC5EBAE2A0712DE0086AC22 /* Pop.mp3 */; };
 		CF8BF49071DF4B40A4E02E1E /* 3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE867A2582994FF996AC825D /* 3.jpeg */; };
+		EEC8219BF055B8AA3D398194 /* libPods-Paletti-PalettiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC1CDE96F69890463771826 /* libPods-Paletti-PalettiTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +53,7 @@
 		00E356EE1AD99517003FC87E /* PalettiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalettiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PalettiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PalettiTests.m; sourceTree = "<group>"; };
+		0833EE2B093C8A0CA3CA5814 /* Pods-PalettiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PalettiTests.release.xcconfig"; path = "Target Support Files/Pods-PalettiTests/Pods-PalettiTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Paletti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paletti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Paletti/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Paletti/AppDelegate.mm; sourceTree = "<group>"; };
@@ -60,23 +61,22 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Paletti/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Paletti/main.m; sourceTree = "<group>"; };
 		196F424B54B04353963A02DB /* apple_store.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = apple_store.svg; path = ../src/assets/images/apple_store.svg; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Paletti-PalettiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Paletti-PalettiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25DB956BD3654511BA9B0C76 /* avatar.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = avatar.png; path = ../src/assets/images/avatar.png; sourceTree = "<group>"; };
 		2C24A5095C1042BDB64532C3 /* favicon.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = favicon.png; path = ../src/assets/images/favicon.png; sourceTree = "<group>"; };
 		36A8803DBC664C7A839BEBD7 /* icon_transparent.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icon_transparent.png; path = ../src/assets/images/icon_transparent.png; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-Paletti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti.debug.xcconfig"; path = "Target Support Files/Pods-Paletti/Pods-Paletti.debug.xcconfig"; sourceTree = "<group>"; };
 		47040A45345D4CA189EE1F6E /* splash.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = splash.png; path = ../src/assets/images/splash.png; sourceTree = "<group>"; };
 		4FDB6413179B450E9FFCD1AD /* NeueMontreal-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NeueMontreal-Light.otf"; path = "../src/assets/fonts/NeueMontreal/NeueMontreal-Light.otf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-Paletti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti.release.xcconfig"; path = "Target Support Files/Pods-Paletti/Pods-Paletti.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-Paletti-PalettiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti-PalettiTests.debug.xcconfig"; path = "Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-Paletti.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Paletti.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66959082D065435894988D8D /* 1.jpeg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 1.jpeg; path = ../src/assets/images/onboarding/1.jpeg; sourceTree = "<group>"; };
 		68AAE40EA684403D9EA78610 /* Search.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Search.png; path = ../src/assets/images/emptystate/Search.png; sourceTree = "<group>"; };
+		6F2226B9E33272260D1B5EC5 /* Pods-Paletti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti.release.xcconfig"; path = "Target Support Files/Pods-Paletti/Pods-Paletti.release.xcconfig"; sourceTree = "<group>"; };
 		75FE9DC50A924D55B287FBA5 /* 4.jpg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 4.jpg; path = ../src/assets/images/onboarding/4.jpg; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Paletti/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8245CCCC880B4529A24DF054 /* NeueMontreal-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NeueMontreal-Regular.otf"; path = "../src/assets/fonts/NeueMontreal/NeueMontreal-Regular.otf"; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-Paletti-PalettiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti-PalettiTests.release.xcconfig"; path = "Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests.release.xcconfig"; sourceTree = "<group>"; };
+		8C0DA2DAED89A6178BDE2F5D /* Pods-Paletti-PalettiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti-PalettiTests.release.xcconfig"; path = "Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests.release.xcconfig"; sourceTree = "<group>"; };
+		90D384304EF81317E0E24A0D /* Pods-PalettiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PalettiTests.debug.xcconfig"; path = "Target Support Files/Pods-PalettiTests/Pods-PalettiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9DC1CDE96F69890463771826 /* libPods-Paletti-PalettiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Paletti-PalettiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E94F635B442483A9628C62A /* adaptive-icon.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "adaptive-icon.png"; path = "../src/assets/images/adaptive-icon.png"; sourceTree = "<group>"; };
+		AA949C8E6E23EEEFBE841039 /* Pods-Paletti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti.debug.xcconfig"; path = "Target Support Files/Pods-Paletti/Pods-Paletti.debug.xcconfig"; sourceTree = "<group>"; };
 		AD09F16829BFF23B009921F0 /* Paletti-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Paletti-Bridging-Header.h"; sourceTree = "<group>"; };
 		AD09F16929BFF23C009921F0 /* PaletteFrameProcessorPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteFrameProcessorPlugin.swift; sourceTree = "<group>"; };
 		AD09F16B29BFF2D0009921F0 /* PaletteFrameProcessorPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaletteFrameProcessorPlugin.m; sourceTree = "<group>"; };
@@ -90,7 +90,9 @@
 		C4A35FB0A4F04778863038AE /* icon.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icon.png; path = ../src/assets/images/icon.png; sourceTree = "<group>"; };
 		CE867A2582994FF996AC825D /* 3.jpeg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = 3.jpeg; path = ../src/assets/images/onboarding/3.jpeg; sourceTree = "<group>"; };
 		D2AFD6C86B8046AB8E7E909F /* NeueMontreal-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NeueMontreal-Bold.otf"; path = "../src/assets/fonts/NeueMontreal/NeueMontreal-Bold.otf"; sourceTree = "<group>"; };
+		DAFF472A7B25834A1CBDF885 /* libPods-Paletti.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Paletti.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42D3CC2A7114454B0D16B19 /* screenshot.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = screenshot.png; path = ../src/assets/images/screenshot.png; sourceTree = "<group>"; };
+		E8CEE7ACCA1ED06CDDB2DD5A /* Pods-Paletti-PalettiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paletti-PalettiTests.debug.xcconfig"; path = "Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -99,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-Paletti-PalettiTests.a in Frameworks */,
+				EEC8219BF055B8AA3D398194 /* libPods-Paletti-PalettiTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-Paletti.a in Frameworks */,
+				7A59FD513DF2B31D2828B361 /* libPods-Paletti.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-Paletti.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-Paletti-PalettiTests.a */,
+				DAFF472A7B25834A1CBDF885 /* libPods-Paletti.a */,
+				9DC1CDE96F69890463771826 /* libPods-Paletti-PalettiTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -196,10 +198,12 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-Paletti.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-Paletti.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-Paletti-PalettiTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-Paletti-PalettiTests.release.xcconfig */,
+				AA949C8E6E23EEEFBE841039 /* Pods-Paletti.debug.xcconfig */,
+				6F2226B9E33272260D1B5EC5 /* Pods-Paletti.release.xcconfig */,
+				90D384304EF81317E0E24A0D /* Pods-PalettiTests.debug.xcconfig */,
+				0833EE2B093C8A0CA3CA5814 /* Pods-PalettiTests.release.xcconfig */,
+				E8CEE7ACCA1ED06CDDB2DD5A /* Pods-Paletti-PalettiTests.debug.xcconfig */,
+				8C0DA2DAED89A6178BDE2F5D /* Pods-Paletti-PalettiTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -240,8 +244,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				A6143D7B55FD7D5E18334DB7 /* [CP] Embed Pods Frameworks */,
+				ED5C727A427B25ADFAB0E0E0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -263,8 +267,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				02659460CC691A8C4B599328 /* [CP] Embed Pods Frameworks */,
+				74E4439656A8FCEE4F0F6288 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,7 +370,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		02659460CC691A8C4B599328 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -381,6 +385,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paletti/Pods-Paletti-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74E4439656A8FCEE4F0F6288 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Paletti/Pods-Paletti-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Paletti/Pods-Paletti-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paletti/Pods-Paletti-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
@@ -405,6 +426,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A6143D7B55FD7D5E18334DB7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -427,41 +465,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paletti-PalettiTests/Pods-Paletti-PalettiTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Paletti/Pods-Paletti-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Paletti/Pods-Paletti-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Paletti/Pods-Paletti-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		ED5C727A427B25ADFAB0E0E0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -534,7 +538,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-Paletti-PalettiTests.debug.xcconfig */;
+			baseConfigurationReference = E8CEE7ACCA1ED06CDDB2DD5A /* Pods-Paletti-PalettiTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -563,7 +567,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-Paletti-PalettiTests.release.xcconfig */;
+			baseConfigurationReference = 8C0DA2DAED89A6178BDE2F5D /* Pods-Paletti-PalettiTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -589,12 +593,12 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-Paletti.debug.xcconfig */;
+			baseConfigurationReference = AA949C8E6E23EEEFBE841039 /* Pods-Paletti.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Paletti/Paletti.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 89F9H4X24M;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -705,12 +709,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-Paletti.release.xcconfig */;
+			baseConfigurationReference = 6F2226B9E33272260D1B5EC5 /* Pods-Paletti.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Paletti/Paletti.entitlements;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 89F9H4X24M;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,7 +1,10 @@
-import {createContext, useContext, useEffect, useMemo, useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Appearance, Linking} from 'react-native';
+import {Linking, useColorScheme} from 'react-native';
 import Icons from '../components/Icons';
+import overrideColorScheme from 'react-native-override-color-scheme';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {createContext, useContext, useEffect, useMemo, useState} from 'react';
+
+const CONTACT_URL = 'https://alphaglitch.dev';
 
 export type Settings = {
   sync: 'on' | 'off';
@@ -27,7 +30,7 @@ type ContextType = {
     platform: string;
     icon: React.ReactElement;
   }[];
-  openMail: () => void;
+  openContact: () => void;
   updateSettings: (
     key: keyof Settings,
     value: Settings[keyof Settings],
@@ -43,7 +46,7 @@ export const SettingsContext = createContext<ContextType>({
     sorting: 'name',
   },
   supportedApps: [],
-  openMail: () => {},
+  openContact: () => {},
   setSettings: () => {},
   updateSettings: () => {},
 });
@@ -53,6 +56,7 @@ interface SettingsProviderProps {
 }
 export default function SettingsProvider({children}: SettingsProviderProps) {
   const [socialApps, setSupportedApps] = useState<SupportedApps>([]);
+  const systemTheme = useColorScheme();
 
   const [settings, setSettings] = useState<Settings>({
     sync: 'off',
@@ -79,7 +83,21 @@ export default function SettingsProvider({children}: SettingsProviderProps) {
     }
   }, []);
 
-  const openMail = () => {};
+  const openContact = () => {
+    Linking.canOpenURL(CONTACT_URL).then(supported => {
+      if (supported) {
+        Linking.openURL(CONTACT_URL);
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (settings.theme === 'dark' || settings.theme === 'light') {
+      overrideColorScheme.setScheme(settings.theme);
+    } else {
+      overrideColorScheme.setScheme();
+    }
+  }, [settings.theme]);
 
   const updateSettings = async (
     key: keyof Settings,
@@ -125,7 +143,7 @@ export default function SettingsProvider({children}: SettingsProviderProps) {
     <SettingsContext.Provider
       value={{
         settings,
-        openMail,
+        openContact,
         setSettings,
         updateSettings,
 

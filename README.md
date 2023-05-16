@@ -5,7 +5,7 @@
 <div align="center">
     <h1><img align="center" src="./src/assets/images/icon.png" style="border-radius: 4px; height: 50px; margin-right: 10px;" /> Paletti</h1>
 
-<a align="center" href="https://apps.apple.com/"><img align="center" src="./src/assets/images/apple_store.svg" height="52" /></a>
+<a align="center" href="https://apps.apple.com/app/paletti/id6447082774"><img align="center" src="./src/assets/images/apple_store.svg" height="52" /></a>
 
 </div>
 
@@ -13,7 +13,7 @@ Paletti is an intuitive app designed to help you capture and save the colors aro
 
 ### Features
 
-- Scan your surroundings to curate palettes from colors around you.
+- Scan your surroundings to create palettes from colors around you.
 - Generate palettes from your saved images.
 - Organize colors by creating multiple palettes
 - Sync your palette collection across all your devices using your iCloud account.
@@ -49,8 +49,8 @@ This is a bare React Native project, created with [`npx react-native init`](http
 ---
 
 - 📁 `ios`: Contains the basic skeleton for a React Native iOS app, plus the native `getColor()` Frame Processor Plugin.
-  - 📄 `ios/PixelColor.m`: Contains the actual Swift code for the native iOS `PixelColor` module.
-  - 📄 `ios/PixelColor.swifts`: Exports the native methods of the `PixelColor` module to JavaScript.
+  - 📄 `ios/PixelColor.m`: Exports the native methods of the `PixelColor` module to JavaScript.
+  - 📄 `ios/PixelColor.swift`: Contains the actual Swift code for the native iOS `PixelColor` module.
   - 📄 `ios/PaletteFrameProcessorPlugin.m`: Declares the Swift frame processor plugin "`getColor()`".
   - 📄 `ios/PaletteFrameProcessorPlugin.swift`: Contains the actual Swift code for the native iOS frame processor plugin "`getColor()`".
   - 📄 `ios/Paletti-Bridging-Header.h`: A Bridging Header to import Objective-C headers into Swift.

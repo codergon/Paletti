@@ -20,7 +20,7 @@ interface ConfigProps {
 const Config = ({config}: ConfigProps) => {
   const scheme = useColorScheme();
   const isDark = scheme === 'dark';
-  const {openMail, settings, updateSettings} = useSettings();
+  const {openContact, settings, updateSettings} = useSettings();
   const borderBottomColor = isDark ? '#444' : '#e1e1e1';
 
   const ConfigRenderer = () => {
@@ -61,17 +61,12 @@ const Config = ({config}: ConfigProps) => {
               </MdText>
             )}
           </View>
-          {!['contact', 'developer', 'sync'].includes(config?.key) && (
-            <View style={[styles.settings__item__details__icon]}>
-              {/* <Icons.CaretUpDown
-                size={14}
-                color={'#8F8E93'}
-                strokeWidth={0.8}
-              /> */}
 
+          <View style={[styles.settings__item__details__icon]}>
+            {!['contact', 'developer'].includes(config?.key) && (
               <CaretRight size={18} weight="bold" color={'#8F8E93'} />
-            </View>
-          )}
+            )}
+          </View>
         </View>
       </>
     );
@@ -121,7 +116,7 @@ const Config = ({config}: ConfigProps) => {
     <TouchableOpacity
       onPress={() => {
         if (config?.key === 'contact') {
-          openMail();
+          openContact();
         }
       }}
       style={[

@@ -30,6 +30,7 @@ import {
 } from 'react-native-vision-camera';
 import {getColor} from '../utils/getColor';
 import {AppState} from 'react-native';
+import ImageResizer from '@bam.tech/react-native-image-resizer';
 
 type ContextType = {
   imageWidth: number;
@@ -132,6 +133,8 @@ export default function LogicProvider({children}: LogicProviderProps) {
   };
 
   const getDominantColors = async (uri = imgUri) => {
+    if (!uri) return;
+
     const result = await ColorPicker.getColors(uri || '', {
       cache: false,
       key: nanoid(),
@@ -193,10 +196,26 @@ export default function LogicProvider({children}: LogicProviderProps) {
         includeBase64: false,
         presentationStyle: 'fullScreen',
       },
+
       async response => {
         const {assets} = response;
         if (assets) {
-          const {uri} = assets[0];
+          let sourceUri = assets[0]?.uri || '';
+
+          await ImageResizer.createResizedImage(
+            sourceUri,
+            assets[0].width || 0,
+            assets[0].height || 0,
+            'JPEG',
+            100,
+          )
+            .then(resizedImageUri => {
+              sourceUri = resizedImageUri.uri;
+            })
+            .catch(err => {
+              //
+            });
+
           const imgWidth = assets[0].width || 0;
           const imgHeight = assets[0].height || 0;
 
@@ -206,9 +225,9 @@ export default function LogicProvider({children}: LogicProviderProps) {
           // Calculate Image Size
           getDimensions(imgWidth, imgHeight);
 
-          PixelColor.setImage(uri || '');
-          setImgUri(uri || '');
-          getDominantColors(uri);
+          PixelColor.setImage(sourceUri);
+          setImgUri(sourceUri);
+          getDominantColors(sourceUri);
         }
       },
     );

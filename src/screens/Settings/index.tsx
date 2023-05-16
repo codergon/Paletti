@@ -48,7 +48,7 @@ const settings = [
     title: 'Contact Me',
     icon: <EnvelopeSimple size={19} color={'#8F8E93'} weight="duotone" />,
     description:
-      'Send me an email with your feedback or to discuss your next project',
+      'Share your review & improvement ideas regarding your experience',
   },
 ];
 

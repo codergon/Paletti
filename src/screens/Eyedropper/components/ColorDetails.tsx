@@ -8,7 +8,6 @@ import {
   ImageSquare,
   CameraRotate,
   LightningSlash,
-  Cursor,
   HandPointing,
 } from 'phosphor-react-native';
 import {View} from '../../../components/Themed';
@@ -30,7 +29,6 @@ const ColorDetails = () => {
     removeImage,
     toggleFlash,
     toggleAutoExtract,
-    animatedImageColor,
   } = useLogic();
 
   const scheme = useColorScheme();
@@ -40,9 +38,9 @@ const ColorDetails = () => {
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      backgroundColor: animatedImageColor.value,
+      backgroundColor: activeColor.value,
     };
-  }, [animatedImageColor]);
+  }, [activeColor]);
 
   const animatedProps = useAnimatedProps(() => {
     return {

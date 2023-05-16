@@ -23,7 +23,7 @@ const ImageColors = () => {
     getColorAt,
     imageHeight,
     selectedImg,
-    animatedImageColor,
+    activeColor,
   } = useLogic();
 
   const start = useSharedValue({x: 0, y: 0});
@@ -33,13 +33,19 @@ const ImageColors = () => {
     return {
       transform: [{translateX: offset.value.x}, {translateY: offset.value.y}],
     };
-  }, [animatedImageColor]);
+  }, [activeColor]);
 
   const animatedProps = useAnimatedProps(() => {
+    const hexValue = activeColor.value.replace('#', '');
+    const r = parseInt(hexValue.substr(0, 2), 16);
+    const g = parseInt(hexValue.substr(2, 2), 16);
+    const b = parseInt(hexValue.substr(4, 2), 16);
+    const rgba = `rgba(${r},${g},${b},1)`;
+
     return {
-      fill: animatedImageColor.value as ColorValue,
+      fill: rgba as ColorValue,
     };
-  }, [animatedImageColor]);
+  }, [activeColor]);
 
   const gestureHandler = Gesture.Pan()
     .onUpdate(e => {

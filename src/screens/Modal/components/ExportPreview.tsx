@@ -53,7 +53,7 @@ const ExportPreview = ({palette, closeModal}: ExportPreviewProps) => {
       }
     } catch (error) {
       // @ts-ignore
-      console.log(error.message);
+      // console.log(error?.message);
     }
   };
 

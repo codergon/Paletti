@@ -16,8 +16,6 @@ export default function EmptyState({
   nextline,
   justifyContent,
 }: EmptyStateProps) {
-  console.log(text);
-
   return (
     <View
       style={{

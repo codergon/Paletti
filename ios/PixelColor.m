@@ -18,4 +18,9 @@ RCT_EXTERN_METHOD(getPixelColor:(NSInteger *)x
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 
++ (BOOL)requiresMainQueueSetup
+{
+   return YES;
+}
+
 @end

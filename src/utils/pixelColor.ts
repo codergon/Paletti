@@ -1,20 +1,21 @@
 import {NativeModules} from 'react-native';
 const {PixelColor: PixelColorModule} = NativeModules;
 
-type SetImageCallback = (width: number, height: number) => void;
+type Callback = (width: number, height: number) => void;
 
-interface ImagePixelInterface {
-  setImage(imageUri: string, callback?: SetImageCallback): void;
+interface PixelColorInterface {
+  setImage(imageUri: string, callback?: Callback): void;
   getPixelColor(x: number, y: number): Promise<string>;
   getImageSize(callback?: (width: number, height: number) => void): void;
-  getConstants(): {
-    [key: string]: any;
-  };
 }
 
-const PixelColor: ImagePixelInterface = {
+const PixelColor: PixelColorInterface = {
   setImage: (imageUri, callback) => {
-    PixelColorModule.setImage(imageUri, callback ?? (() => {}));
+    try {
+      PixelColorModule.setImage(imageUri, callback ?? (() => {}));
+    } catch (error) {
+      throw new Error('Error setting image');
+    }
   },
   getPixelColor: async (x, y) => {
     const result = await PixelColorModule.getPixelColor(
@@ -27,17 +28,9 @@ const PixelColor: ImagePixelInterface = {
     return result ?? '';
   },
   getImageSize: callback => {
-    PixelColorModule.getImageSize(
-      callback ??
-        ((width: number, height: number) => {
-          console.log(`Image size: ${width} x ${height}`);
-        }),
-    );
-  },
-  getConstants: () => {
-    return PixelColorModule.getConstants();
+    PixelColorModule.getImageSize(callback ?? (() => {}));
   },
 };
 
 export default PixelColor;
-export const {setImage, getPixelColor, getConstants} = PixelColor;
+export const {setImage, getPixelColor} = PixelColor;

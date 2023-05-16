@@ -137,7 +137,6 @@ export default function AppProvider({children}: AppProviderProps) {
   useEffect(() => {
     const ev = CloudStore.onICloudKVStoreRemoteChange(async u => {
       if (u?.changedKeys?.includes('collection')) {
-        console.log('collection changed: ', u?.changedKeys);
         await syncReset();
       }
     });

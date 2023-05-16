@@ -41,7 +41,6 @@ const BottomSheet = ({children, translateY}: BottomSheetProps) => {
         //   easing: Easing.in(Easing.ease),
       },
       () => {
-        console.log('done ', active.value);
         if (active.value === false) {
           runOnJS(onClose)();
         }
