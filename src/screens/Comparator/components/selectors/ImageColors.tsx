@@ -4,17 +4,16 @@ import Animated, {
   useAnimatedStyle,
   useAnimatedProps,
 } from 'react-native-reanimated';
-import {ColorValue, Image} from 'react-native';
-import styles from '../eyedropper.styles';
-import Layout from '../../../constants/Layout';
-import {View} from '../../../components/Themed';
-import {useLogic} from '../../../context/LogicContext';
 import {
   Gesture,
   GestureDetector,
   GestureHandlerRootView,
 } from 'react-native-gesture-handler';
 import {Path, Svg} from 'react-native-svg';
+import Layout from '../../../../constants/Layout';
+import {View} from '../../../../components/Themed';
+import {useLogic} from '../../../../context/LogicContext';
+import {ColorValue, Image, StyleSheet} from 'react-native';
 
 const size = 40;
 const MAX_WIDTH = Layout.window.width - 40;
@@ -50,6 +49,8 @@ const ImageColors = () => {
       fill: rgba as ColorValue,
     };
   }, [activeColor]);
+
+  console.log(selectedImg);
 
   const gestureHandler = Gesture.Pan()
     .onUpdate(e => {
@@ -127,3 +128,32 @@ const ImageColors = () => {
 };
 
 export default ImageColors;
+
+const styles = StyleSheet.create({
+  imageContainer: {
+    paddingTop: 0,
+    maxWidth: '100%',
+    maxHeight: '100%',
+    alignItems: 'center',
+    position: 'relative',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+
+  cursor: {
+    width: 10,
+    height: 10,
+    borderRadius: 50,
+    alignSelf: 'center',
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  cursorInner: {
+    width: 4,
+    height: 4,
+    borderRadius: 50,
+    backgroundColor: '#fff',
+  },
+});

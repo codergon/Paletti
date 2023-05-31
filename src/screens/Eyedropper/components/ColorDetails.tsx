@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
   actionbtns: {
     alignItems: 'center',
     flexDirection: 'row',
+    backgroundColor: 'transparent',
   },
   actionbtn: {
     padding: 8,

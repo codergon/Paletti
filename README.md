@@ -15,6 +15,7 @@ Paletti is an intuitive app designed to help you capture and save the colors aro
 
 - Scan your surroundings to create palettes from colors around you.
 - Generate palettes from your saved images.
+- Compare two colors using various components such as charts, navbar, cards, and buttons.
 - Organize colors by creating multiple palettes
 - Sync your palette collection across all your devices using your iCloud account.
 - Capture and save screenshots of your palettes and palette collection.
@@ -45,6 +46,7 @@ This is a bare React Native project, created with [`npx react-native init`](http
   - 📁 `src/screens/Eyedropper`: This is the primary app screen where users can use their device's camera to view colors in their surroundings and save them.
   - 📁 `src/screens/Palettes`: Contains the code for the Palettes screen where users can view their collection of saved palettes and perform actions on them such as renaming, deleting, and exporting.
   - 📁 `src/screens/Settings`: Over here, users can customize their experience with their preferred settings such as theme, sound, and more.
+  - 📁 `src/screens/Comparator`: This is where users can compare two colors using various components such as charts, navbar, cards, and buttons.
 
 ---
 

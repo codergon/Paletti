@@ -11,7 +11,11 @@ import {useStore} from '../../../context/AppContext';
 import {PushPinSimple, Trash} from 'phosphor-react-native';
 import useColorScheme from '../../../hooks/useColorScheme';
 import {useNavigation} from '@react-navigation/native';
-import {RectButton, Swipeable} from 'react-native-gesture-handler';
+import {
+  GestureHandlerRootView,
+  RectButton,
+  Swipeable,
+} from 'react-native-gesture-handler';
 
 interface PaletteProps {
   listIndex: number;
@@ -69,7 +73,7 @@ const Palette = ({
   };
 
   return (
-    <>
+    <GestureHandlerRootView>
       <Swipeable
         id={palette?.id}
         // ref={swipeableRef}
@@ -285,7 +289,7 @@ const Palette = ({
           </TouchableOpacity>
         </ContextMenuView>
       </Swipeable>
-    </>
+    </GestureHandlerRootView>
   );
 };
 

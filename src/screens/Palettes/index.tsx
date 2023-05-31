@@ -16,6 +16,7 @@ import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
 import AppStatusBar from '../../components/common/AppStatusBar';
 import {Swipeable} from 'react-native-gesture-handler';
+import {useLogic} from '../../context/LogicContext';
 
 const PalettesCollection = ({navigation}: RootTabScreenProps<'palettes'>) => {
   const scheme = useColorScheme();
@@ -23,6 +24,7 @@ const PalettesCollection = ({navigation}: RootTabScreenProps<'palettes'>) => {
   const darkColor = isDark ? '#fff' : '#000';
   const successColor = isDark ? '#3cf2af' : '#279F73';
   const paletteBg = isDark ? Colors.dark.background : Colors.light.background;
+  const {onScreenBlur} = useLogic();
   const {setImgUri, savePalette, sharePalette, statusMsg} = useShare();
   const {pinnedPalettes, filteredPalettes, order, toggleOrder} = useStore();
   const viewShotRef = useRef<ViewShot>(null);
@@ -39,6 +41,14 @@ const PalettesCollection = ({navigation}: RootTabScreenProps<'palettes'>) => {
     };
     captureView();
   }, [filteredPalettes]);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      onScreenBlur('palettes');
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
   const saveScreenshot = async () => {
     await savePalette();

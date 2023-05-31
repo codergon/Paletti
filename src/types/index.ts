@@ -22,6 +22,7 @@ export type RootTabParamList = {
   eyedropper: undefined;
   settings: undefined;
   palettes: undefined;
+  comparator: undefined;
 };
 
 export type RootStackParamList = {

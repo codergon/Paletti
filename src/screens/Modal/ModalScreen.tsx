@@ -21,6 +21,7 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {PaletteType} from '../../types/palette';
 import PaletteColorPicker from './components/PaletteColorPicker';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -80,37 +81,39 @@ export default function ModalScreen({route}: ModalScreenProps) {
   }));
 
   return !shouldClose ? (
-    <Container style={[styles.container]}>
-      <AnimatedTouchable
-        activeOpacity={bacdropOpacity}
-        onPress={() => {
-          closeModal();
-        }}
-        style={[
-          styles.backdrop,
-          {
-            opacity: bacdropOpacity,
-          },
-          backdropAnimatedStyle,
-        ]}
-      />
+    <GestureHandlerRootView>
+      <Container style={[styles.container]}>
+        <AnimatedTouchable
+          activeOpacity={bacdropOpacity}
+          onPress={() => {
+            closeModal();
+          }}
+          style={[
+            styles.backdrop,
+            {
+              opacity: bacdropOpacity,
+            },
+            backdropAnimatedStyle,
+          ]}
+        />
 
-      <BottomSheet
-        scrollTo={scrollTo}
-        translateY={translateY}
-        isColorModal={isColorModal}
-        SCREEN_HEIGHT={SCREEN_HEIGHT}
-        MAX_TRANSLATE_Y={MAX_TRANSLATE_Y}>
-        {isColorModal ? (
-          <PaletteColorPicker
-            closeModal={closeModal}
-            paletteId={data?.paletteId}
-          />
-        ) : (
-          <ExportPreview palette={data} closeModal={closeModal} />
-        )}
-      </BottomSheet>
-    </Container>
+        <BottomSheet
+          scrollTo={scrollTo}
+          translateY={translateY}
+          isColorModal={isColorModal}
+          SCREEN_HEIGHT={SCREEN_HEIGHT}
+          MAX_TRANSLATE_Y={MAX_TRANSLATE_Y}>
+          {isColorModal ? (
+            <PaletteColorPicker
+              closeModal={closeModal}
+              paletteId={data?.paletteId}
+            />
+          ) : (
+            <ExportPreview palette={data} closeModal={closeModal} />
+          )}
+        </BottomSheet>
+      </Container>
+    </GestureHandlerRootView>
   ) : (
     <></>
   );

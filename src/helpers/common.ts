@@ -1,5 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+function delay(milliseconds: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
 const getAllAsync = async (storage_Keys: string[]) => {
   const qArray = await AsyncStorage.multiGet(storage_Keys);
 
@@ -25,4 +29,4 @@ const roundMinutes = (hrs = 2) => {
   return date;
 };
 
-export {getAllAsync, capitalize, doubleDigit, roundMinutes};
+export {delay, getAllAsync, capitalize, doubleDigit, roundMinutes};

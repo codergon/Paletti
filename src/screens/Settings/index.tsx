@@ -12,6 +12,9 @@ import {View} from '../../components/Themed';
 import {MdText} from '../../components/StyledText';
 import {Container} from '../../components/Customized';
 import AppStatusBar from '../../components/common/AppStatusBar';
+import {useEffect} from 'react';
+import {useLogic} from '../../context/LogicContext';
+import {RootTabScreenProps} from '../../types';
 
 const settings = [
   {
@@ -52,7 +55,17 @@ const settings = [
   },
 ];
 
-const Settings = () => {
+const Settings = ({navigation}: RootTabScreenProps<'settings'>) => {
+  const {onScreenBlur} = useLogic();
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      onScreenBlur('settings');
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
   return (
     <Container style={[styles.container]}>
       <AppStatusBar />

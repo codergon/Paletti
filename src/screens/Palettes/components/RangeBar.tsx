@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     marginHorizontal: 10,
-    ...padding(6, 0, 16, 6),
+    ...padding(6, 35, 16, 6),
     backgroundColor: 'transparent',
     justifyContent: 'space-between',
   },
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
 
   percentages: {
-    width: 204,
+    width: 236 - 50,
     maxWidth: '70%',
     alignItems: 'center',
     flexDirection: 'row',

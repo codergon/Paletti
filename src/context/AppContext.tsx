@@ -13,6 +13,7 @@ import {hapticFeedback} from '../utils/hapticFeedback';
 
 import * as CloudStore from 'react-native-cloud-store';
 import {useSettings} from './SettingsContext';
+import {delay} from '../helpers/common';
 
 Sound.setCategory('Playback');
 
@@ -37,6 +38,11 @@ type ContextType = {
     action?: string,
     shouldPlaySound?: boolean,
   ) => void;
+  saveColorArray: (
+    colors: string[],
+    name?: string,
+    delayTime?: number,
+  ) => Promise<void>;
   addArrayToPreview: (colors: string[]) => void;
   setCameraAccess: (status: CameraAccessStatus) => void;
 
@@ -75,6 +81,7 @@ export const AppContext = createContext<ContextType>({
   clearPreview: () => {},
   updatePreview: () => {},
   addArrayToPreview: () => {},
+  saveColorArray: () => Promise.resolve(),
 
   savePreview: () => {},
   createPalette: () => {},
@@ -266,6 +273,35 @@ export default function AppProvider({children}: AppProviderProps) {
       };
     });
     setPreviewColors(newColors);
+  };
+
+  const saveColorArray = async (
+    colors: string[],
+    name?: string,
+    delayTime = 2000,
+  ) => {
+    const present = new Date().getTime();
+    const newColors = colors.map(color => {
+      return {
+        color,
+        id: nanoid(),
+        createdAt: present,
+        name: ntc.name(color),
+        displayName: ntc.name(color),
+      };
+    });
+
+    const newPalette: PaletteType = {
+      id: nanoid(),
+      pinned: false,
+      createdAt: present,
+      lastUpdated: present,
+      colors: newColors,
+      name: name || 'New Palette',
+    };
+    await updateCollection(newPalette);
+    hapticFeedback('rigid');
+    await delay(delayTime);
   };
 
   const savePreview = async (name?: string) => {
@@ -561,6 +597,7 @@ export default function AppProvider({children}: AppProviderProps) {
         clearPreview,
         previewColors,
         updatePreview,
+        saveColorArray,
         isEmptyPreview,
         pinnedPalettes,
         filteredPalettes,

@@ -23,7 +23,7 @@ const HexToRgb = (hex: string, alpha?: number) => {
 
     const rgba =
       'rgb(' +
-      [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') +
+      [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(', ') +
       `${alpha ? ',' + alpha : ''})`;
 
     return rgba;
@@ -102,4 +102,78 @@ function LightenDarkenColor(col: string, amt: number) {
   return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-export {HexToRgb, rgbaToHex, validateColor, LightenDarkenColor};
+function subtractHexColors(color1: string, color2: string) {
+  color1 = color1.replace('#', '');
+  color2 = color2.replace('#', '');
+
+  // Convert the hexadecimal colors to decimal values
+  const decColor1 = parseInt(color1, 16);
+  const decColor2 = parseInt(color2, 16);
+
+  // Subtract the second color from the first
+  const diff = Math.abs(decColor1 - decColor2);
+
+  // Convert the difference to hexadecimal
+  const hexDiff = diff.toString(16);
+
+  return '#' + hexDiff;
+}
+
+function hexToRgb(hex: string) {
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+    return r + r + g + g + b + b;
+  });
+
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : {
+        r: 0,
+        g: 0,
+        b: 0,
+      };
+}
+
+function getColorDifferencePercentage(color1: string, color2: string): number {
+  const rgb1 = hexToRgb(color1);
+  const rgb2 = hexToRgb(color2);
+
+  const rDiff = Math.abs(rgb1.r - rgb2.r);
+  const gDiff = Math.abs(rgb1.g - rgb2.g);
+  const bDiff = Math.abs(rgb1.b - rgb2.b);
+
+  const maxDiff = Math.max(rDiff, gDiff, bDiff);
+
+  const percentage = (maxDiff / 255) * 100;
+
+  return +percentage.toFixed(2);
+}
+
+const HexToHsl = (hex: string) => {
+  const hsl = chroma(hex).hsi();
+  const hslValue = hsl.map((value: number) => value.toFixed(1));
+  return `hsl(${hslValue[0]}, ${hslValue[1]}%, ${hslValue[2]}%)`;
+};
+
+const HexToHcl = (hex: string) => {
+  const hcl = chroma(hex).hcl();
+  const hclValue = hcl.map((value: number) => value.toFixed(1));
+  return `hcl(${hclValue[0]}, ${hclValue[1]}, ${hclValue[2]})`;
+};
+
+export {
+  HexToHsl,
+  HexToRgb,
+  HexToHcl,
+  rgbaToHex,
+  validateColor,
+  subtractHexColors,
+  LightenDarkenColor,
+  getColorDifferencePercentage,
+};

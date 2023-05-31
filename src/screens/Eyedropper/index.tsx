@@ -1,26 +1,24 @@
+import {useEffect} from 'react';
 import styles from './eyedropper.styles';
 import {View} from '../../components/Themed';
 import BottomBar from './components/BottomBar';
+import {RootTabScreenProps} from '../../types';
+import CameraView from './components/CameraView';
 import ImageColors from './components/ImageColors';
 import {useLogic} from '../../context/LogicContext';
 import useColorScheme from '../../hooks/useColorScheme';
+import AddColorButton from './components/AddColorButton';
 import AppStatusBar from '../../components/common/AppStatusBar';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import CameraView from './components/CameraView';
-import AddColorButton from './components/AddColorButton';
-import {useNavigation} from '@react-navigation/native';
-import {useEffect} from 'react';
 
-const Eyedropper = () => {
+const Eyedropper = ({navigation}: RootTabScreenProps<'eyedropper'>) => {
   const scheme = useColorScheme();
-  const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-
-  const {isDominant, disableFlash, setMaxHeight, selectedImg} = useLogic();
+  const {isDominant, onScreenBlur, setMaxHeight, selectedImg} = useLogic();
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('blur', () => {
-      disableFlash();
+    const unsubscribe = navigation.addListener('focus', () => {
+      onScreenBlur('eyedropper');
     });
 
     return unsubscribe;

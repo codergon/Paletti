@@ -11,18 +11,18 @@ import {
 import Colors from '../constants/Colors';
 import {ColorSchemeName} from 'react-native';
 import useColorScheme from '../hooks/useColorScheme';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
 import {Swatches, SlidersHorizontal} from 'phosphor-react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Icons from '../components/Icons';
 import Palettes from '../screens/Palettes';
 import Settings from '../screens/Settings';
 import Eyedropper from '../screens/Eyedropper';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import Comparator from '../screens/Comparator';
 import ModalScreen from '../screens/Modal/ModalScreen';
 import PaletteColors from '../screens/Palettes/PaletteColors';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // NAVIGATION CONTAINER
 export default function Navigation({
@@ -110,6 +110,16 @@ function BottomTabNavigator() {
         options={({navigation}: RootTabScreenProps<'palettes'>) => ({
           tabBarIcon: ({color, focused}) => (
             <Swatches size={27} weight="regular" color={color} />
+          ),
+        })}
+      />
+
+      <BottomTab.Screen
+        name="comparator"
+        component={Comparator}
+        options={({navigation}: RootTabScreenProps<'comparator'>) => ({
+          tabBarIcon: ({color, focused}) => (
+            <Icons.Exclude size={25} color={color} strokeWidth={1.2} />
           ),
         })}
       />

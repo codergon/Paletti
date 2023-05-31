@@ -44,13 +44,13 @@ type ContextType = {
   animatedImageColor: Readonly<SharedValue<string | number>>;
 
   frameProcessor: any;
-  disableFlash: () => void;
-  selectImage: () => void;
   removeImage: () => void;
   toggleFlash: () => void;
   addToPreview: () => void;
   torch: CameraProps['torch'];
   toggleAutoExtract: () => void;
+  selectImage: (imgH?: number) => Promise<string>;
+  onScreenBlur: (route: string) => void;
   getColorAt: (x: number, y: number) => void;
   setMaxHeight: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -78,11 +78,11 @@ export const LogicContext = createContext<ContextType>({
 
   getColorAt: () => {},
   toggleFlash: () => {},
-  selectImage: () => {},
   removeImage: () => {},
   setMaxHeight: () => {},
   addToPreview: () => {},
-  disableFlash: () => {},
+  onScreenBlur: () => {},
+  selectImage: async () => '',
   toggleAutoExtract: () => {},
 });
 
@@ -145,20 +145,20 @@ export default function LogicProvider({children}: LogicProviderProps) {
   };
 
   const getDimensions = useCallback(
-    (imgWidth = actualWidth, imgHeight = actualHeight) => {
+    (imgWidth = actualWidth, imgHeight = actualHeight, maxH = maxHeight) => {
       // Calculate Image Size
       const ratio = imgHeight / imgWidth;
-      const minRatio = maxHeight / MAX_WIDTH;
+      const minRatio = maxH / MAX_WIDTH;
 
       const calculatedWidth =
         ratio > 1
           ? imgWidth > MAX_WIDTH
             ? ratio < minRatio
               ? MAX_WIDTH
-              : maxHeight / ratio
-            : imgHeight < maxHeight
+              : maxH / ratio
+            : imgHeight < maxH
             ? imgWidth
-            : maxHeight / ratio
+            : maxH / ratio
           : imgWidth < MAX_WIDTH
           ? imgWidth
           : MAX_WIDTH;
@@ -168,10 +168,10 @@ export default function LogicProvider({children}: LogicProviderProps) {
           ? imgWidth > MAX_WIDTH
             ? ratio < minRatio
               ? MAX_WIDTH * ratio
-              : maxHeight
-            : imgHeight < maxHeight
+              : maxH
+            : imgHeight < maxH
             ? imgHeight
-            : maxHeight
+            : maxH
           : imgWidth < MAX_WIDTH
           ? imgHeight
           : MAX_WIDTH * ratio;
@@ -187,8 +187,10 @@ export default function LogicProvider({children}: LogicProviderProps) {
     [maxHeight],
   );
 
-  const selectImage = async () => {
-    launchImageLibrary(
+  const selectImage = async (imgH?: number) => {
+    let status = 'failed';
+
+    await launchImageLibrary(
       {
         quality: 1,
         selectionLimit: 1,
@@ -200,21 +202,17 @@ export default function LogicProvider({children}: LogicProviderProps) {
       async response => {
         const {assets} = response;
         if (assets) {
-          let sourceUri = assets[0]?.uri || '';
+          status = 'success';
 
-          await ImageResizer.createResizedImage(
+          let sourceUri = assets[0]?.uri || '';
+          const resizedImageUri = await ImageResizer.createResizedImage(
             sourceUri,
             assets[0].width || 0,
             assets[0].height || 0,
             'JPEG',
             100,
-          )
-            .then(resizedImageUri => {
-              sourceUri = resizedImageUri.uri;
-            })
-            .catch(err => {
-              //
-            });
+          );
+          sourceUri = resizedImageUri.uri;
 
           const imgWidth = assets[0].width || 0;
           const imgHeight = assets[0].height || 0;
@@ -223,14 +221,18 @@ export default function LogicProvider({children}: LogicProviderProps) {
           setActualHeight(imgHeight);
 
           // Calculate Image Size
-          getDimensions(imgWidth, imgHeight);
+          getDimensions(imgWidth, imgHeight, imgH || undefined);
 
           PixelColor.setImage(sourceUri);
           setImgUri(sourceUri);
           getDominantColors(sourceUri);
+        } else {
+          status = 'failed';
         }
       },
     );
+
+    return status;
   };
 
   useEffect(() => {
@@ -309,7 +311,16 @@ export default function LogicProvider({children}: LogicProviderProps) {
     if (isPageActive.value && !imgUri)
       setTorch(prev => (prev === 'off' ? 'on' : 'off'));
   };
-  const disableFlash = () => setTorch('off');
+
+  const cameraRoutes = ['eyedropper', 'comparator'];
+  const onScreenBlur = (route: string) => {
+    setTorch('off');
+    if (cameraRoutes.includes(route)) {
+      isPageActive.value = true;
+    } else {
+      isPageActive.value = false;
+    }
+  };
 
   return (
     <LogicContext.Provider
@@ -319,7 +330,7 @@ export default function LogicProvider({children}: LogicProviderProps) {
         removeImage,
         toggleFlash,
         setMaxHeight,
-        disableFlash,
+        onScreenBlur,
         addToPreview,
         frameProcessor,
         toggleAutoExtract,
