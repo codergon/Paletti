@@ -18,6 +18,7 @@ const ColorsPreview = ({
   comparedColors = [],
 }: ColorsPreviewProps) => {
   const isDark = useColorScheme() === 'dark';
+  const iconColor = isDark ? '#888' : '#555';
   const previewBorder = isDark ? '#888' : '#bbb';
   const emptyStateColor = isDark ? '#999' : '#777';
 
@@ -63,7 +64,7 @@ const ColorsPreview = ({
             borderColor: previewBorder,
           },
         ]}>
-        <Plus size={20} color={previewBorder} weight="bold" />
+        <Plus size={20} color={iconColor} weight="bold" />
       </TouchableOpacity>
     </View>
   );

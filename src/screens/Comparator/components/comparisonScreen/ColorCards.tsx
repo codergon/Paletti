@@ -14,7 +14,9 @@ interface ColorCardsProps {
 const ColorCards = ({colors}: ColorCardsProps) => {
   const [swap, setSwap] = useState(false);
   const isDark = useColorScheme() === 'dark';
-  const btnBg = isDark ? '#363636' : '#e8e8e8';
+  const iconColor = isDark ? '#fff' : '#000';
+  const borderColor = isDark ? '#555' : '#ccc';
+  const btnBg = isDark ? '#383838' : '#e8e8e8';
 
   return (
     <View style={[styles.container]}>
@@ -24,11 +26,13 @@ const ColorCards = ({colors}: ColorCardsProps) => {
             style={[
               styles.actionBtn,
               {
+                borderColor,
+                borderWidth: 1,
                 backgroundColor: btnBg,
               },
             ]}
             onPress={() => setSwap(p => !p)}>
-            <Replace size={20} color="#fff" />
+            <Replace size={20} color={iconColor} />
           </TouchableOpacity>
         </View>
       </View>
@@ -38,6 +42,7 @@ const ColorCards = ({colors}: ColorCardsProps) => {
           style={[
             styles.card1,
             {
+              borderColor,
               backgroundColor: colors[swap ? 1 : 0]?.color ?? '#000',
             },
           ]}>
@@ -110,6 +115,7 @@ const styles = StyleSheet.create({
     height: 200,
     padding: 40,
     width: '100%',
+    borderWidth: 1,
     borderRadius: 20,
     maxHeight: '100%',
   },

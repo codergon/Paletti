@@ -15,7 +15,9 @@ interface ChartsProps {
 const Charts = ({colors}: ChartsProps) => {
   const [type, setType] = useState('line');
   const isDark = useColorScheme() === 'dark';
-  const btnBg = isDark ? '#363636' : '#e8e8e8';
+  const iconColor = isDark ? '#fff' : '#000';
+  const btnBorder = isDark ? '#555' : '#ccc';
+  const btnBg = isDark ? '#383838' : '#e8e8e8';
 
   return (
     <View style={[styles.container]}>
@@ -25,6 +27,8 @@ const Charts = ({colors}: ChartsProps) => {
             style={[
               styles.actionBtn,
               {
+                borderWidth: 1,
+                borderColor: btnBorder,
                 backgroundColor: btnBg,
               },
             ]}
@@ -37,7 +41,7 @@ const Charts = ({colors}: ChartsProps) => {
                   : 'line',
               )
             }>
-            <Replace size={20} color="#fff" />
+            <Replace size={20} color={iconColor} />
           </TouchableOpacity>
         </View>
       </View>
@@ -87,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   actionBtn: {
-    padding: 10,
+    padding: 9,
     borderRadius: 6,
   },
 });

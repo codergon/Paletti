@@ -11,6 +11,7 @@ import {StyleSheet} from 'react-native';
 import {MdText} from '../../../../components/StyledText';
 import {ContextMenuButton} from 'react-native-ios-context-menu';
 import {TouchableOpacity, View} from '../../../../components/Themed';
+import useColorScheme from '../../../../hooks/useColorScheme';
 
 interface MethodSwitchProps {
   comparisonMethod: string;
@@ -21,6 +22,9 @@ const MethodSwitch = ({
   comparisonMethod,
   setComparisonMethod,
 }: MethodSwitchProps) => {
+  const isDark = useColorScheme() === 'dark';
+  const iconColor = isDark ? '#fff' : '#000';
+
   return (
     <ContextMenuButton
       isMenuPrimaryAction
@@ -120,7 +124,7 @@ const MethodSwitch = ({
           <Gradient
             size={17.5}
             weight="bold"
-            color="#fff"
+            color={iconColor}
             style={{
               marginRight: 6,
             }}
@@ -129,20 +133,20 @@ const MethodSwitch = ({
           <CircleHalf
             size={16.5}
             weight="bold"
-            color="#fff"
+            color={iconColor}
             style={{
               marginRight: 6,
             }}
           />
         ) : comparisonMethod === 'details' ? (
           <View style={[styles.iconCover]}>
-            <TextAa size={13} weight="bold" color="#fff" style={{}} />
+            <TextAa size={13} weight="bold" color={iconColor} style={{}} />
           </View>
         ) : comparisonMethod === 'cards' ? (
           <Cards
             size={16.5}
             weight="bold"
-            color="#fff"
+            color={iconColor}
             style={{
               marginRight: 6,
             }}
@@ -151,7 +155,7 @@ const MethodSwitch = ({
           <ChartLineUp
             size={16.5}
             weight="bold"
-            color="#fff"
+            color={iconColor}
             style={{
               marginRight: 6,
             }}
@@ -160,7 +164,7 @@ const MethodSwitch = ({
           <Path
             size={16.5}
             weight="bold"
-            color="#fff"
+            color={iconColor}
             style={{
               marginRight: 6,
             }}
@@ -179,7 +183,7 @@ const MethodSwitch = ({
           style={{
             marginLeft: 10,
           }}>
-          <CaretDown size={15} color="#fff" weight="bold" />
+          <CaretDown size={15} color={iconColor} weight="bold" />
         </View>
       </TouchableOpacity>
     </ContextMenuButton>

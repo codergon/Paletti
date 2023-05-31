@@ -25,6 +25,7 @@ const ColorsPicker = ({color}: ColorsPickerProps) => {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === 'dark';
   const darkColor = isDark ? '#fff' : '#000';
+  const hexColor = isDark ? '#aeaeae' : '#888';
   const colorName = useSharedValue('Chenin');
   const animatedColor = useAnimatedColor(color, 200);
 
@@ -89,7 +90,7 @@ const ColorsPicker = ({color}: ColorsPickerProps) => {
               style={[
                 styles.colorhex,
                 {
-                  color: '#aeaeae',
+                  color: hexColor,
                   letterSpacing: 0.3,
                   fontFamily: 'NeueMontreal-Medium',
                 },
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
     width: 46,
     height: 46,
     marginRight: 14,
-    borderWidth: 0.3,
+    borderWidth: 0.5,
     borderRadius: 140,
     alignItems: 'center',
     borderColor: '#aeaeae',

@@ -31,7 +31,8 @@ const ComparisonScreen = ({
   const {saveColorArray} = useStore();
   const isDark = useColorScheme() === 'dark';
   const [saving, setSaving] = useState(false);
-  const displayBg = isDark ? '#222' : '#e8e8e8';
+  const displayBg = isDark ? '#222' : '#f8f8f8';
+  const displayBorder = isDark ? '#222' : '#ccc';
 
   // Save colors to palette
   const saveColors = async () => {
@@ -85,6 +86,8 @@ const ComparisonScreen = ({
           style={[
             styles.comparisonDisplay,
             {
+              borderWidth: 1,
+              borderColor: displayBorder,
               backgroundColor: displayBg,
             },
           ]}>
@@ -152,7 +155,6 @@ const styles = StyleSheet.create({
 
   comparisonDisplay: {
     flex: 1,
-    marginTop: 6,
     width: '100%',
     borderRadius: 10,
     overflow: 'hidden',

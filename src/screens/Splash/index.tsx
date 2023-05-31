@@ -83,7 +83,7 @@ const Splash = () => {
 
   return (
     <View
-      lightColor="#f00"
+      lightColor="#000"
       style={[
         styles.container,
         {

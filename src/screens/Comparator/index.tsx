@@ -37,7 +37,9 @@ const timelineIcons = [
 const Comparator = ({navigation}: RootTabScreenProps<'comparator'>) => {
   const isFocused = useIsFocused();
   const isDark = useColorScheme() === 'dark';
-  const actionCenterColor = isDark ? '#222' : '#eee';
+  const headerSubText = isDark ? '#8F8E93' : '#666';
+  const actionCenterBorder = isDark ? '#222' : '#ccc';
+  const actionCenterColor = isDark ? '#222' : '#f8f8f8';
 
   const color = useSharedValue('#e0ce7e');
   const [option, setOption] = useState('picker');
@@ -154,7 +156,13 @@ const Comparator = ({navigation}: RootTabScreenProps<'comparator'>) => {
           <MdText style={[styles.headerTitleText]}>Comparator</MdText>
         </View>
         <View style={[styles.headerSubtitle]}>
-          <RgText style={[styles.headerSubtitleText]}>
+          <RgText
+            style={[
+              styles.headerSubtitleText,
+              {
+                color: headerSubText,
+              },
+            ]}>
             Easily compare and measure the difference between two colors, and
             optionally save them to a palette.
           </RgText>
@@ -179,7 +187,8 @@ const Comparator = ({navigation}: RootTabScreenProps<'comparator'>) => {
               style={[
                 styles.actionCenter,
                 {
-                  // marginTop: 40,
+                  borderWidth: 1,
+                  borderColor: actionCenterBorder,
                   backgroundColor: actionCenterColor,
                 },
               ]}

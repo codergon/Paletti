@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {padding} from '../../helpers/styles';
-import Layout, {ELEM_HEIGHT} from '../../constants/Layout';
-import {SECONDARY_COLOR} from '../../constants/Colors';
+import {ELEM_HEIGHT} from '../../constants/Layout';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +32,6 @@ const styles = StyleSheet.create({
   },
   headerSubtitleText: {
     fontSize: 15,
-    color: '#8F8E93',
     letterSpacing: 0.2,
     lineHeight: 15 * 1.3,
   },
