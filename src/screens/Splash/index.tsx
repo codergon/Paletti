@@ -7,15 +7,14 @@ import {
 } from 'react-native';
 import styles from './splash.styles';
 import {useRef, useState} from 'react';
-import Br from '../../components/common/Br';
-import {View} from '../../components/Themed';
+import Br from '@components/common/Br';
+import {View} from '@components/Themed';
 import {ArrowRight} from 'phosphor-react-native';
-import FeaturesCard from './components/FeaturesCard';
-import {MdText, RgText} from '../../components/StyledText';
-import data, {carouselSpec} from '../../constants/data/onboarding';
-
 import {useStore} from '../../context/AppContext';
+import FeaturesCard from './components/FeaturesCard';
+import {MdText, RgText} from '@components/StyledText';
 import {requestCameraAccess} from '../../context/utils';
+import data, {carouselSpec} from '@constants/data/onboarding';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const {FULL_SIZE} = carouselSpec;

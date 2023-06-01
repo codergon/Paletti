@@ -1,11 +1,11 @@
-import {StyleSheet} from 'react-native';
-import {View} from '../../../components/Themed';
-import {RootStackScreenProps} from '../../../types';
-import AppStatusBar from '../../../components/common/AppStatusBar';
 import ColorItems from './ColorItems';
-import {useStore} from '../../../context/AppContext';
+import {StyleSheet} from 'react-native';
+import {View} from '@components/Themed';
+import {PaletteType} from '@typings/palette';
+import {useStore} from '@context/AppContext';
 import {useEffect, useMemo, useState} from 'react';
-import {PaletteType} from '../../../types/palette';
+import {RootStackScreenProps} from '@typings/index';
+import AppStatusBar from '@components/common/AppStatusBar';
 
 const PaletteColors = ({
   route,

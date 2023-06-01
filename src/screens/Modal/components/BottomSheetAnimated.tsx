@@ -6,12 +6,12 @@ import Animated, {
   useAnimatedGestureHandler,
 } from 'react-native-reanimated';
 import {StyleSheet} from 'react-native';
-import {edges} from '../../../helpers/styles';
-import Layout from '../../../constants/Layout';
+import {edges} from '@helpers/styles';
+import Layout from '@constants/Layout';
+import useColorScheme from '@hooks/useColorScheme';
 import {clamp, snapPoint} from 'react-native-redash';
 import {useNavigation} from '@react-navigation/native';
 import {ReactNode, useCallback, useEffect} from 'react';
-import useColorScheme from '../../../hooks/useColorScheme';
 import {PanGestureHandler} from 'react-native-gesture-handler';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 

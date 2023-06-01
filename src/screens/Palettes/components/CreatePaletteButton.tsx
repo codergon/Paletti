@@ -1,9 +1,8 @@
-import React from 'react';
-import {Plus} from 'phosphor-react-native';
-import {useStore} from '../../../context/AppContext';
 import {StyleSheet} from 'react-native';
-import {TouchableOpacity} from '../../../components/Themed';
-import useColorScheme from '../../../hooks/useColorScheme';
+import {Plus} from 'phosphor-react-native';
+import {useStore} from '@context/AppContext';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity} from '@components/Themed';
 
 const CreatePaletteButton = () => {
   const scheme = useColorScheme();

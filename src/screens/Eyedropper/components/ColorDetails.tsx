@@ -10,12 +10,12 @@ import {
   LightningSlash,
   HandPointing,
 } from 'phosphor-react-native';
-import {View} from '../../../components/Themed';
-import {padding} from '../../../helpers/styles';
-import {MdText} from '../../../components/StyledText';
-import {useLogic} from '../../../context/LogicContext';
+import {View} from '@components/Themed';
+import {padding} from '@helpers/styles';
+import {MdText} from '@components/StyledText';
+import {useLogic} from '@context/LogicContext';
+import useColorScheme from '@hooks/useColorScheme';
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import useColorScheme from '../../../hooks/useColorScheme';
 import AnimateableText from 'react-native-animateable-text';
 
 const ColorDetails = () => {

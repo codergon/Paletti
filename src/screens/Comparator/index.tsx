@@ -4,22 +4,24 @@ import {
   ArchiveTray,
   EyedropperSample,
 } from 'phosphor-react-native';
+import ntc from '@lib/ntc';
 import {nanoid} from 'nanoid';
-import ntc from '../../lib/ntc';
-import {Hue} from '../../types/palette';
+import chroma from 'chroma-js';
+import {Hue} from '@typings/palette';
+import {View} from '@components/Themed';
 import styles from './comparator.styles';
 import {useEffect, useState} from 'react';
-import {View} from '../../components/Themed';
-import {RootTabScreenProps} from '../../types';
-import {useLogic} from '../../context/LogicContext';
+import {useLogic} from '@context/LogicContext';
+import {Container} from '@components/Customized';
+import {RootTabScreenProps} from '@typings/index';
+import useColorScheme from '@hooks/useColorScheme';
+import {hapticFeedback} from '@utils/hapticFeedback';
+import {MdText, RgText} from '@components/StyledText';
 import Timeline from './components/timeline/Timeline';
 import {useIsFocused} from '@react-navigation/native';
-import {Container} from '../../components/Customized';
 import ColorsPreview from './components/ColorsPreview';
 import {useSharedValue} from 'react-native-reanimated';
-import useColorScheme from '../../hooks/useColorScheme';
-import {hapticFeedback} from '../../utils/hapticFeedback';
-import {MdText, RgText} from '../../components/StyledText';
+import ColorInput from './components/selectors/ColorInput';
 import ComparisonScreen from './components/comparisonScreen';
 import ImageColors from './components/selectors/ImageColors';
 import ColorsPicker from './components/selectors/ColorsPicker';
@@ -42,6 +44,7 @@ const Comparator = ({navigation}: RootTabScreenProps<'comparator'>) => {
   const actionCenterColor = isDark ? '#222' : '#f8f8f8';
 
   const color = useSharedValue('#e0ce7e');
+  const [hexInput, setHexInput] = useState('');
   const [option, setOption] = useState('picker');
   const [activeStep, setActiveStep] = useState(0);
   const [colors, setColors] = useState<Hue[]>([]);
@@ -96,16 +99,29 @@ const Comparator = ({navigation}: RootTabScreenProps<'comparator'>) => {
 
   // Add current color to the list
   const addCurrentColor = () => {
+    if (option === 'input' && !chroma.valid(hexInput)) {
+      return;
+    }
+
     const present = Date.now();
     const name = ntc.name(
-      option === 'picker' ? color.value : activeColor.value,
+      option === 'input'
+        ? hexInput
+        : option === 'picker'
+        ? color.value
+        : activeColor.value,
     );
     const newColor = {
       name,
       id: nanoid(),
       displayName: name,
       createdAt: present,
-      color: option === 'picker' ? color.value : activeColor.value,
+      color:
+        option === 'input'
+          ? hexInput
+          : option === 'picker'
+          ? color.value
+          : activeColor.value,
     };
 
     setColors(prevColors => {
@@ -200,8 +216,10 @@ const Comparator = ({navigation}: RootTabScreenProps<'comparator'>) => {
                 <ColorsPicker color={color} />
               ) : option === 'camera' ? (
                 isFocused && <CameraScanner />
-              ) : (
+              ) : option === 'image' ? (
                 <ImageColors />
+              ) : (
+                <ColorInput hexInput={hexInput} setHexInput={setHexInput} />
               )}
             </View>
 

@@ -1,14 +1,14 @@
-import {Hue} from '../../../types/palette';
-import Animated from 'react-native-reanimated';
-import {MdText} from '../../../components/StyledText';
+import {Hue} from '@typings/palette';
+import Colors from '@constants/Colors';
+import {HexToRgb} from '@helpers/colors';
 import {StyleSheet, View} from 'react-native';
-import {Copy, CopySimple} from 'phosphor-react-native';
-import {ContextMenuButton} from 'react-native-ios-context-menu';
-import Colors from '../../../constants/Colors';
-import useColorScheme from '../../../hooks/useColorScheme';
+import Animated from 'react-native-reanimated';
+import {MdText} from '@components/StyledText';
+import {CopySimple} from 'phosphor-react-native';
+import useColorScheme from '@hooks/useColorScheme';
+import {hapticFeedback} from '@utils/hapticFeedback';
 import Clipboard from '@react-native-clipboard/clipboard';
-import {HexToRgb} from '../../../helpers/colors';
-import {hapticFeedback} from '../../../utils/hapticFeedback';
+import {ContextMenuButton} from 'react-native-ios-context-menu';
 
 type ColorShadeProps = {
   item: Hue;

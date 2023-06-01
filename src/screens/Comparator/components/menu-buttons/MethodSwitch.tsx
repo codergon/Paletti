@@ -8,10 +8,10 @@ import {
   ChartLineUp,
 } from 'phosphor-react-native';
 import {StyleSheet} from 'react-native';
-import {MdText} from '../../../../components/StyledText';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity, View} from '@components/Themed';
 import {ContextMenuButton} from 'react-native-ios-context-menu';
-import {TouchableOpacity, View} from '../../../../components/Themed';
-import useColorScheme from '../../../../hooks/useColorScheme';
 
 interface MethodSwitchProps {
   comparisonMethod: string;

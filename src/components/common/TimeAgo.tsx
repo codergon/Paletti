@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactTimeAgo from 'react-time-ago';
-import {MdText} from '../StyledText';
-import {Style} from 'javascript-time-ago';
 import {Text} from 'react-native';
+import {MdText} from '../StyledText';
+import ReactTimeAgo from 'react-time-ago';
+import {Style} from 'javascript-time-ago';
 
 interface TimeProps {
   date: Date;

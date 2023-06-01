@@ -1,11 +1,11 @@
-import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {
-  CompositeScreenProps,
   NavigationProp,
+  CompositeScreenProps,
   NavigatorScreenParams,
 } from '@react-navigation/native';
 import {PaletteType} from './palette';
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {edges, padding} from '../../helpers/styles';
+import {padding} from '@helpers/styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     width: '100%',
-    // ...edges(6, 0),
     overflow: 'hidden',
     ...padding(20, 20, 46),
     flexDirection: 'column',

@@ -6,10 +6,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import {useEffect} from 'react';
 import {StyleSheet} from 'react-native';
+import {View} from '@components/Themed';
 import Svg, {Path} from 'react-native-svg';
-import {View} from '../../../../components/Themed';
+import useColorScheme from '@hooks/useColorScheme';
 import {interpolatePath, parse} from 'react-native-redash';
-import useColorScheme from '../../../../hooks/useColorScheme';
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 

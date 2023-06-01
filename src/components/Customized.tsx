@@ -1,9 +1,9 @@
 import {
+  View,
+  ViewProps,
   ScrollView,
   ThemeProps,
   SafeAreaView as DefaultSafeArea,
-  View,
-  ViewProps,
 } from './Themed';
 import {
   SafeAreaViewProps,

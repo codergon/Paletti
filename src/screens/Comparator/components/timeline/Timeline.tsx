@@ -4,10 +4,10 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import StepIndicator from './StepIndicator';
 import {View, StyleSheet} from 'react-native';
-import useColorScheme from '../../../../hooks/useColorScheme';
+import useColorScheme from '@hooks/useColorScheme';
 
 interface TimelineProps {
   icons?: any[];

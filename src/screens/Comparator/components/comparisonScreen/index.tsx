@@ -1,11 +1,11 @@
 import {useState} from 'react';
+import {Hue} from '@typings/palette';
+import Layout from '@constants/Layout';
 import {StyleSheet} from 'react-native';
-import {Hue} from '../../../../types/palette';
-import Layout from '../../../../constants/Layout';
-import {View} from '../../../../components/Themed';
-import {useStore} from '../../../../context/AppContext';
-import {MdText} from '../../../../components/StyledText';
-import useColorScheme from '../../../../hooks/useColorScheme';
+import {View} from '@components/Themed';
+import {useStore} from '@context/AppContext';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
 
 import Charts from '../charts';
 import Gradient from './Gradient';
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   comparisonDisplay: {
     flex: 1,
     width: '100%',
-    borderRadius: 10,
+    borderRadius: 16,
     overflow: 'hidden',
     paddingVertical: 16,
     alignItems: 'center',

@@ -1,16 +1,14 @@
-import React, {cloneElement, useEffect, useState} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {MdText} from '../../../../components/StyledText';
-import useColorScheme from '../../../../hooks/useColorScheme';
 import Animated, {
-  interpolateColor,
   runOnJS,
-  useAnimatedStyle,
-  useSharedValue,
   withDelay,
   withTiming,
+  useSharedValue,
+  useAnimatedStyle,
+  interpolateColor,
 } from 'react-native-reanimated';
-import {useAnimatedColor} from '../../../../utils/useAnimatedColor';
+import {StyleSheet} from 'react-native';
+import useColorScheme from '@hooks/useColorScheme';
+import React, {cloneElement, useEffect, useState} from 'react';
 
 interface StepIndicatorProps {
   step: number;

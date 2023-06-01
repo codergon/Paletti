@@ -7,9 +7,9 @@ import {
 } from 'react-native-popup-menu';
 import styles from './styles';
 import {useState} from 'react';
-import {useColorScheme} from 'react-native';
-import {MdText} from '../components/StyledText';
-import {ScrollView} from '../components/Themed';
+import {MdText} from '@components/StyledText';
+import {ScrollView} from '@components/Themed';
+import useColorScheme from './useColorScheme';
 import {AppMenuType, useMenuType} from '../types/common';
 
 const {ContextMenu} = renderers;

@@ -9,10 +9,10 @@ import {
   GestureDetector,
   GestureHandlerRootView,
 } from 'react-native-gesture-handler';
+import Layout from '@constants/Layout';
+import {View} from '@components/Themed';
 import {Path, Svg} from 'react-native-svg';
-import Layout from '../../../../constants/Layout';
-import {View} from '../../../../components/Themed';
-import {useLogic} from '../../../../context/LogicContext';
+import {useLogic} from '@context/LogicContext';
 import {ColorValue, Image, StyleSheet} from 'react-native';
 
 const size = 40;
@@ -49,8 +49,6 @@ const ImageColors = () => {
       fill: rgba as ColorValue,
     };
   }, [activeColor]);
-
-  console.log(selectedImg);
 
   const gestureHandler = Gesture.Pan()
     .onUpdate(e => {

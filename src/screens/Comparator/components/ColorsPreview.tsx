@@ -1,10 +1,10 @@
-import {Plus} from 'phosphor-react-native';
-import {MdText} from '../../../components/StyledText';
-import {TouchableOpacity, View} from '../../../components/Themed';
-import useColorScheme from '../../../hooks/useColorScheme';
+import {Hue} from '@typings/palette';
 import styles from '../comparator.styles';
+import {Plus} from 'phosphor-react-native';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
 import PreviewColor from './menu-buttons/PreviewColor';
-import {Hue} from '../../../types/palette';
+import {TouchableOpacity, View} from '@components/Themed';
 
 interface ColorsPreviewProps {
   comparedColors?: Hue[];

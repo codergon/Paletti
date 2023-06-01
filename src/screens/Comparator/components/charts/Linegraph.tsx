@@ -1,7 +1,6 @@
-import React from 'react';
+import Layout from '@constants/Layout';
 import {StyleSheet, View} from 'react-native';
-import {LineChart, LineChartBicolor} from 'react-native-gifted-charts';
-import Layout from '../../../../constants/Layout';
+import {LineChart} from 'react-native-gifted-charts';
 
 interface LinegraphProps {
   color1: string;
@@ -39,7 +38,6 @@ const Linegraph = ({color1, color2}: LinegraphProps) => {
         marginLeft: -16,
         overflow: 'hidden',
         alignItems: 'center',
-        justifyContent: 'center',
       }}>
       <LineChart
         curved

@@ -4,11 +4,11 @@ import {
   FrameProcessorPerformanceSuggestion,
 } from 'react-native-vision-camera';
 import {StyleSheet} from 'react-native';
+import Layout from '@constants/Layout';
 import {Scan} from 'phosphor-react-native';
-import Layout from '../../../constants/Layout';
+import {useLogic} from '@context/LogicContext';
 import Reanimated from 'react-native-reanimated';
 import {useCallback, useRef, useState} from 'react';
-import {useLogic} from '../../../context/LogicContext';
 
 const ReanimatedCamera = Reanimated.createAnimatedComponent(Camera);
 Reanimated.addWhitelistedNativeProps({

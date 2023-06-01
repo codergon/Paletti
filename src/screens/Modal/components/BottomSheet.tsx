@@ -2,12 +2,12 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import {edges} from '@helpers/styles';
+import Layout from '@constants/Layout';
 import {StyleSheet} from 'react-native';
 import {ReactNode, useEffect} from 'react';
-import {edges} from '../../../helpers/styles';
-import Layout from '../../../constants/Layout';
 import {snapPoint} from 'react-native-redash';
-import useColorScheme from '../../../hooks/useColorScheme';
+import useColorScheme from '@hooks/useColorScheme';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 
 type BottomSheetProps = {

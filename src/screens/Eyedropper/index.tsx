@@ -1,14 +1,14 @@
 import {useEffect} from 'react';
 import styles from './eyedropper.styles';
-import {View} from '../../components/Themed';
+import {View} from '@components/Themed';
 import BottomBar from './components/BottomBar';
-import {RootTabScreenProps} from '../../types';
+import {useLogic} from '@context/LogicContext';
 import CameraView from './components/CameraView';
+import {RootTabScreenProps} from '@typings/index';
 import ImageColors from './components/ImageColors';
-import {useLogic} from '../../context/LogicContext';
-import useColorScheme from '../../hooks/useColorScheme';
+import useColorScheme from '@hooks/useColorScheme';
 import AddColorButton from './components/AddColorButton';
-import AppStatusBar from '../../components/common/AppStatusBar';
+import AppStatusBar from '@components/common/AppStatusBar';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const Eyedropper = ({navigation}: RootTabScreenProps<'eyedropper'>) => {

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {padding} from '../../helpers/styles';
-import {ELEM_HEIGHT} from '../../constants/Layout';
+import {padding} from '@helpers/styles';
+import {ELEM_HEIGHT} from '@constants/Layout';
 
 const styles = StyleSheet.create({
   container: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   actionCenter: {
     flex: 1,
     marginTop: 0,
-    borderRadius: 10,
+    borderRadius: 16,
     marginBottom: 14,
     overflow: 'hidden',
     marginHorizontal: 20,

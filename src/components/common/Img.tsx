@@ -1,7 +1,7 @@
 import {View} from '../Themed';
 import FastImage from 'react-native-fast-image';
+import useColorScheme from '@hooks/useColorScheme';
 import {Image, ImageSourcePropType} from 'react-native';
-import useColorScheme from '../../hooks/useColorScheme';
 import {ViewProps} from 'react-native-svg/lib/typescript/fabric/utils';
 
 type Props = {

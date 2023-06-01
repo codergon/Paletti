@@ -1,14 +1,14 @@
 import chroma from 'chroma-js';
 import RangeBar from './RangeBar';
 import ColorShade from './ColorShade';
+import {View} from '@components/Themed';
+import {PaletteType} from '@typings/palette';
 import ViewShot from 'react-native-view-shot';
-import {View} from '../../../components/Themed';
+import {MdText} from '@components/StyledText';
+import {edges, padding} from '@helpers/styles';
+import useColorScheme from '@hooks/useColorScheme';
 import {ScrollView, StyleSheet} from 'react-native';
-import {MdText} from '../../../components/StyledText';
-import {edges, padding} from '../../../helpers/styles';
-import useColorScheme from '../../../hooks/useColorScheme';
 import {useCallback, useEffect, useMemo, useRef} from 'react';
-import {PaletteType} from '../../../types/palette';
 
 type ExportContentType = {
   palette: PaletteType;

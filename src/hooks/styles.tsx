@@ -1,6 +1,5 @@
-import {SECONDARY_COLOR} from '../constants/Colors';
-import {padding} from '../helpers/styles';
 import {StyleSheet} from 'react-native';
+import {padding} from '../helpers/styles';
 
 export default StyleSheet.create({
   menuContainer: {

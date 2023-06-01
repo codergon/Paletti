@@ -1,12 +1,12 @@
 import {View} from 'react-native';
 import styles from '../settings.styles';
+import {capitalize} from '@helpers/common';
+import {MdText} from '@components/StyledText';
 import {CaretRight} from 'phosphor-react-native';
-import {capitalize} from '../../../helpers/common';
-import {MdText} from '../../../components/StyledText';
-import useColorScheme from '../../../hooks/useColorScheme';
-import {TouchableOpacity} from '../../../components/Themed';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity} from '@components/Themed';
 import {ContextMenuButton} from 'react-native-ios-context-menu';
-import {Settings, useSettings} from '../../../context/SettingsContext';
+import {Settings, useSettings} from '@context/SettingsContext';
 
 interface ConfigProps {
   config: {
@@ -106,7 +106,6 @@ const Config = ({config}: ConfigProps) => {
           {
             borderBottomColor,
             paddingTop: config?.description ? 12 : 14,
-            // borderBottomWidth: config?.key !== 'developer' ? 1 : 0,
           },
         ]}>
         <ConfigRenderer />
@@ -124,7 +123,6 @@ const Config = ({config}: ConfigProps) => {
         {
           borderBottomColor,
           paddingTop: config?.description ? 12 : 14,
-          //   borderBottomWidth: config?.key !== 'developer' ? 1 : 0,
         },
       ]}>
       <ConfigRenderer />

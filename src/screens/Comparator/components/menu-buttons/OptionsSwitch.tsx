@@ -1,10 +1,10 @@
-import styles from '../../comparator.styles';
-import {MdText} from '../../../../components/StyledText';
-import useColorScheme from '../../../../hooks/useColorScheme';
-import {ContextMenuButton} from 'react-native-ios-context-menu';
-import {TouchableOpacity, View} from '../../../../components/Themed';
-import {ArrowLeft, ArrowRight, CaretDown} from 'phosphor-react-native';
 import MethodSwitch from './MethodSwitch';
+import styles from '../../comparator.styles';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity, View} from '@components/Themed';
+import {ContextMenuButton} from 'react-native-ios-context-menu';
+import {ArrowLeft, ArrowRight, CaretDown} from 'phosphor-react-native';
 
 interface OptionsSwitchProps {
   option: string;
@@ -79,6 +79,17 @@ const OptionsSwitch = ({
                       },
                     },
                   },
+                  {
+                    actionKey: 'input',
+                    actionTitle: 'Input',
+                    icon: {
+                      type: 'IMAGE_SYSTEM',
+                      imageValue: {
+                        systemName: 'textbox',
+                        weight: 'regular',
+                      },
+                    },
+                  },
                 ],
               },
             ],
@@ -96,7 +107,7 @@ const OptionsSwitch = ({
                 ? 'Camera'
                 : option === 'image'
                 ? 'Image'
-                : 'Select option'}
+                : 'Manual Input'}
             </MdText>
             <CaretDown
               size={15}

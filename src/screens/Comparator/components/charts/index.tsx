@@ -1,12 +1,12 @@
 import {useState} from 'react';
+import Piechart from './Piechart';
 import Linegraph from './Linegraph';
+import {Hue} from '@typings/palette';
 import {StyleSheet} from 'react-native';
 import Progressrings from './Progressrings';
 import {Replace} from 'lucide-react-native';
-import {Hue} from '../../../../types/palette';
-import {TouchableOpacity, View} from '../../../../components/Themed';
-import useColorScheme from '../../../../hooks/useColorScheme';
-import Piechart from './Piechart';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity, View} from '@components/Themed';
 
 interface ChartsProps {
   colors: Hue[];

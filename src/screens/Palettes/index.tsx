@@ -1,22 +1,22 @@
-import {RootTabScreenProps} from '../../types';
-import {ScrollView, TouchableOpacity, View} from '../../components/Themed';
-import {MdText} from '../../components/StyledText';
 import styles from './palettes.styles';
-import {Container} from '../../components/Customized';
-import CreatePaletteButton from './components/CreatePaletteButton';
-import {Export, SortAscending, SortDescending} from 'phosphor-react-native';
-import Searchbar from '../../components/common/Searchbar';
-import {useCallback, useEffect, useRef} from 'react';
+import Colors from '@constants/Colors';
 import Palette from './components/Palette';
-import {useStore} from '../../context/AppContext';
+import {useStore} from '@context/AppContext';
 import ViewShot from 'react-native-view-shot';
-import {useShare} from '../../context/ShareContext';
-import Animated, {FadeOut, SlideInDown} from 'react-native-reanimated';
-import Colors from '../../constants/Colors';
-import useColorScheme from '../../hooks/useColorScheme';
-import AppStatusBar from '../../components/common/AppStatusBar';
+import {MdText} from '@components/StyledText';
+import {useShare} from '@context/ShareContext';
+import {useLogic} from '@context/LogicContext';
+import {Container} from '@components/Customized';
+import {RootTabScreenProps} from '@typings/index';
+import useColorScheme from '@hooks/useColorScheme';
+import {useCallback, useEffect, useRef} from 'react';
+import Searchbar from '@components/common/Searchbar';
 import {Swipeable} from 'react-native-gesture-handler';
-import {useLogic} from '../../context/LogicContext';
+import AppStatusBar from '@components/common/AppStatusBar';
+import CreatePaletteButton from './components/CreatePaletteButton';
+import Animated, {FadeOut, SlideInDown} from 'react-native-reanimated';
+import {ScrollView, TouchableOpacity, View} from '@components/Themed';
+import {Export, SortAscending, SortDescending} from 'phosphor-react-native';
 
 const PalettesCollection = ({navigation}: RootTabScreenProps<'palettes'>) => {
   const scheme = useColorScheme();

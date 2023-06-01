@@ -1,10 +1,10 @@
 import {useState} from 'react';
+import {Hue} from '@typings/palette';
 import {StyleSheet} from 'react-native';
-import {Hue} from '../../../../types/palette';
-import {View} from '../../../../components/Themed';
+import {View} from '@components/Themed';
+import useColorScheme from '@hooks/useColorScheme';
 import Slider from '@react-native-community/slider';
 import LinearGradient from 'react-native-linear-gradient';
-import useColorScheme from '../../../../hooks/useColorScheme';
 
 interface GradientProps {
   colors: Hue[];

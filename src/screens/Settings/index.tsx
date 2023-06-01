@@ -5,16 +5,16 @@ import {
   EnvelopeSimple,
   MusicNoteSimple,
 } from 'phosphor-react-native';
-import styles from './settings.styles';
-import Config from './components/Config';
-import Br from '../../components/common/Br';
-import {View} from '../../components/Themed';
-import {MdText} from '../../components/StyledText';
-import {Container} from '../../components/Customized';
-import AppStatusBar from '../../components/common/AppStatusBar';
 import {useEffect} from 'react';
-import {useLogic} from '../../context/LogicContext';
-import {RootTabScreenProps} from '../../types';
+import styles from './settings.styles';
+import Br from '@components/common/Br';
+import {View} from '@components/Themed';
+import Config from './components/Config';
+import {MdText} from '@components/StyledText';
+import {useLogic} from '@context/LogicContext';
+import {Container} from '@components/Customized';
+import {RootTabScreenProps} from '@typings/index';
+import AppStatusBar from '@components/common/AppStatusBar';
 
 const settings = [
   {

@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
-import {MdText} from '../../../components/StyledText';
-import useColorScheme from '../../../hooks/useColorScheme';
-import {TouchableOpacity} from '../../../components/Themed';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity} from '@components/Themed';
 import AnimatedCheck from './comparisonScreen/AnimatedCheck';
 
 interface SaveButtonProps {

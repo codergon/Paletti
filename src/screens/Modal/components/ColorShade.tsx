@@ -1,7 +1,8 @@
-import {Hue} from '../../../types/palette';
+import {Hue} from '@typings/palette';
 import Animated from 'react-native-reanimated';
-import {MdText} from '../../../components/StyledText';
-import {StyleSheet, View, useColorScheme} from 'react-native';
+import {MdText} from '@components/StyledText';
+import {StyleSheet, View} from 'react-native';
+import useColorScheme from '@hooks/useColorScheme';
 
 type ColorShadeProps = {
   item: Hue;

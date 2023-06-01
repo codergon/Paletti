@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {View} from '../../../../components/Themed';
+import {View} from '@components/Themed';
 import {PieChart} from 'react-native-gifted-charts';
 
 interface ProgressringsProps {
@@ -19,7 +19,7 @@ const Piechart = ({color1, color2}: ProgressringsProps) => {
     <View style={styles.container}>
       <PieChart
         showText
-        radius={100}
+        radius={82}
         focusOnPress
         data={pieData}
         key={Math.random()}
@@ -34,6 +34,7 @@ export default Piechart;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',

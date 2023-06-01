@@ -4,17 +4,17 @@ import Animated, {
   useAnimatedStyle,
   useAnimatedProps,
 } from 'react-native-reanimated';
-import {ColorValue, Image} from 'react-native';
-import styles from '../eyedropper.styles';
-import Layout from '../../../constants/Layout';
-import {View} from '../../../components/Themed';
-import {useLogic} from '../../../context/LogicContext';
 import {
   Gesture,
   GestureDetector,
   GestureHandlerRootView,
 } from 'react-native-gesture-handler';
+import Layout from '@constants/Layout';
+import {View} from '@components/Themed';
+import styles from '../eyedropper.styles';
 import {Path, Svg} from 'react-native-svg';
+import {ColorValue, Image} from 'react-native';
+import {useLogic} from '@context/LogicContext';
 
 const size = 40;
 const MAX_WIDTH = Layout.window.width - 40;

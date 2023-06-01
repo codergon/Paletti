@@ -1,21 +1,21 @@
-import {Alert, Animated, StyleSheet} from 'react-native';
-import {TouchableOpacity, View} from '../../../components/Themed';
-import {MdText} from '../../../components/StyledText';
-import Colors, {SECONDARY_COLOR} from '../../../constants/Colors';
-import {padding} from '../../../helpers/styles';
-import {PaletteType} from '../../../types/palette';
-import TimeAgo from '../../../components/common/TimeAgo';
-import {ContextMenuView} from 'react-native-ios-context-menu';
-import {useRef, useState} from 'react';
-import {useStore} from '../../../context/AppContext';
-import {PushPinSimple, Trash} from 'phosphor-react-native';
-import useColorScheme from '../../../hooks/useColorScheme';
-import {useNavigation} from '@react-navigation/native';
 import {
-  GestureHandlerRootView,
-  RectButton,
   Swipeable,
+  RectButton,
+  GestureHandlerRootView,
 } from 'react-native-gesture-handler';
+import {useRef, useState} from 'react';
+import {padding} from '@helpers/styles';
+import {PaletteType} from '@typings/palette';
+import {useStore} from '@context/AppContext';
+import {MdText} from '@components/StyledText';
+import TimeAgo from '@components/common/TimeAgo';
+import useColorScheme from '@hooks/useColorScheme';
+import {useNavigation} from '@react-navigation/native';
+import {Alert, Animated, StyleSheet} from 'react-native';
+import {TouchableOpacity, View} from '@components/Themed';
+import {PushPinSimple, Trash} from 'phosphor-react-native';
+import Colors, {SECONDARY_COLOR} from '@constants/Colors';
+import {ContextMenuView} from 'react-native-ios-context-menu';
 
 interface PaletteProps {
   listIndex: number;
@@ -42,7 +42,6 @@ const Palette = ({
   const {renamePalette, deletePalette, togglePinnedStatus} = useStore();
 
   // Swipeable & Context-Menu Logic
-  const swipeableRef = useRef<Swipeable>(null);
   const [swiping, setSwiping] = useState(false);
   const onPressMenu = (actionKey: string) => {
     const details = {
@@ -76,7 +75,6 @@ const Palette = ({
     <GestureHandlerRootView>
       <Swipeable
         id={palette?.id}
-        // ref={swipeableRef}
         ref={el => (palettesRef.current[listIndex] = el as Swipeable)}
         overshootFriction={4}
         containerStyle={{

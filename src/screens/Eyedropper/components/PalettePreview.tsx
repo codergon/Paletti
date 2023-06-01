@@ -1,13 +1,13 @@
 import {StyleSheet} from 'react-native';
-import {Check, Trash} from 'phosphor-react-native';
-import {useStore} from '../../../context/AppContext';
-import {MdText} from '../../../components/StyledText';
-import {ELEM_HEIGHT} from '../../../constants/Layout';
-import {useLogic} from '../../../context/LogicContext';
-import {SECONDARY_COLOR} from '../../../constants/Colors';
-import useColorScheme from '../../../hooks/useColorScheme';
-import {TouchableOpacity, View} from '../../../components/Themed';
 import PreviewColor from './PreviewColor';
+import {useStore} from '@context/AppContext';
+import {MdText} from '@components/StyledText';
+import {ELEM_HEIGHT} from '@constants/Layout';
+import {useLogic} from '@context/LogicContext';
+import {Check, Trash} from 'phosphor-react-native';
+import {SECONDARY_COLOR} from '@constants/Colors';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity, View} from '@components/Themed';
 
 const PalettePreview = () => {
   const scheme = useColorScheme();

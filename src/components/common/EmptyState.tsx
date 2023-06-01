@@ -1,7 +1,7 @@
 import {MdText} from '../StyledText';
-import {StyleSheet, View} from 'react-native';
 import {ViewProps} from '../Themed';
-import {padding} from '../../helpers/styles';
+import {padding} from '@helpers/styles';
+import {StyleSheet, View} from 'react-native';
 
 interface EmptyStateProps extends ViewProps {
   text?: string;

@@ -4,13 +4,14 @@ import {
   MenuOptions,
   MenuTrigger,
 } from 'react-native-popup-menu';
-import {Hue} from '../../../types/palette';
-import {edges} from '../../../helpers/styles';
+import {Hue} from '@typings/palette';
+import {edges} from '@helpers/styles';
+import {View} from '@components/Themed';
+import {StyleSheet} from 'react-native';
+import {useStore} from '@context/AppContext';
 import {Backspace} from 'phosphor-react-native';
-import {View} from '../../../components/Themed';
-import {useStore} from '../../../context/AppContext';
-import {StyleSheet, useColorScheme} from 'react-native';
-import {BdText, MdText} from '../../../components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
+import {BdText, MdText} from '@components/StyledText';
 
 type PreviewColorProps = {
   preview: Hue;

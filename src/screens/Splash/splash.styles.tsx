@@ -1,11 +1,11 @@
 import {StyleSheet} from 'react-native';
-import Layout from '../../constants/Layout';
-import {edges, padding} from '../../helpers/styles';
-import {PRIMARY_COLOR} from '../../constants/Colors';
-import {carouselSpec} from '../../constants/data/onboarding';
+import Layout from '@constants/Layout';
+import {edges, padding} from '@helpers/styles';
+import {PRIMARY_COLOR} from '@constants/Colors';
+import {carouselSpec} from '@constants/data/onboarding';
 
-const {ITEM_WIDTH, ITEM_HEIGHT, RADIUS, SPACING} = carouselSpec;
 const HOR_PADDING = 20;
+const {ITEM_WIDTH, ITEM_HEIGHT, RADIUS, SPACING} = carouselSpec;
 
 const styles = StyleSheet.create({
   container: {

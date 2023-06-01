@@ -1,15 +1,15 @@
-import {View} from '../Themed';
 import {
-  ActivityIndicator,
-  Animated,
-  Easing,
   Image,
+  Easing,
+  Animated,
   StatusBar,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import {useRef} from 'react';
+import {View} from '../Themed';
 import {MdText} from '../StyledText';
-import useColorScheme from '../../hooks/useColorScheme';
+import useColorScheme from '@hooks/useColorScheme';
 
 const Loader = ({
   pb = 0,

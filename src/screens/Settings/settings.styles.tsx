@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {padding} from '../../helpers/styles';
+import {padding} from '@helpers/styles';
 
 const styles = StyleSheet.create({
   container: {

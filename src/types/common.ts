@@ -1,5 +1,5 @@
 import {ViewStyle} from 'react-native';
-import {ViewProps} from '../components/Themed';
+import {ViewProps} from '@components/Themed';
 
 export interface TopbarProp {
   title?: string;

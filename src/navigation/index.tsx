@@ -3,25 +3,25 @@ import {
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
+import Colors from '@constants/Colors';
+import {ColorSchemeName} from 'react-native';
+import useColorScheme from '@hooks/useColorScheme';
+import {Swatches, SlidersHorizontal} from 'phosphor-react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   RootTabParamList,
   RootStackParamList,
   RootTabScreenProps,
-} from '../types';
-import Colors from '../constants/Colors';
-import {ColorSchemeName} from 'react-native';
-import useColorScheme from '../hooks/useColorScheme';
-import {Swatches, SlidersHorizontal} from 'phosphor-react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+} from '@typings/index';
 
-import Icons from '../components/Icons';
-import Palettes from '../screens/Palettes';
-import Settings from '../screens/Settings';
-import Eyedropper from '../screens/Eyedropper';
-import Comparator from '../screens/Comparator';
-import ModalScreen from '../screens/Modal/ModalScreen';
-import PaletteColors from '../screens/Palettes/PaletteColors';
+import Icons from '@components/Icons';
+import Palettes from '@screens/Palettes';
+import Settings from '@screens/Settings';
+import Eyedropper from '@screens/Eyedropper';
+import Comparator from '@screens/Comparator';
+import ModalScreen from '@screens/Modal/ModalScreen';
+import PaletteColors from '@screens/Palettes/PaletteColors';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 // NAVIGATION CONTAINER
@@ -42,7 +42,6 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  const theme = useColorScheme();
   return (
     <Stack.Navigator
       initialRouteName="Root"

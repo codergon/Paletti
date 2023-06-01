@@ -1,35 +1,34 @@
 import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
   useState,
+  useEffect,
+  useContext,
+  useCallback,
+  createContext,
 } from 'react';
-import {launchImageLibrary} from 'react-native-image-picker';
-import Layout from '../constants/Layout';
-import PixelColor from '../utils/pixelColor';
-import ColorPicker from 'react-native-image-colors';
-import {nanoid} from 'nanoid';
-import {mapRange} from '../helpers/math';
 import {
-  SharedValue,
   runOnJS,
-  useAnimatedProps,
+  SharedValue,
   useSharedValue,
+  useAnimatedProps,
 } from 'react-native-reanimated';
-import {useAnimatedColor} from '../utils/useAnimatedColor';
-import ntc from '../lib/ntc';
-import chroma from 'chroma-js';
-import {useStore} from './AppContext';
 import {
   CameraDevice,
   CameraProps,
   useCameraDevices,
   useFrameProcessor,
 } from 'react-native-vision-camera';
-import {getColor} from '../utils/getColor';
+import ntc from '@lib/ntc';
+import {nanoid} from 'nanoid';
+import chroma from 'chroma-js';
+import {useStore} from './AppContext';
 import {AppState} from 'react-native';
+import Layout from '@constants/Layout';
+import {mapRange} from '../helpers/math';
+import {getColor} from '../utils/getColor';
+import PixelColor from '../utils/pixelColor';
+import ColorPicker from 'react-native-image-colors';
+import {useAnimatedColor} from '../utils/useAnimatedColor';
+import {launchImageLibrary} from 'react-native-image-picker';
 import ImageResizer from '@bam.tech/react-native-image-resizer';
 
 type ContextType = {

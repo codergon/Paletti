@@ -1,6 +1,6 @@
 import {useStore} from './AppContext';
-import {StatusMsg} from '../types/palette';
-import {hapticFeedback} from '../utils/hapticFeedback';
+import {StatusMsg} from '@typings/palette';
+import {hapticFeedback} from '@utils/hapticFeedback';
 import RNShare, {ShareOptions} from 'react-native-share';
 import {createContext, useContext, useState} from 'react';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';

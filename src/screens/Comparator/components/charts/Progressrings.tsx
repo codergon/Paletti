@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import Layout from '../../../../constants/Layout';
-import {View} from '../../../../components/Themed';
-import {HexToRgb} from '../../../../helpers/colors';
+import Layout from '@constants/Layout';
+import {View} from '@components/Themed';
+import {HexToRgb} from '@helpers/colors';
 import {ProgressChart} from 'react-native-chart-kit';
 import {ChartConfig} from 'react-native-chart-kit/dist/HelperTypes';
 
@@ -41,22 +41,22 @@ const Progressrings = ({color1, color2}: ProgressringsProps) => {
   return (
     <View style={styles.container}>
       <ProgressChart
-        radius={54}
+        radius={44}
         data={data}
-        width={200}
-        height={200}
-        strokeWidth={16}
+        width={150}
+        height={150}
+        strokeWidth={12}
         hideLegend={!false}
         chartConfig={chartConfig}
       />
 
       <ProgressChart
         hideLegend
-        radius={28}
+        radius={20}
         data={data2}
         width={width}
         height={220}
-        strokeWidth={16}
+        strokeWidth={12}
         style={{
           position: 'absolute',
         }}
@@ -70,6 +70,7 @@ export default Progressrings;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',

@@ -1,8 +1,8 @@
 import {StyleSheet} from 'react-native';
-import {TouchableOpacity, View} from '../../../components/Themed';
-import Animated from 'react-native-reanimated';
-import {useLogic} from '../../../context/LogicContext';
 import {Plus} from 'phosphor-react-native';
+import Animated from 'react-native-reanimated';
+import {useLogic} from '@context/LogicContext';
+import {TouchableOpacity} from '@components/Themed';
 
 const AddColorButton = () => {
   const {addToPreview} = useLogic();

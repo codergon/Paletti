@@ -1,16 +1,15 @@
-import {Linking, StyleSheet, TouchableOpacity} from 'react-native';
-import {View} from '../../../components/Themed';
-import {PaletteType} from '../../../types/palette';
-import {BdText, MdText} from '../../../components/StyledText';
-import {Export, Hash, Icon, X, YinYang} from 'phosphor-react-native';
-import useColorScheme from '../../../hooks/useColorScheme';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {edges} from '../../../helpers/styles';
-import Icons from '../../../components/Icons';
-import {preferredSocials, useSettings} from '../../../context/SettingsContext';
-import ExportContent from './ExportContent';
 import {useState} from 'react';
-import Share, {ShareOptions} from 'react-native-share';
+import Share from 'react-native-share';
+import {edges} from '@helpers/styles';
+import {View} from '@components/Themed';
+import ExportContent from './ExportContent';
+import {PaletteType} from '@typings/palette';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
+import {StyleSheet, TouchableOpacity} from 'react-native';
+import {Export, Hash, X, YinYang} from 'phosphor-react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {preferredSocials, useSettings} from '@context/SettingsContext';
 
 type ExportPreviewProps = {
   palette: PaletteType;

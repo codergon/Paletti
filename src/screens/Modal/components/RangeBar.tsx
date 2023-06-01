@@ -1,7 +1,6 @@
+import {padding} from '@helpers/styles';
 import {StyleSheet, View} from 'react-native';
-import {MdText} from '../../../components/StyledText';
-import {MODAL_BACKGROUND} from '../../../constants/Colors';
-import {padding} from '../../../helpers/styles';
+import {MdText} from '@components/StyledText';
 
 type RangeBarProps = {
   darkColor: string;

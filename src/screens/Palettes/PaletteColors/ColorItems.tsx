@@ -1,26 +1,20 @@
 import chroma from 'chroma-js';
-import RangeBar from '../components/RangeBar';
-import ColorShade from '../components/ColorShade';
+import Colors from '@constants/Colors';
+import {PaletteType} from '@typings/palette';
 import ViewShot from 'react-native-view-shot';
-import {TouchableOpacity, View} from '../../../components/Themed';
-import {Alert, ScrollView, StyleSheet} from 'react-native';
-import {MdText} from '../../../components/StyledText';
-import {edges, padding} from '../../../helpers/styles';
-import useColorScheme from '../../../hooks/useColorScheme';
-import {useCallback, useEffect, useMemo, useRef} from 'react';
-import {PaletteType} from '../../../types/palette';
-import {Container} from '../../../components/Customized';
-import {useNavigation} from '@react-navigation/native';
-import {
-  CaretLeft,
-  DotsThree,
-  Drop,
-  Plus,
-  PlusCircle,
-} from 'phosphor-react-native';
-import Colors from '../../../constants/Colors';
-import {ContextMenuButton} from 'react-native-ios-context-menu';
+import RangeBar from '../components/RangeBar';
+import {MdText} from '@components/StyledText';
+import {edges, padding} from '@helpers/styles';
+import ColorShade from '../components/ColorShade';
+import {Container} from '@components/Customized';
+import useColorScheme from '@hooks/useColorScheme';
 import {useStore} from '../../../context/AppContext';
+import {useNavigation} from '@react-navigation/native';
+import {TouchableOpacity, View} from '@components/Themed';
+import {Alert, ScrollView, StyleSheet} from 'react-native';
+import {useCallback, useEffect, useMemo, useRef} from 'react';
+import {ContextMenuButton} from 'react-native-ios-context-menu';
+import {Plus, CaretLeft, DotsThree} from 'phosphor-react-native';
 
 type ExportContentType = {
   palette: PaletteType;

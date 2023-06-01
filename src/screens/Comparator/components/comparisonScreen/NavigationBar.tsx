@@ -1,9 +1,9 @@
 import {useState} from 'react';
+import {Hue} from '@typings/palette';
 import {StyleSheet, View} from 'react-native';
-import {Hue} from '../../../../types/palette';
-import {MdText} from '../../../../components/StyledText';
-import useColorScheme from '../../../../hooks/useColorScheme';
-import {TouchableOpacity} from '../../../../components/Themed';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity} from '@components/Themed';
 import {User, BellDot, Newspaper, Replace, Search} from 'lucide-react-native';
 
 interface NavigationBarProps {

@@ -3,14 +3,14 @@ import {
   HexToHsl,
   HexToRgb,
   getColorDifferencePercentage,
-} from '../../../../helpers/colors';
+} from '@helpers/colors';
 import chroma from 'chroma-js';
+import {Hue} from '@typings/palette';
 import {StyleSheet} from 'react-native';
-import {Hue} from '../../../../types/palette';
+import {View} from '@components/Themed';
 import {BadgeInfo} from 'lucide-react-native';
-import {View} from '../../../../components/Themed';
-import {MdText, RgText} from '../../../../components/StyledText';
-import useColorScheme from '../../../../hooks/useColorScheme';
+import useColorScheme from '@hooks/useColorScheme';
+import {MdText, RgText} from '@components/StyledText';
 
 interface ColorsDetailsProps {
   colors: Hue[];

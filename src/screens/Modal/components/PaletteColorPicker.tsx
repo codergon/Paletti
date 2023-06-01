@@ -9,14 +9,15 @@ import Animated, {
   useAnimatedProps,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import ntc from '../../../lib/ntc';
+import ntc from '@lib/ntc';
+import {StyleSheet} from 'react-native';
+import {padding} from '@helpers/styles';
 import {Plus} from 'phosphor-react-native';
-import {padding} from '../../../helpers/styles';
-import {StyleSheet, useColorScheme} from 'react-native';
+import {useStore} from '@context/AppContext';
+import useColorScheme from '@hooks/useColorScheme';
+import {useAnimatedColor} from '@utils/useAnimatedColor';
+import {TouchableOpacity, View} from '@components/Themed';
 import AnimateableText from 'react-native-animateable-text';
-import {useAnimatedColor} from '../../../utils/useAnimatedColor';
-import {TouchableOpacity, View} from '../../../components/Themed';
-import {useStore} from '../../../context/AppContext';
 
 type PaletteColorPickerProps = {
   paletteId: string;

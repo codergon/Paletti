@@ -1,10 +1,10 @@
 import Icons from '../Icons';
 import {Pressable} from '../Themed';
-import {InputBd, InputMd, InputRg} from '../StyledText';
-import {padding} from '../../helpers/styles';
+import {padding} from '@helpers/styles';
 import {View, StyleSheet} from 'react-native';
 import {useStore} from '../../context/AppContext';
-import useColorScheme from '../../hooks/useColorScheme';
+import useColorScheme from '@hooks/useColorScheme';
+import {InputBd, InputMd, InputRg} from '../StyledText';
 
 type SearchbarProps = {
   showMargin?: boolean;

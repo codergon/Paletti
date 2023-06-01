@@ -1,6 +1,6 @@
 import {Animated} from 'react-native';
 import styles from '../splash.styles';
-import {View, ViewProps} from '../../../components/Themed';
+import {View, ViewProps} from '@components/Themed';
 
 interface FeaturesCardProps extends ViewProps {
   feature: {

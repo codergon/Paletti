@@ -1,24 +1,15 @@
-import React, {FC, ReactNode} from 'react';
-import {LoadingState} from '../../store/utils/LoadingState';
 import Loader from './Loader';
+import React, {FC, ReactNode} from 'react';
 
 interface Props {
   children: ReactNode;
-  loadingState: LoadingState;
+  loadingState: string;
 }
 
 export const LoadingStateSwitcher: FC<Props> = React.memo(
-  ({
-    loadingState,
-
-    children,
-  }) => {
-    if (loadingState === LoadingState.PENDING) {
-      return (
-        <>
-          <Loader />
-        </>
-      );
+  ({children, loadingState}) => {
+    if (loadingState === 'pending') {
+      return <Loader />;
     }
 
     return <>{children}</>;

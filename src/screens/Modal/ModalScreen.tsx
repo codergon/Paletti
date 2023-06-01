@@ -1,25 +1,23 @@
 import Animated, {
+  Easing,
+  runOnJS,
+  withTiming,
   Extrapolate,
   interpolate,
   useSharedValue,
   useAnimatedStyle,
-  withTiming,
-  Easing,
   useAnimatedReaction,
-  runOnJS,
-  useAnimatedProps,
 } from 'react-native-reanimated';
-import {useCallback, useEffect, useMemo, useState} from 'react';
-import Layout from '../../constants/Layout';
+import Layout from '@constants/Layout';
 import {ModalScreenProps} from '../../types';
+import {Container} from '@components/Customized';
 import BottomSheet from './components/BottomSheet';
-import {Container} from '../../components/Customized';
+import useColorScheme from '@hooks/useColorScheme';
+import {useCallback, useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import ExportPreview from './components/ExportPreview';
-import useColorScheme from '../../hooks/useColorScheme';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {PaletteType} from '../../types/palette';
 import PaletteColorPicker from './components/PaletteColorPicker';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 

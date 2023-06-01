@@ -1,11 +1,11 @@
 import {useState} from 'react';
+import {Hue} from '@typings/palette';
+import {padding} from '@helpers/styles';
 import {Replace} from 'lucide-react-native';
 import {StyleSheet, View} from 'react-native';
-import {Hue} from '../../../../types/palette';
-import {padding} from '../../../../helpers/styles';
-import {MdText} from '../../../../components/StyledText';
-import useColorScheme from '../../../../hooks/useColorScheme';
-import {TouchableOpacity} from '../../../../components/Themed';
+import {MdText} from '@components/StyledText';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity} from '@components/Themed';
 
 interface ColorCardsProps {
   colors: Hue[];

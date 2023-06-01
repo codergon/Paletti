@@ -1,6 +1,6 @@
-import {Camera} from 'react-native-vision-camera';
-import {Alert, Linking} from 'react-native';
 import chroma from 'chroma-js';
+import {Alert, Linking} from 'react-native';
+import {Camera} from 'react-native-vision-camera';
 
 export const isValidColor = (color: string) => {
   return chroma.valid(color) && (color.length === 7 || color.length === 4);

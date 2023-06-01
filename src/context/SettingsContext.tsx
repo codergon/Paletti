@@ -1,5 +1,5 @@
-import {Linking, useColorScheme} from 'react-native';
-import Icons from '../components/Icons';
+import {Linking} from 'react-native';
+import Icons from '@components/Icons';
 import overrideColorScheme from 'react-native-override-color-scheme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createContext, useContext, useEffect, useMemo, useState} from 'react';
@@ -56,7 +56,6 @@ interface SettingsProviderProps {
 }
 export default function SettingsProvider({children}: SettingsProviderProps) {
   const [socialApps, setSupportedApps] = useState<SupportedApps>([]);
-  const systemTheme = useColorScheme();
 
   const [settings, setSettings] = useState<Settings>({
     sync: 'off',

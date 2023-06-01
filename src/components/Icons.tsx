@@ -1,6 +1,6 @@
 import {ViewProps} from './Themed';
-import {SECONDARY_COLOR} from '../constants/Colors';
-import Svg, {Circle, ClipPath, Defs, G, Path, Rect} from 'react-native-svg';
+import {SECONDARY_COLOR} from '@constants/Colors';
+import Svg, {Circle, Path, Rect} from 'react-native-svg';
 
 interface IconProps extends ViewProps {
   size?: number;

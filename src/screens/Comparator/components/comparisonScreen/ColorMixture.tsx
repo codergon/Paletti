@@ -1,14 +1,11 @@
-import {
-  LightenDarkenColor,
-  subtractHexColors,
-} from '../../../../helpers/colors';
+import {LightenDarkenColor, subtractHexColors} from '@helpers/colors';
 import chroma from 'chroma-js';
+import {Hue} from '@typings/palette';
 import {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Hue} from '../../../../types/palette';
 import Slider from '@react-native-community/slider';
-import useColorScheme from '../../../../hooks/useColorScheme';
-import {TouchableOpacity} from '../../../../components/Themed';
+import useColorScheme from '@hooks/useColorScheme';
+import {TouchableOpacity} from '@components/Themed';
 import {Equal, MinusIcon, PlusIcon, SunMedium} from 'lucide-react-native';
 
 const circleSize = 60;

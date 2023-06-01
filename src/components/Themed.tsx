@@ -6,20 +6,19 @@ import {
   ScrollViewProps,
   Text as DefaultText,
   View as DefaultView,
+  TouchableOpacityProps,
   TextInput as DefaultInput,
   KeyboardAvoidingViewProps,
   Pressable as DefaultPressable,
   ScrollView as DefaultScrollView,
   TouchableOpacity as DefaultTouchableOpacity,
   KeyboardAvoidingView as DefaultKeyboardAvoidingView,
-  TouchableOpacityProps,
 } from 'react-native';
 import {
   SafeAreaViewProps,
   SafeAreaView as DefaultSafeAreaView,
 } from 'react-native-safe-area-context';
-
-import Colors from '../constants/Colors';
+import Colors from '@constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 
 export function useThemeColor(

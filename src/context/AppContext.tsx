@@ -1,19 +1,18 @@
-import ntc from '../lib/ntc';
+import ntc from '@lib/ntc';
 import {nanoid} from 'nanoid';
 import chroma from 'chroma-js';
-import {Collection, Hue, PaletteType, SubPaletteType} from '../types/palette';
-import Loader from '../components/common/Loader';
-import {Camera} from 'react-native-vision-camera';
-import React, {createContext, useEffect, useMemo, useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Alert} from 'react-native';
 import {isValidColor} from './utils';
 import Sound from 'react-native-sound';
-import {Alert} from 'react-native';
-import {hapticFeedback} from '../utils/hapticFeedback';
-
-import * as CloudStore from 'react-native-cloud-store';
-import {useSettings} from './SettingsContext';
 import {delay} from '../helpers/common';
+import {useSettings} from './SettingsContext';
+import Loader from '@components/common/Loader';
+import {Camera} from 'react-native-vision-camera';
+import {hapticFeedback} from '@utils/hapticFeedback';
+import * as CloudStore from 'react-native-cloud-store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {createContext, useEffect, useMemo, useState} from 'react';
+import {Collection, Hue, PaletteType, SubPaletteType} from '@typings/palette';
 
 Sound.setCategory('Playback');
 

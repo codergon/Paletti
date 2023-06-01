@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {edges, padding} from '../../helpers/styles';
 
 const styles = StyleSheet.create({
   container: {
