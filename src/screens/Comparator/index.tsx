@@ -51,7 +51,7 @@ const Comparator = ({navigation}: RootTabScreenProps<'comparator'>) => {
   const [imageHeight, setImageHeight] = useState(0);
   const [changedImage, setChangedImage] = useState(false);
 
-  const [comparisonMethod, setComparisonMethod] = useState('charts');
+  const [comparisonMethod, setComparisonMethod] = useState('gradient');
 
   const {activeColor, onScreenBlur, selectedImg, selectImage, removeImage} =
     useLogic();

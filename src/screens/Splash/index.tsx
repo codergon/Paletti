@@ -106,6 +106,7 @@ const Splash = () => {
           <Animated.FlatList
             horizontal
             data={data}
+            scrollEventThrottle={16}
             onScroll={Animated.event(
               [{nativeEvent: {contentOffset: {x: scrollX}}}],
               {

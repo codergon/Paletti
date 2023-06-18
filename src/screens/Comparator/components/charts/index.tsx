@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import Piechart from './Piechart';
-import Linegraph from './Linegraph';
+import Barchart from './Barchart';
 import {Hue} from '@typings/palette';
 import {StyleSheet} from 'react-native';
 import Progressrings from './Progressrings';
@@ -13,7 +13,7 @@ interface ChartsProps {
 }
 
 const Charts = ({colors}: ChartsProps) => {
-  const [type, setType] = useState('line');
+  const [type, setType] = useState('bar');
   const isDark = useColorScheme() === 'dark';
   const iconColor = isDark ? '#fff' : '#000';
   const btnBorder = isDark ? '#555' : '#ccc';
@@ -34,11 +34,11 @@ const Charts = ({colors}: ChartsProps) => {
             ]}
             onPress={() =>
               setType(p =>
-                p === 'line'
+                p === 'bar'
                   ? 'piechart'
                   : p === 'piechart'
                   ? 'progress'
-                  : 'line',
+                  : 'bar',
               )
             }>
             <Replace size={20} color={iconColor} />
@@ -50,8 +50,9 @@ const Charts = ({colors}: ChartsProps) => {
           color1={colors[0]?.color ?? '#000'}
           color2={colors[1]?.color ?? '#000'}
         />
-      ) : type === 'line' ? (
-        <Linegraph
+      ) : type === 'bar' ? (
+        <Barchart
+          textColor={iconColor}
           color1={colors[0]?.color ?? '#000'}
           color2={colors[1]?.color ?? '#000'}
         />

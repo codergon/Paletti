@@ -103,16 +103,19 @@ const ColorsPicker = ({color}: ColorsPickerProps) => {
 
       <View
         style={{
+          flex: 1,
+          flexDirection: 'column',
           backgroundColor: 'transparent',
         }}>
         <ColorPicker
           value="#fff8da"
-          style={{width: '100%'}}
+          style={{width: '100%', height: '100%'}}
           sliderThickness={25}
           onChange={onSelectColor}>
           <Panel1
             style={{
-              height: 150,
+              flex: 1,
+              maxHeight: 150,
               borderRadius: 16,
             }}
           />
@@ -153,10 +156,9 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    paddingTop: 24,
-    paddingVertical: 10,
+    paddingTop: 20,
+    paddingVertical: 14,
     paddingHorizontal: 20,
-    // justifyContent: 'center',
     backgroundColor: 'transparent',
   },
   header: {

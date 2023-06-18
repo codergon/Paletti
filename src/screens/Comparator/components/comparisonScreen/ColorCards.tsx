@@ -37,7 +37,7 @@ const ColorCards = ({colors}: ColorCardsProps) => {
         </View>
       </View>
 
-      <View style={styles.cardContainer}>
+      <View style={[styles.cardContainer]}>
         <View
           style={[
             styles.card1,
@@ -107,32 +107,37 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     marginTop: 20,
-    marginBottom: 10,
+    flexDirection: 'column',
     alignContent: 'center',
     justifyContent: 'center',
   },
   card1: {
-    height: 200,
-    padding: 40,
+    flex: 1,
+    // padding: 40,
     width: '100%',
+    maxHeight: 200,
     borderWidth: 1,
     borderRadius: 20,
-    maxHeight: '100%',
+    alignItems: 'center',
+    paddingHorizontal: 30,
+    justifyContent: 'center',
   },
   card2: {
-    flex: 1,
+    width: '100%',
     borderRadius: 20,
+    ...padding(24, 28),
     alignItems: 'center',
     justifyContent: 'center',
   },
   textContainer: {
-    borderRadius: 40,
-    ...padding(12, 22),
+    width: '100%',
+    borderRadius: 18,
+    ...padding(18, 10),
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    fontSize: 20,
+    fontSize: 17,
     letterSpacing: 0.4,
     fontWeight: 'bold',
     textAlign: 'center',

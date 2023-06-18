@@ -63,17 +63,12 @@ const ColorsDetails = ({colors}: ColorsDetailsProps) => {
           );
         })}
 
-        <View
-          style={[
-            styles.rowStart,
-            {
-              marginTop: 24,
-            },
-          ]}>
+        <View style={[styles.rowStart]}>
           <RgText
             style={[
               styles.value,
               {
+                fontSize: 12.5,
                 color: secondary,
                 textTransform: 'uppercase',
               },
@@ -85,6 +80,7 @@ const ColorsDetails = ({colors}: ColorsDetailsProps) => {
             style={[
               styles.value,
               {
+                fontSize: 12.5,
                 color: primary,
               },
             ]}>
@@ -94,7 +90,14 @@ const ColorsDetails = ({colors}: ColorsDetailsProps) => {
             out of 21
           </RgText>
         </View>
-        <View style={[styles.rowStart]}>
+        <View
+          style={[
+            styles.rowStart,
+            {
+              marginTop: 4,
+              marginVertical: 0,
+            },
+          ]}>
           <RgText
             style={[
               styles.value,
@@ -175,11 +178,11 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     marginTop: 12,
-    marginBottom: 14,
+    marginBottom: 12,
     letterSpacing: 0.3,
   },
   row: {
-    marginVertical: 6,
+    marginVertical: 4,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -193,7 +196,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   value: {
-    fontSize: 13,
+    fontSize: 12.5,
     letterSpacing: 0.25,
   },
 

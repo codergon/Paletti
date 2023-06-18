@@ -6,6 +6,7 @@ import {StyleSheet, View} from 'react-native';
 import useColorScheme from '@hooks/useColorScheme';
 import {InputMd, MdText} from '@components/StyledText';
 import {KeyboardAvoidingView, ScrollView} from '@components/Themed';
+import ntc from 'lib/ntc';
 
 interface ColorInputProps {
   hexInput: string;
@@ -15,6 +16,7 @@ interface ColorInputProps {
 const ColorInput = ({hexInput, setHexInput}: ColorInputProps) => {
   const blobSize = 42;
   const [hex, setHex] = useState('');
+  const [name, setName] = useState('');
 
   const isDark = useColorScheme() === 'dark';
   const iconColor = isDark ? '#fff' : '#444';
@@ -34,6 +36,8 @@ const ColorInput = ({hexInput, setHexInput}: ColorInputProps) => {
 
   useEffect(() => {
     if (chroma.valid(hex)) {
+      const name = ntc.name(chroma(hex).hex());
+      setName(name);
       setHexInput(chroma(hex).hex());
     }
   }, [hex]);
@@ -47,7 +51,7 @@ const ColorInput = ({hexInput, setHexInput}: ColorInputProps) => {
       contentContainerStyle={[styles.container]}>
       <View style={[styles.header]}>
         <MdText style={[styles.title, {color: textColor}]}>
-          Type in a hex code
+          {name && hex ? name : 'Type in a hex code'}
         </MdText>
       </View>
 
